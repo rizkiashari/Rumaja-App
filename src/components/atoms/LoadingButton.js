@@ -10,11 +10,7 @@ const LoadingButton = () => {
   return (
     <HStack space={2} alignItems="center" justifyContent="center">
       <Spinner size={width / 20} />
-      <Heading
-        color={colors.blue[70]}
-        fontFamily={fonts.primary[400]}
-        fontSize={width / 28}
-      >
+      <Heading color={colors.blue[70]} fontFamily={fonts.primary[400]} fontSize={width / 28}>
         Loading
       </Heading>
     </HStack>
