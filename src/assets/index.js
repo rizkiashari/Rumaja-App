@@ -12,11 +12,12 @@ import HidePassword from './icons/hide_pass.svg';
 import SettingBlack from './icons/setting_black.svg';
 import Notification from './icons/notification_black.svg';
 import ChevronBack from './icons/chevron_back.svg';
+import ChevronRight from './icons/chevron_right.svg';
 
 // ilustrations
 import ILLogin from './ilustrations/ilustration_login.png';
 import ILNotifEmpty from './ilustrations/notif_empty.png';
-import ILPlaceholder from '../assets/ilustrations/placeholder_profile.png';
+import ILPlaceholder from './ilustrations/placeholder_profile.png';
 
 export {
   BerandaActive,
@@ -32,6 +33,7 @@ export {
   SettingBlack,
   Notification,
   ChevronBack,
+  ChevronRight,
   ILLogin,
   ILNotifEmpty,
   ILPlaceholder,
