@@ -5,7 +5,7 @@ const baseUrl = REACT_APP_BASE_URL;
 console.log(baseUrl);
 
 export const API = axios.create({
-  baseURL: 'http://10.0.2.2:8881/api',
+  baseURL: `${baseUrl}/api`,
 });
 
 export const configFormData = {
