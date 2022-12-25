@@ -17,6 +17,14 @@ import PencariActive from './icons/pencari_icon_active.svg';
 import PencariInactive from './icons/pencari_icon_inactive.svg';
 import PenyediaActive from './icons/penyedia_icon_active.svg';
 import PenyediaInactive from './icons/penyedia_icon_inactive.svg';
+import ArtActive from './icons/art_active.svg';
+import ArtInactive from './icons/art_inactive.svg';
+import BabysitterActive from './icons/babysitter_active.svg';
+import BabysitterInactive from './icons/babysitter_inactive.svg';
+import GardenerActive from './icons/gardner_active.svg';
+import GardenerInactive from './icons/gardner_inactive.svg';
+import DriverActive from './icons/driver_active.svg';
+import DriverInactive from './icons/driver_inactive.svg';
 
 // ilustrations
 import ILLogin from './ilustrations/ilustration_login.png';
@@ -42,6 +50,14 @@ export {
   PencariInactive,
   PenyediaActive,
   PenyediaInactive,
+  ArtActive,
+  ArtInactive,
+  BabysitterActive,
+  BabysitterInactive,
+  GardenerActive,
+  GardenerInactive,
+  DriverActive,
+  DriverInactive,
   ILLogin,
   ILNotifEmpty,
   ILPlaceholder,
