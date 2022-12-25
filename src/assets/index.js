@@ -13,6 +13,10 @@ import SettingBlack from './icons/setting_black.svg';
 import Notification from './icons/notification_black.svg';
 import ChevronBack from './icons/chevron_back.svg';
 import ChevronRight from './icons/chevron_right.svg';
+import PencariActive from './icons/pencari_icon_active.svg';
+import PencariInactive from './icons/pencari_icon_inactive.svg';
+import PenyediaActive from './icons/penyedia_icon_active.svg';
+import PenyediaInactive from './icons/penyedia_icon_inactive.svg';
 
 // ilustrations
 import ILLogin from './ilustrations/ilustration_login.png';
@@ -34,6 +38,10 @@ export {
   Notification,
   ChevronBack,
   ChevronRight,
+  PencariActive,
+  PencariInactive,
+  PenyediaActive,
+  PenyediaInactive,
   ILLogin,
   ILNotifEmpty,
   ILPlaceholder,
