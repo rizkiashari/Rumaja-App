@@ -14,6 +14,7 @@ import BottomNavigator from './molecules/BottomNavigator';
 import Header from './molecules/Header';
 import LoadingSkeleton from './molecules/LoadingSkeleton';
 import Card from './molecules/Card';
+import BoxAddPekerjaan from './molecules/BoxAddPekerjaan';
 
 export {
   TabItem,
@@ -29,4 +30,5 @@ export {
   Header,
   LoadingSkeleton,
   Card,
+  BoxAddPekerjaan,
 };
