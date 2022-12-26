@@ -29,6 +29,8 @@ import Timer from './icons/timer_black.svg';
 import StartActive from './icons/star_active.svg';
 import UnSaved from './icons/save_off.svg';
 import FilterBlack from './icons/filter_black.svg';
+import SearchBlack from './icons/search_black.svg';
+import SearchGray from './icons/search_gray.svg';
 
 // ilustrations
 import ILLogin from './ilustrations/ilustration_login.png';
@@ -72,6 +74,8 @@ export {
   StartActive,
   UnSaved,
   FilterBlack,
+  SearchBlack,
+  SearchGray,
   ILLogin,
   ILNotifEmpty,
   ILPlaceholder,
