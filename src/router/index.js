@@ -11,6 +11,12 @@ import Login from '../pages/Login';
 import Register from '../pages/Register';
 import Notifikasi from '../pages/Notifikasi';
 import Pengaturan from '../pages/Pengaturan';
+import PilihPeran from '../pages/PilihPeran';
+import PilihBidangPekerjaan from '../pages/PilihBidangPekerjaan';
+import DetailBidangPekerjaan from '../pages/DetailBidangPekerjaan';
+import DetailLayanan from '../pages/DetailLayanan';
+import TambahLowongan from '../pages/TambahLowongan';
+import FilterTersimpan from '../pages/FilterTersimpan';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -63,6 +69,34 @@ const Authenticated = () => {
           headerShown: false,
         }}
       />
+      <Stack.Screen
+        name="DetailBidangPekerjaan"
+        component={DetailBidangPekerjaan}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="DetailLayanan"
+        component={DetailLayanan}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="TambahLowongan"
+        component={TambahLowongan}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="FilterTersimpan"
+        component={FilterTersimpan}
+        options={{
+          headerShown: false,
+        }}
+      />
     </Stack.Navigator>
   );
 };
@@ -78,6 +112,8 @@ const UnAuthenticated = () => {
     >
       <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
       <Stack.Screen name="Register" component={Register} options={{ headerShown: false }} />
+      <Stack.Screen name="PilihPeran" component={PilihPeran} options={{ headerShown: false }} />
+      <Stack.Screen name="PilihBidangPekerjaan" component={PilihBidangPekerjaan} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
 };
