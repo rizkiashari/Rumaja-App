@@ -25,6 +25,9 @@ import GardenerActive from './icons/gardner_active.svg';
 import GardenerInactive from './icons/gardner_inactive.svg';
 import DriverActive from './icons/driver_active.svg';
 import DriverInactive from './icons/driver_inactive.svg';
+import Timer from './icons/timer_black.svg';
+import StartActive from './icons/star_active.svg';
+import UnSaved from './icons/save_off.svg';
 
 // ilustrations
 import ILLogin from './ilustrations/ilustration_login.png';
@@ -62,6 +65,9 @@ export {
   GardenerInactive,
   DriverActive,
   DriverInactive,
+  Timer,
+  StartActive,
+  UnSaved,
   ILLogin,
   ILNotifEmpty,
   ILPlaceholder,
