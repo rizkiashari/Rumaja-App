@@ -8,6 +8,7 @@ import Divider from './atoms/Divider';
 import EmptyContent from './atoms/EmptyContent';
 import SelectItem from './atoms/SelectItem';
 import LabelInput from './atoms/LabelInput';
+import TextArea from './atoms/TextArea';
 
 // Molecules
 import BottomNavigator from './molecules/BottomNavigator';
@@ -26,6 +27,7 @@ export {
   EmptyContent,
   SelectItem,
   LabelInput,
+  TextArea,
   BottomNavigator,
   Header,
   LoadingSkeleton,

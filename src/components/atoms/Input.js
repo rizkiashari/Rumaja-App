@@ -26,19 +26,14 @@ const Input = ({ value, onChangeText, type, placeholder }) => {
           value={value}
           onChangeText={onChangeText}
           placeholder={placeholder}
+          _focus={{ borderColor: colors.blue[80] }}
         />
         {showPassword ? (
-          <TouchableOpacity
-            style={styles.actionPassword(width)}
-            onPress={() => setShowPassword(!showPassword)}
-          >
+          <TouchableOpacity style={styles.actionPassword(width)} onPress={() => setShowPassword(!showPassword)}>
             <ShowPassword />
           </TouchableOpacity>
         ) : (
-          <TouchableOpacity
-            style={styles.actionPassword(width)}
-            onPress={() => setShowPassword(!showPassword)}
-          >
+          <TouchableOpacity style={styles.actionPassword(width)} onPress={() => setShowPassword(!showPassword)}>
             <HidePassword />
           </TouchableOpacity>
         )}
@@ -52,10 +47,11 @@ const Input = ({ value, onChangeText, type, placeholder }) => {
       px={4}
       py={2}
       type={type}
-      keyboardType={type === 'email' ? 'email-address' : 'default'}
+      keyboardType={type === 'email' ? 'email-address' : type === 'number' ? 'numeric' : 'default'}
       borderColor={colors.text.black30}
       backgroundColor={colors.white}
       fontFamily={fonts.primary[500]}
+      _focus={{ borderColor: colors.blue[80] }}
       fontSize={width / 32}
       width="full"
       value={value}

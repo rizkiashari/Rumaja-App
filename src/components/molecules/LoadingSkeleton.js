@@ -4,7 +4,7 @@ import { HStack, Skeleton, VStack } from 'native-base';
 import { colors } from '../../utils/colors';
 
 const LoadingSkeleton = ({ jumlah, type }) => {
-  const { width } = Dimensions.get('window');
+  const { width, height } = Dimensions.get('window');
 
   if (type === 'medium') {
     return Array(jumlah)
