@@ -30,6 +30,10 @@ import DriverInactive from './icons/driver_inactive.svg';
 import ILLogin from './ilustrations/ilustration_login.png';
 import ILNotifEmpty from './ilustrations/notif_empty.png';
 import ILPlaceholder from './ilustrations/placeholder_profile.png';
+import ILArt from './ilustrations/art.png';
+import ILPengasuh from './ilustrations/pengasuh.png';
+import ILSopirPribadi from './ilustrations/sopir_pribadi.png';
+import ILTukangKebun from './ilustrations/tukang_kebun.png';
 
 export {
   BerandaActive,
@@ -61,4 +65,8 @@ export {
   ILLogin,
   ILNotifEmpty,
   ILPlaceholder,
+  ILArt,
+  ILPengasuh,
+  ILSopirPribadi,
+  ILTukangKebun,
 };
