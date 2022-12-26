@@ -28,6 +28,7 @@ import DriverInactive from './icons/driver_inactive.svg';
 import Timer from './icons/timer_black.svg';
 import StartActive from './icons/star_active.svg';
 import UnSaved from './icons/save_off.svg';
+import FilterBlack from './icons/filter_black.svg';
 
 // ilustrations
 import ILLogin from './ilustrations/ilustration_login.png';
@@ -37,6 +38,7 @@ import ILArt from './ilustrations/art.png';
 import ILPengasuh from './ilustrations/pengasuh.png';
 import ILSopirPribadi from './ilustrations/sopir_pribadi.png';
 import ILTukangKebun from './ilustrations/tukang_kebun.png';
+import ILTersimpanEmpty from './ilustrations/tersimpan_empty.png';
 
 export {
   BerandaActive,
@@ -68,6 +70,7 @@ export {
   Timer,
   StartActive,
   UnSaved,
+  FilterBlack,
   ILLogin,
   ILNotifEmpty,
   ILPlaceholder,
@@ -75,4 +78,5 @@ export {
   ILPengasuh,
   ILSopirPribadi,
   ILTukangKebun,
+  ILTersimpanEmpty,
 };
