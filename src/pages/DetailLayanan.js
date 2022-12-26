@@ -50,9 +50,9 @@ const DetailLayanan = ({ navigation, route }) => {
           setDataPekerja(resp?.data?.pekerja);
         } else {
           const resp = await getData(
-            `/user/pencari/${idPekerjaan}?kota=${filterHome.kota}&provinsi=${filterHome.provinsi?.split(',')[1]}&urutan=${
-              filterHome.urutan
-            }&jenis_kelamin=${filterHome.gender}&min_usia=${+filterHome.min_rentang}&max_usia=${+filterHome.max_rentang}`
+            `/user/pencari/${idPekerjaan}?kota=${filterHome.kota}&provinsi=${filterHome.provinsi}&urutan=${filterHome.urutan}&jenis_kelamin=${
+              filterHome.gender
+            }&min_usia=${+filterHome.min_rentang}&max_usia=${+filterHome.max_rentang}`
           );
           console.log('3: ', resp);
           setDataPekerja(resp?.data?.pekerja);
@@ -101,9 +101,6 @@ const DetailLayanan = ({ navigation, route }) => {
     const resp = await getData(`/user/pencari/${idPekerjaan}?search=${val}`);
     setDataPekerja(resp.data.pekerja);
   };
-
-  console.log(dataPekerja);
-  console.log('filterHome: ', filterHome);
 
   return (
     <SafeAreaView>

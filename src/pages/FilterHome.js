@@ -16,21 +16,21 @@ const FilterHome = ({ navigation, route }) => {
   const { bidang, id } = route.params;
   const { width, height } = Dimensions.get('window');
 
-  const { setFilterHome, filterHome } = useFilterHome();
-  const { userData } = useUserStore();
-
   const isFocused = navigation.isFocused();
 
   const [dataProvinsi, setDataProvinsi] = useState([]);
   const [dataKota, setDataKota] = useState([]);
 
-  const [currentKota, setCurrentKota] = useState(filterHome?.kota ? filterHome?.kota : '');
-  const [provinsi, setProvinsi] = useState(filterHome?.provinsi ? filterHome?.provinsi : '');
-  const [jenisGaji, setJenisGaji] = useState(filterHome?.jenis_gaji ? filterHome?.jenis_gaji : '');
-  const [urutan, setUrutan] = useState(filterHome?.urutan ? filterHome?.urutan : '');
-  const [gender, setGender] = useState(filterHome?.gender ? filterHome?.gender : '');
-  const [minRentang, setMinRentang] = useState(filterHome?.min_rentang ? filterHome?.min_rentang : '');
-  const [maxRentang, setMaxRentang] = useState(filterHome?.max_rentang ? filterHome?.max_rentang : '');
+  const [currentKota, setCurrentKota] = useState('');
+  const [provinsi, setProvinsi] = useState('');
+  const [jenisGaji, setJenisGaji] = useState('');
+  const [urutan, setUrutan] = useState('');
+  const [gender, setGender] = useState('');
+  const [minRentang, setMinRentang] = useState('');
+  const [maxRentang, setMaxRentang] = useState('');
+
+  const { setFilterHome, filterHome } = useFilterHome();
+  const { userData } = useUserStore();
 
   const getDataProvinsi = async () => {
     const resp = await getData('/wilayah-indo/provinsi');
@@ -68,10 +68,6 @@ const FilterHome = ({ navigation, route }) => {
   console.log('dataFilterPekerja', dataFilterPekerja);
   console.log('filterHome', filterHome);
 
-  console.log(urutan);
-
-  console.log(provinsi);
-
   return (
     <View bgColor={colors.white} minH={height}>
       <Header>
@@ -104,7 +100,7 @@ const FilterHome = ({ navigation, route }) => {
               <HStack space={2}>
                 <VStack w="1/2">
                   <Select
-                    selectedValue={filterHome?.provinsi}
+                    defaultValue={filterHome?.provinsi}
                     accessibilityLabel="Pilih provinsi"
                     placeholder="Pilih provinsi"
                     rounded={8}
@@ -129,7 +125,7 @@ const FilterHome = ({ navigation, route }) => {
                 </VStack>
                 <VStack w="1/2">
                   <Select
-                    selectedValue={filterHome?.kota}
+                    defaultValue={filterHome?.kota}
                     accessibilityLabel="Pilih kota"
                     placeholder="Pilih kota"
                     rounded={8}
@@ -158,7 +154,7 @@ const FilterHome = ({ navigation, route }) => {
               <VStack w="1/2" space={2}>
                 <LabelInput text="Jenis Kelamin" />
                 <Select
-                  selectedValue={filterHome?.gender !== '' ? filterHome?.gender : ''}
+                  defaultValue={filterHome?.gender}
                   accessibilityLabel="Pilih gender"
                   placeholder="Pilih jenis kelamin"
                   rounded={8}
@@ -199,6 +195,7 @@ const FilterHome = ({ navigation, route }) => {
                     onChangeText={(text) => {
                       setMinRentang(text);
                     }}
+                    value={minRentang}
                   />
                   <Text fontFamily={fonts.primary[400]} fontSize={width / 30} color="grey">
                     -
@@ -217,6 +214,7 @@ const FilterHome = ({ navigation, route }) => {
                     onChangeText={(text) => {
                       setMaxRentang(text);
                     }}
+                    value={maxRentang}
                   />
                   <Text fontFamily={fonts.primary[400]} fontSize={width / 30} color="grey">
                     Tahun
@@ -271,7 +269,6 @@ const FilterHome = ({ navigation, route }) => {
                 setMaxRentang(0);
                 setMinRentang(0);
                 setUrutan('');
-                setFilterHome(null);
               }}
               text="Reset"
               type="reset"
@@ -281,7 +278,7 @@ const FilterHome = ({ navigation, route }) => {
               type="primary"
               onPress={() => {
                 if (minRentang > maxRentang) {
-                  showError('Minimal rentang usia tidak boleh lebih besar dari maksimal rentang usia');
+                  return showError('Usia maksimal tidak boleh kurang dari usia minimal');
                 } else {
                   navigation.navigate('DetailLayanan', {
                     id: id,
