@@ -56,6 +56,7 @@ const Login = ({ navigation }) => {
           const resCheckAuth = await getData('/auth/check-auth');
           setUserData(resCheckAuth.data);
           showSuccess('Login berhasil');
+          login.resetForm();
           setTimeout(() => {
             setIsLogin(true);
           }, 1000);
@@ -83,24 +84,14 @@ const Login = ({ navigation }) => {
             <Text fontFamily={fonts.primary.normal} color={colors.text.black70} fontSize={width / 32}>
               Alamat Email
             </Text>
-            <Input
-              type="email"
-              placeholder="Masukkan alamat email"
-              value={login.values.email}
-              onChangeText={login.handleChange('email')}
-            />
+            <Input type="email" placeholder="Masukkan alamat email" value={login.values.email} onChangeText={login.handleChange('email')} />
             {login.touched.email && login.errors.email ? <ErrorInput error={login.errors.email} /> : null}
           </VStack>
           <VStack space={2}>
             <Text fontFamily={fonts.primary.normal} color={colors.text.black70} fontSize={width / 32}>
               Kata Sandi
             </Text>
-            <Input
-              type="password"
-              placeholder="Masukkan kata sandi"
-              value={login.values.password}
-              onChangeText={login.handleChange('password')}
-            />
+            <Input type="password" placeholder="Masukkan kata sandi" value={login.values.password} onChangeText={login.handleChange('password')} />
             {login.touched.password && login.errors.password ? <ErrorInput error={login.errors.password} /> : null}
           </VStack>
           <VStack space={5} alignItems="center" justifyContent="center">
@@ -121,14 +112,7 @@ const Login = ({ navigation }) => {
             </HStack>
             <HStack space={6} alignItems="center" justifyContent="center">
               <Divider />
-              <Text
-                fontFamily={fonts.primary[400]}
-                color={colors.text.black70}
-                fontSize="xs"
-                textAlign="center"
-                fontWeight="thin"
-                width={width / 7}
-              >
+              <Text fontFamily={fonts.primary[400]} color={colors.text.black70} fontSize="xs" textAlign="center" fontWeight="thin" width={width / 7}>
                 atau
               </Text>
               <Divider />

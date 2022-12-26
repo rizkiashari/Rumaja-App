@@ -33,7 +33,7 @@ const Register = ({ navigation }) => {
 
   const [dataProvinsi, setDataProvinsi] = useState([]);
   const [dataKota, setDataKota] = useState([]);
-  const [currentProvinsi, setCurrentProvinsi] = useState(0);
+  const [currentProvinsi, setCurrentProvinsi] = useState('');
 
   const getDataProvinsi = async () => {
     const resp = await getData('/wilayah-indo/provinsi');
@@ -41,7 +41,7 @@ const Register = ({ navigation }) => {
   };
 
   const getDataKota = async (id) => {
-    if (id === 0) {
+    if (id === '') {
       return;
     }
     const resp = await getData(`/wilayah-indo/kota?id_provinsi=${id?.split(',')[0]}`);
