@@ -46,6 +46,8 @@ import ILSopirPribadi from './ilustrations/sopir_pribadi.png';
 import ILTukangKebun from './ilustrations/tukang_kebun.png';
 import ILTersimpanEmpty from './ilustrations/tersimpan_empty.png';
 import ILAddPekerjaan from './ilustrations/add_pekerjaan.png';
+import ILWA from './ilustrations/wa.png';
+import ILEmail from './ilustrations/email.png';
 
 export {
   BerandaActive,
@@ -93,4 +95,6 @@ export {
   ILTukangKebun,
   ILTersimpanEmpty,
   ILAddPekerjaan,
+  ILWA,
+  ILEmail,
 };
