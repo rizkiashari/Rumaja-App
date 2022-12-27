@@ -22,6 +22,7 @@ import DetailPencari from '../pages/DetailPencari';
 import TawarkanPekerjaan from '../pages/TawarkanPekerjaan';
 import KonfirmasiWaktu from '../pages/KonfirmasiWaktu';
 import SuksesTawaranTerkirim from '../pages/SuksesTawaranTerkirim';
+import OnBoarding from '../pages/OnBoarding';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -45,7 +46,7 @@ const MainApp = () => {
 const Authenticated = () => {
   return (
     <Stack.Navigator
-      initialRouteName="SuksesTawaranTerkirim"
+      initialRouteName="MainApp"
       screenOptions={{
         gestureEnabled: true,
         contentStyle: { backgroundColor: '#fafafa' },
@@ -133,6 +134,13 @@ const Authenticated = () => {
       <Stack.Screen
         name="SuksesTawaranTerkirim"
         component={SuksesTawaranTerkirim}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="OnBoarding"
+        component={OnBoarding}
         options={{
           headerShown: false,
         }}
