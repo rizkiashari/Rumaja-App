@@ -43,6 +43,7 @@ import DitolakIcon from './icons/ditolak_icon.svg';
 import SelesaiIcon from './icons/selesai_icon.svg';
 import EditIcon from './icons/edit_icon.svg';
 import FullLogo from './icons/full_logo_icon.svg';
+import ProfilEdit from './icons/profil_edit.svg';
 
 // ilustrations
 import ILLogin from './ilustrations/ilustration_login.png';
@@ -112,6 +113,7 @@ export {
   SelesaiIcon,
   EditIcon,
   FullLogo,
+  ProfilEdit,
   ILLogin,
   ILNotifEmpty,
   ILPlaceholder,
