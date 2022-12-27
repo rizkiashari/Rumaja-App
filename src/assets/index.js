@@ -62,6 +62,9 @@ import ILTerimaBekerja from './ilustrations/terima_bekerja.png';
 import ILTerimaDiproses from './ilustrations/terima_diproses.png';
 import ILTerimaDiproses2 from './ilustrations/terima_proses_2.png';
 import ILTolakDiproses from './ilustrations/tolak_diproses.png';
+import ILOnBoarding1 from './ilustrations/onboarding1.png';
+import ILOnBoarding2 from './ilustrations/onboarding2.png';
+import ILOnBoarding3 from './ilustrations/onboarding3.png';
 
 export {
   BerandaActive,
@@ -125,4 +128,7 @@ export {
   ILTerimaDiproses,
   ILTerimaDiproses2,
   ILTolakDiproses,
+  ILOnBoarding1,
+  ILOnBoarding2,
+  ILOnBoarding3,
 };
