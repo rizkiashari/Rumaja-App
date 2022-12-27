@@ -91,7 +91,62 @@ const Tersimpan = ({ navigation }) => {
     };
   }, [isFocused, userData?.id_role, invoke, setInvoke, filterTersimpan, setLoading]);
 
-  console.log(dataSimpanPekerja);
+  const saveLowongan = async (uuid, save) => {
+    setInvoke(!invoke);
+    if (save === null) {
+      try {
+        const res = await API.patch(`/lowongan/save/${uuid}`);
+        if (res.data.message === 'SUCCESS_SAVE_LOWONGAN') {
+          showSuccess('Berhasil menyimpan lowongan');
+        } else {
+          showError('Gagal menyimpan lowongan');
+        }
+      } catch ({ response }) {
+        showError(response.data.message);
+      }
+    } else {
+      try {
+        const res = await API.delete(`lowongan/delete/save/${uuid}`);
+        if (res.data.message === 'SUCCESS_DELETE_SAVE_LOWONGAN') {
+          showSuccess('Berhasil menghapus data simpan lowongan');
+        } else {
+          showError('Gagal menghapus lowongan');
+        }
+      } catch ({ response }) {
+        showError(response.data.message);
+      }
+    }
+  };
+
+  const savePekerja = async (id, simpan_pencari) => {
+    setInvoke(!invoke);
+    if (simpan_pencari === null) {
+      try {
+        const res = await API.post('/user/save-pencari', {
+          id_pencari: id,
+          isSave: true,
+        });
+        if (res.data.message === 'SUCCESS_SAVE_PENCARI') {
+          showSuccess('Berhasil menyimpan pencari kerja');
+        } else {
+          showError('Gagal menyimpan pencari kerja');
+        }
+      } catch ({ response }) {
+        showError(response.data.message);
+      }
+    } else {
+      try {
+        const res = await API.patch(`/user/unsave-pencari/${simpan_pencari?.uuid_simpan}`);
+        if (res.data.message === 'SUCCESS_UNSAVE_PENCARI') {
+          showSuccess('Berhasil menghapus data simpan pencari kerja');
+        } else {
+          showError('Gagal menghapus pencari kerja');
+        }
+      } catch ({ response }) {
+        showError(response.data.message);
+      }
+    }
+  };
 
   return (
     <SafeAreaView>
