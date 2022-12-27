@@ -3,14 +3,13 @@ import React, { useEffect, useState } from 'react';
 import useLoading from '../store/loadingStore';
 import useUserStore from '../store/userStore';
 import { getData } from '../utils/getData';
-import { Badge, Button, Card, EmptyContent, Header, Tab, TopProfile } from '../components';
+import { Badge, Button, Card, EmptyContent, Header, KontakItem, Tab, TopProfile } from '../components';
 import { Box, HStack, ScrollView, Text, VStack } from 'native-base';
 import { ChevronBack, ILPlaceholder, SaveHeaderActive, SaveHeaderInactive, StarActive, Timer } from '../assets';
 import { calculateAge } from '../utils/calculateAge';
 import { colors } from '../utils/colors';
 import { fonts } from '../utils/fonts';
 import moment from 'moment';
-import KontakItem from '../components/atoms/KontakItem';
 
 const DetailPencari = ({ navigation, route }) => {
   const { uuid, type, uuid_riwayat } = route.params;
@@ -38,7 +37,7 @@ const DetailPencari = ({ navigation, route }) => {
     return () => {
       setDataPencari();
     };
-  }, [invoke, uuid, setInvoke, loading, type, uuid_riwayat]);
+  }, [invoke, uuid, setInvoke, loading, type, uuid_riwayat, isFocused]);
 
   return (
     <SafeAreaView>
