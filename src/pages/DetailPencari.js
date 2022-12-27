@@ -188,24 +188,27 @@ const DetailPencari = ({ navigation, route }) => {
             {dataPencari?.pencari?.ulasan?.length === 0 ? (
               <EmptyContent title="Tidak ada riwayat ulasan" />
             ) : (
-              <Card
-                type="ulasan"
-                title={item?.lowongan?.penyedia?.users?.nama_user}
-                subTitle={item?.catatan}
-                uriImage={item?.lowongan?.bidang_kerja?.photo ? { uri: item?.lowongan?.bidang_kerja?.photo } : ILPlaceholder}
-              >
-                <HStack justifyContent="space-between" alignItems="center">
-                  <Badge title={rating} type="rating" icon={<StarActive />} />
-                  <HStack alignItems="center" space={1}>
-                    <Timer />
-                    <Text fontSize={width / 32} fontFamily={fonts.primary[400]}>
-                      {moment(new Date(item?.createdAt * 1000))
-                        .startOf('minutes')
-                        .fromNow()}
-                    </Text>
+              dataPencari?.pencari?.ulasan?.map((item, index) => (
+                <Card
+                  key={index}
+                  type="ulasan"
+                  title={item?.lowongan?.penyedia?.users?.nama_user}
+                  subTitle={item?.catatan}
+                  uriImage={item?.lowongan?.bidang_kerja?.photo ? { uri: item?.lowongan?.bidang_kerja?.photo } : ILPlaceholder}
+                >
+                  <HStack justifyContent="space-between" alignItems="center">
+                    <Badge title={rating} type="rating" icon={<StarActive />} />
+                    <HStack alignItems="center" space={1}>
+                      <Timer />
+                      <Text fontSize={width / 32} fontFamily={fonts.primary[400]}>
+                        {moment(new Date(item?.createdAt * 1000))
+                          .startOf('minutes')
+                          .fromNow()}
+                      </Text>
+                    </HStack>
                   </HStack>
-                </HStack>
-              </Card>
+                </Card>
+              ))
             )}
           </VStack>
         </ScrollView>
