@@ -76,6 +76,38 @@ const Card = ({ type, uriImage, title, subTitle, detailContent, time, id, onSave
     );
   }
 
+  if (type === 'detail') {
+    return (
+      <VStack space={2} bgColor={colors.white} rounded={8} px={5} py={4}>
+        <Text fontFamily={fonts.primary[600]} fontSize={width / 28} color="black">
+          {title}
+        </Text>
+        {children}
+      </VStack>
+    );
+  }
+
+  if (type === 'ulasan') {
+    return (
+      <VStack space={4} bgColor={colors.white} rounded={8} px={5} py={4}>
+        <HStack space={3}>
+          <Box w={12} h={12} rounded="full" alignItems="center" justifyContent="center" bgColor={colors.blue[30]}>
+            <Image alt="photo profile" source={uriImage} width="10" height="10" rounded="full" />
+          </Box>
+          <VStack space={0.5}>
+            <Text fontFamily={fonts.primary[600]} fontSize={width / 28} color="black">
+              {title}
+            </Text>
+            <Text fontFamily={fonts.primary[400]} fontSize={width / 36} color={colors.text.black70} maxW={width / 1.54} w="full">
+              {subTitle}
+            </Text>
+          </VStack>
+        </HStack>
+        {children}
+      </VStack>
+    );
+  }
+
   return (
     <TouchableOpacity onPress={onNavigation}>
       <Box bgColor={colors.white} rounded={8} px={5} py={4}>
