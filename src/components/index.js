@@ -17,6 +17,8 @@ import Header from './molecules/Header';
 import LoadingSkeleton from './molecules/LoadingSkeleton';
 import Card from './molecules/Card';
 import BoxAddPekerjaan from './molecules/BoxAddPekerjaan';
+import TopProfile from './molecules/TopProfile';
+import Tab from './molecules/Tab';
 
 export {
   TabItem,
@@ -35,4 +37,6 @@ export {
   LoadingSkeleton,
   Card,
   BoxAddPekerjaan,
+  TopProfile,
+  Tab,
 };
