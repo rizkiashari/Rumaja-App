@@ -65,20 +65,12 @@ const Pengaturan = ({ navigation }) => {
         </Header>
         <View px={width / 28} pt={height / 40}>
           <VStack space={4}>
-            <TouchableOpacity onPress={() => navigation.navigate('EditProfil')}>
-              <Button type="bg-white" text="Edit Profil" fontSize={width} />
-            </TouchableOpacity>
+            <Button onPress={() => navigation.navigate('EditProfil')} type="bg-white" text="Edit Profil" fontSize={width} />
             {userData?.id_role === 3 && (
-              <TouchableOpacity onPress={() => navigation.navigate('LowonganTerhapus')}>
-                <Button type="bg-white" text="Lowongan Terhapus" fontSize={width} />
-              </TouchableOpacity>
+              <Button type="bg-white" onPress={() => navigation.navigate('LowonganTerhapus')} text="Lowongan Terhapus" fontSize={width} />
             )}
-            <TouchableOpacity onPress={() => navigation.navigate('UbahKataSandi')}>
-              <Button type="bg-white" text="Ubah Kata Sandi" fontSize={width} />
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('TentangKami')}>
-              <Button type="bg-white" text="Tentang Kami" fontSize={width} />
-            </TouchableOpacity>
+            <Button onPress={() => navigation.navigate('UbahKataSandi')} type="bg-white" text="Ubah Kata Sandi" fontSize={width} />
+            <Button type="bg-white" onPress={() => navigation.navigate('TentangKami')} text="Tentang Kami" fontSize={width} />
           </VStack>
         </View>
         <VStack mt={height / 15} space={4} alignItems="center">
