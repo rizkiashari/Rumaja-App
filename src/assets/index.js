@@ -35,6 +35,7 @@ import SaveHeaderActive from './icons/saved_active_header.svg';
 import SaveHeaderInactive from './icons/saved_inactive_header.svg';
 import InfoBlack from './icons/info_black.svg';
 import Info from './icons/info_icon.svg';
+import ChevronDown from './icons/chevron_down.svg';
 
 // ilustrations
 import ILLogin from './ilustrations/ilustration_login.png';
@@ -86,6 +87,7 @@ export {
   SaveHeaderInactive,
   InfoBlack,
   Info,
+  ChevronDown,
   ILLogin,
   ILNotifEmpty,
   ILPlaceholder,
