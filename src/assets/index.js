@@ -26,11 +26,15 @@ import GardenerInactive from './icons/gardner_inactive.svg';
 import DriverActive from './icons/driver_active.svg';
 import DriverInactive from './icons/driver_inactive.svg';
 import Timer from './icons/timer_black.svg';
-import StartActive from './icons/star_active.svg';
+import StarActive from './icons/star_active.svg';
 import UnSaved from './icons/save_off.svg';
 import FilterBlack from './icons/filter_black.svg';
 import SearchBlack from './icons/search_black.svg';
 import SearchGray from './icons/search_gray.svg';
+import SaveHeaderActive from './icons/saved_active_header.svg';
+import SaveHeaderInactive from './icons/saved_inactive_header.svg';
+import InfoBlack from './icons/info_black.svg';
+import Info from './icons/info_icon.svg';
 
 // ilustrations
 import ILLogin from './ilustrations/ilustration_login.png';
@@ -71,11 +75,15 @@ export {
   DriverActive,
   DriverInactive,
   Timer,
-  StartActive,
+  StarActive,
   UnSaved,
   FilterBlack,
   SearchBlack,
   SearchGray,
+  SaveHeaderActive,
+  SaveHeaderInactive,
+  InfoBlack,
+  Info,
   ILLogin,
   ILNotifEmpty,
   ILPlaceholder,
