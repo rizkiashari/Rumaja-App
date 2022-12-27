@@ -1,7 +1,7 @@
 import { Dimensions, SafeAreaView, StyleSheet, TouchableOpacity } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { Text, View, Box, VStack, HStack, ScrollView, Input, Image } from 'native-base';
-import { Card, Cards, EmptyContent, Header, LoadingSkeleton } from '../components';
+import { Badge, Card, Cards, EmptyContent, Header, LoadingSkeleton } from '../components';
 import { ChevronBack, FilterBlack, ILPlaceholder, ILTersimpanEmpty, SearchBlack, SearchGray, StarActive, Timer } from '../assets';
 import { fonts } from '../utils/fonts';
 import { colors } from '../utils/colors';
@@ -34,7 +34,6 @@ const DetailLayanan = ({ navigation, route }) => {
       setLoading(true);
       if (filterHome === null) {
         const resp = await getData(`/user/pencari/${idPekerjaan}`);
-        console.log('1: ', resp);
         setDataPekerja(resp?.data?.pekerja);
       } else {
         if (
@@ -46,7 +45,6 @@ const DetailLayanan = ({ navigation, route }) => {
           filterHome.max_rentang === ''
         ) {
           const resp = await getData(`/user/pencari/${idPekerjaan}`);
-          console.log('2: ', resp);
           setDataPekerja(resp?.data?.pekerja);
         } else {
           const resp = await getData(
@@ -54,7 +52,6 @@ const DetailLayanan = ({ navigation, route }) => {
               filterHome.gender
             }&min_usia=${+filterHome.min_rentang}&max_usia=${+filterHome.max_rentang}`
           );
-          console.log('3: ', resp);
           setDataPekerja(resp?.data?.pekerja);
         }
       }
@@ -187,21 +184,8 @@ const DetailLayanan = ({ navigation, route }) => {
                   }
                 >
                   <HStack space={0.5} alignItems="center">
-                    {pekerja?.gender && pekerja?.tanggal_lahir && (
-                      <Box bgColor={colors.blue[10]} rounded={12} px={2} py={0.5}>
-                        <Text fontSize={width / 32} fontFamily={fonts.primary[500]} textTransform="capitalize">
-                          {pekerja?.gender}, {calculateAge(pekerja?.tanggal_lahir)}
-                        </Text>
-                      </Box>
-                    )}
-                    <Box bgColor={colors.blue[10]} rounded={12} px={2} py={0.5}>
-                      <HStack alignItems="center" space={1}>
-                        <Text fontSize={width / 32} fontFamily={fonts.primary[500]}>
-                          {pekerja?.ulasan ? pekerja?.ulasan : 0}
-                        </Text>
-                        <StarActive />
-                      </HStack>
-                    </Box>
+                    {pekerja?.gender && pekerja?.tanggal_lahir && <Badge title={`${pekerja?.gender}, ${calculateAge(pekerja?.tanggal_lahir)}`} />}
+                    <Badge title={pekerja?.ulasan ? pekerja?.ulasan : 0} type="rating" icon={<StarActive />} />
                   </HStack>
                   <Text fontSize={width / 32} fontFamily={fonts.primary[400]}>
                     {pekerja?.pengalaman} Pengalaman
