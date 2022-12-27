@@ -37,6 +37,11 @@ import InfoBlack from './icons/info_black.svg';
 import Info from './icons/info_icon.svg';
 import ChevronDown from './icons/chevron_down.svg';
 import Calender from './icons/calender_icon.svg';
+import BekerjaIcon from './icons/bekerja_icon.svg';
+import DiprosesIcon from './icons/diproses_icon.svg';
+import DitolakIcon from './icons/ditolak_icon.svg';
+import SelesaiIcon from './icons/selesai_icon.svg';
+import EditIcon from './icons/edit_icon.svg';
 
 // ilustrations
 import ILLogin from './ilustrations/ilustration_login.png';
@@ -50,6 +55,13 @@ import ILTersimpanEmpty from './ilustrations/tersimpan_empty.png';
 import ILAddPekerjaan from './ilustrations/add_pekerjaan.png';
 import ILWA from './ilustrations/wa.png';
 import ILEmail from './ilustrations/email.png';
+import ILBekerjaSelesai from './ilustrations/bekerja_selesai.png';
+import ILEmptyLowongan from './ilustrations/empty_lowongan.png';
+import ILSuksesGantiPass from './ilustrations/sukses_ganti_password.png';
+import ILTerimaBekerja from './ilustrations/terima_bekerja.png';
+import ILTerimaDiproses from './ilustrations/terima_diproses.png';
+import ILTerimaDiproses2 from './ilustrations/terima_proses_2.png';
+import ILTolakDiproses from './ilustrations/tolak_diproses.png';
 
 export {
   BerandaActive,
@@ -90,6 +102,11 @@ export {
   Info,
   ChevronDown,
   Calender,
+  BekerjaIcon,
+  DiprosesIcon,
+  DitolakIcon,
+  SelesaiIcon,
+  EditIcon,
   ILLogin,
   ILNotifEmpty,
   ILPlaceholder,
@@ -101,4 +118,11 @@ export {
   ILAddPekerjaan,
   ILWA,
   ILEmail,
+  ILBekerjaSelesai,
+  ILEmptyLowongan,
+  ILSuksesGantiPass,
+  ILTerimaBekerja,
+  ILTerimaDiproses,
+  ILTerimaDiproses2,
+  ILTolakDiproses,
 };
