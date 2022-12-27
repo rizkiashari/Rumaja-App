@@ -1,4 +1,4 @@
-import { Dimensions, SafeAreaView, StyleSheet, TouchableOpacity } from 'react-native';
+import { Dimensions, SafeAreaView, TouchableOpacity } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import useLoading from '../store/loadingStore';
 import { getData } from '../utils/getData';
@@ -58,8 +58,6 @@ const LowonganTerhapus = ({ navigation }) => {
     loadData();
   }, [isFocused, page, invoke, setLoading]);
 
-  console.log(lowongan);
-
   return (
     <SafeAreaView>
       <Header>
@@ -105,5 +103,3 @@ const LowonganTerhapus = ({ navigation }) => {
 };
 
 export default LowonganTerhapus;
-
-const styles = StyleSheet.create({});

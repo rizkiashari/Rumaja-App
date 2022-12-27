@@ -23,6 +23,12 @@ import TawarkanPekerjaan from '../pages/TawarkanPekerjaan';
 import KonfirmasiWaktu from '../pages/KonfirmasiWaktu';
 import SuksesTawaranTerkirim from '../pages/SuksesTawaranTerkirim';
 import OnBoarding from '../pages/OnBoarding';
+import EditProfile from '../pages/EditProfile';
+import TentangKami from '../pages/TentangKami';
+import LowonganTerhapus from '../pages/LowonganTerhapus';
+import LupaKataSandi from '../pages/LupaKataSandi';
+import UbahKataSandi from '../pages/UbahKataSandi';
+import SuksesGantiPassword from '../pages/SuksesGantiPassword';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -139,8 +145,43 @@ const Authenticated = () => {
         }}
       />
       <Stack.Screen
-        name="OnBoarding"
-        component={OnBoarding}
+        name="EditProfil"
+        component={EditProfile}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="TentangKami"
+        component={TentangKami}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="LowonganTerhapus"
+        component={LowonganTerhapus}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="UbahKataSandi"
+        component={UbahKataSandi}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="LupaKataSandi"
+        component={LupaKataSandi}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="SuksesGantiPassword"
+        component={SuksesGantiPassword}
         options={{
           headerShown: false,
         }}
@@ -162,6 +203,13 @@ const UnAuthenticated = () => {
       <Stack.Screen name="Register" component={Register} options={{ headerShown: false }} />
       <Stack.Screen name="PilihPeran" component={PilihPeran} options={{ headerShown: false }} />
       <Stack.Screen name="PilihBidangPekerjaan" component={PilihBidangPekerjaan} options={{ headerShown: false }} />
+      <Stack.Screen
+        name="OnBoarding"
+        component={OnBoarding}
+        options={{
+          headerShown: false,
+        }}
+      />
     </Stack.Navigator>
   );
 };

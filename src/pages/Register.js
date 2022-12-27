@@ -149,7 +149,12 @@ const Register = ({ navigation }) => {
           </VStack>
           <VStack space={2}>
             <LabelInput text="Nomor Whatsapp" />
-            <Input placeholder="Masukkan nomor whatsapp" value={registerUser.values.nomor_wa} onChangeText={registerUser.handleChange('nomor_wa')} />
+            <Input
+              type="number"
+              placeholder="Masukkan nomor whatsapp"
+              value={registerUser.values.nomor_wa}
+              onChangeText={registerUser.handleChange('nomor_wa')}
+            />
             {registerUser.touched.nomor_wa && registerUser.errors.nomor_wa ? <ErrorInput error={registerUser.errors.nomor_wa} /> : null}
           </VStack>
           <VStack space={2}>
