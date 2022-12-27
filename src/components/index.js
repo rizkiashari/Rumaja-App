@@ -19,6 +19,7 @@ import Card from './molecules/Card';
 import BoxAddPekerjaan from './molecules/BoxAddPekerjaan';
 import TopProfile from './molecules/TopProfile';
 import Tab from './molecules/Tab';
+import Tawarkan from './molecules/Tawarkan';
 
 export {
   TabItem,
@@ -39,4 +40,5 @@ export {
   BoxAddPekerjaan,
   TopProfile,
   Tab,
+  Tawarkan,
 };
