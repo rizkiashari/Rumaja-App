@@ -20,6 +20,7 @@ import BoxAddPekerjaan from './molecules/BoxAddPekerjaan';
 import TopProfile from './molecules/TopProfile';
 import Tab from './molecules/Tab';
 import Tawarkan from './molecules/Tawarkan';
+import PesanSukses from './molecules/PesanSukses';
 
 export {
   TabItem,
@@ -41,4 +42,5 @@ export {
   TopProfile,
   Tab,
   Tawarkan,
+  PesanSukses,
 };
