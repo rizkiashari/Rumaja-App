@@ -17,6 +17,11 @@ import DetailBidangPekerjaan from '../pages/DetailBidangPekerjaan';
 import DetailLayanan from '../pages/DetailLayanan';
 import TambahLowongan from '../pages/TambahLowongan';
 import FilterTersimpan from '../pages/FilterTersimpan';
+import FilterHome from '../pages/FilterHome';
+import DetailPencari from '../pages/DetailPencari';
+import TawarkanPekerjaan from '../pages/TawarkanPekerjaan';
+import KonfirmasiWaktu from '../pages/KonfirmasiWaktu';
+import SuksesTawaranTerkirim from '../pages/SuksesTawaranTerkirim';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -40,7 +45,7 @@ const MainApp = () => {
 const Authenticated = () => {
   return (
     <Stack.Navigator
-      initialRouteName="MainApp"
+      initialRouteName="SuksesTawaranTerkirim"
       screenOptions={{
         gestureEnabled: true,
         contentStyle: { backgroundColor: '#fafafa' },
@@ -93,6 +98,41 @@ const Authenticated = () => {
       <Stack.Screen
         name="FilterTersimpan"
         component={FilterTersimpan}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="FilterHome"
+        component={FilterHome}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="DetailPencari"
+        component={DetailPencari}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="TawarkanPekerjaan"
+        component={TawarkanPekerjaan}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="KonfirmasiWaktu"
+        component={KonfirmasiWaktu}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="SuksesTawaranTerkirim"
+        component={SuksesTawaranTerkirim}
         options={{
           headerShown: false,
         }}
