@@ -9,6 +9,7 @@ import EmptyContent from './atoms/EmptyContent';
 import SelectItem from './atoms/SelectItem';
 import LabelInput from './atoms/LabelInput';
 import TextArea from './atoms/TextArea';
+import Badge from './atoms/Badge';
 
 // Molecules
 import BottomNavigator from './molecules/BottomNavigator';
@@ -28,6 +29,7 @@ export {
   SelectItem,
   LabelInput,
   TextArea,
+  Badge,
   BottomNavigator,
   Header,
   LoadingSkeleton,
