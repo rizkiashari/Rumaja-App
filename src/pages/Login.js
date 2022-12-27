@@ -70,11 +70,11 @@ const Login = ({ navigation }) => {
 
   return (
     <ScrollView showsVerticalScrollIndicator={false} bgColor={colors.white} height={height}>
-      <Box py={height / 20} px={width / 28}>
+      <Box pt={height / 20} pb={4} px={width / 28}>
         <VStack space={6}>
           <VStack space={5} justifyContent="center" alignItems="center">
             <Center>
-              <Image source={ILLogin} alt="Login" width={width / 2} height={height / 3.2} />
+              <Image source={ILLogin} alt="Login" width={width / 2} height={height / 3.5} />
             </Center>
             <Text fontFamily={fonts.primary[700]} color={colors.text.black100} fontSize={width / 20}>
               Masuk Rumaja
