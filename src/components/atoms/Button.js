@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
   btnPrimary: (width) => ({
     width: width,
     backgroundColor: colors.blue[80],
-    borderWidth: 1,
+    borderWidth: 2,
     borderColor: colors.blue[80],
     borderRadius: 8,
     paddingVertical: 8,
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
   btnSecondary: (width) => ({
     width: width,
     backgroundColor: colors.white,
-    borderWidth: 1,
+    borderWidth: 2,
     borderColor: colors.blue[80],
     borderRadius: 8,
     paddingVertical: 8,
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     paddingVertical: width / 44,
     width: width,
-    borderWidth: 1,
+    borderWidth: 2,
     borderColor: colors.red,
   }),
   btnReset: (width) => ({
@@ -91,6 +91,6 @@ const styles = StyleSheet.create({
     borderColor: '#C86161',
     borderWidth: 2,
     borderRadius: 8,
-    paddingVertical: 6,
+    paddingVertical: 8,
   }),
 });
