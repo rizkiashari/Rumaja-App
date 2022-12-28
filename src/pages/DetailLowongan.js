@@ -257,7 +257,7 @@ const DetailLowongan = ({ navigation, route }) => {
                 })
               }
               text="Pulihkan"
-              width={width / 1.6}
+              width={width / 1.1}
               fontSize={width}
             />
           )}
