@@ -210,7 +210,7 @@ const Card = ({
           <HStack justifyContent="space-between">
             <HStack space={3} alignItems="center">
               <Box w={12} h={12} rounded="full" alignItems="center" justifyContent="center" bgColor={colors.blue[30]}>
-                <Image alt="photo profile" source={uriImage} width="8" height="8" rounded="full" />
+                <Image alt="photo profile" source={uriImage} width="8" height="8" />
               </Box>
               <VStack space={0.5}>
                 <Text fontFamily={fonts.primary[600]} fontSize={width / 28} color="black" isTruncated numberOfLines={1}>
