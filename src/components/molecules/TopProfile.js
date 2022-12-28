@@ -13,7 +13,7 @@ const TopProfile = ({ title, subtitle, type, bubble, photo }) => {
       <Box w={20} h={20} alignItems="center" justifyContent="center" backgroundColor={colors.blue[30]} rounded="full">
         <Image alt="photo profile" source={photo ? { uri: photo } : ILPlaceholder} width="full" height="full" rounded="full" />
       </Box>
-      <VStack mb={3} space={1} alignItems="center">
+      <VStack space={1} alignItems="center">
         <Text fontFamily={fonts.primary[600]} fontSize={width / 28} color="black" textTransform="capitalize">
           {title}
         </Text>
