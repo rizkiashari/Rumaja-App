@@ -29,6 +29,18 @@ import LowonganTerhapus from '../pages/LowonganTerhapus';
 import LupaKataSandi from '../pages/LupaKataSandi';
 import UbahKataSandi from '../pages/UbahKataSandi';
 import SuksesGantiPassword from '../pages/SuksesGantiPassword';
+import DetailPekerjaan from '../pages/DetailPekerjaan';
+import DaftarPelamar from '../pages/DaftarPelamar';
+import DaftarTawaranTerkirim from '../pages/DaftarTawaranTerkirim';
+import DaftarBekerja from '../pages/DaftarBekerja';
+import DaftarSelesai from '../pages/DaftarSelesai';
+import DetailLowongan from '../pages/DetailLowongan';
+import SuksesMelamar from '../pages/SuksesMelamar';
+import EditLowongan from '../pages/EditLowongan';
+import TambahPendidikan from '../pages/TambahPendidikan';
+import EditPendidikan from '../pages/EditPendidikan';
+import TambahPengalaman from '../pages/TambahPengalaman';
+import EditPengalaman from '../pages/EditPengalaman';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -145,6 +157,13 @@ const Authenticated = () => {
         }}
       />
       <Stack.Screen
+        name="SuksesMelamar"
+        component={SuksesMelamar}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
         name="EditProfil"
         component={EditProfile}
         options={{
@@ -182,6 +201,83 @@ const Authenticated = () => {
       <Stack.Screen
         name="SuksesGantiPassword"
         component={SuksesGantiPassword}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="DetailPekerjaan"
+        component={DetailPekerjaan}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="DaftarPelamar"
+        component={DaftarPelamar}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="DaftarTawaranTerkirim"
+        component={DaftarTawaranTerkirim}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="DaftarBekerja"
+        component={DaftarBekerja}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="DaftarSelesai"
+        component={DaftarSelesai}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="DetailLowongan"
+        component={DetailLowongan}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="TambahPendidikan"
+        component={TambahPendidikan}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="TambahPengalaman"
+        component={TambahPengalaman}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="EditPengalaman"
+        component={EditPengalaman}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="EditPendidikan"
+        component={EditPendidikan}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="EditLowongan"
+        component={EditLowongan}
         options={{
           headerShown: false,
         }}
