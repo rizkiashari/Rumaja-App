@@ -58,7 +58,7 @@ const DaftarTawaranTerkirim = ({ navigation, route }) => {
           {isLoading ? (
             <LoadingSkeleton jumlah={4} />
           ) : dataTawaranTerkirim?.length === 0 ? (
-            <EmptyContent image={ILTersimpanEmpty} title="Tidak ada kandidat" />
+            <EmptyContent image={ILTersimpanEmpty} title="Tidak ada kandidat" subTitle="Kandidat nanti akan muncul disini" />
           ) : (
             dataTawaranTerkirim?.map((tawaran, index) => (
               <Card

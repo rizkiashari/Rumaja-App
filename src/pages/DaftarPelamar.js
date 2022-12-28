@@ -56,7 +56,7 @@ const DaftarPelamar = ({ navigation, route }) => {
           {isLoading ? (
             <LoadingSkeleton jumlah={4} />
           ) : dataPelamar?.length === 0 ? (
-            <EmptyContent image={ILTersimpanEmpty} title="Tidak ada pelamar" />
+            <EmptyContent image={ILTersimpanEmpty} title="Tidak ada pelamar" subTitle="Pelamar akan muncul disini" />
           ) : (
             dataPelamar?.map((pelamar, index) => (
               <Card
