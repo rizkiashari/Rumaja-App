@@ -68,7 +68,7 @@ const TambahPendidikan = ({ navigation }) => {
         </HStack>
       </Header>
       <VStack mt={5} height={height / 1.2} justifyContent="space-between" px={width / 28}>
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
           <VStack space={5}>
             <VStack space={2}>
               <LabelInput text="Nama Sekolah" />
@@ -81,9 +81,10 @@ const TambahPendidikan = ({ navigation }) => {
             </VStack>
             <HStack space={2}>
               <VStack width={width / 2.2} space={2}>
-                <LabelInput text="Tahun Masuk" />
+                <LabelInput text="Tahun Mulai" />
                 <Input
                   placeholder="Ketik tahun"
+                  type="number"
                   value={onTambahPendidikan.values.tahun_masuk}
                   onChangeText={onTambahPendidikan.handleChange('tahun_masuk')}
                   icon={<Calender />}
@@ -99,6 +100,7 @@ const TambahPendidikan = ({ navigation }) => {
                   value={onTambahPendidikan.values.tahun_akhir}
                   onChangeText={onTambahPendidikan.handleChange('tahun_akhir')}
                   icon={<Calender />}
+                  type="number"
                 />
                 {onTambahPendidikan.errors.tahun_akhir && onTambahPendidikan.touched.tahun_akhir && (
                   <ErrorInput error={onTambahPendidikan.errors.tahun_akhir} />

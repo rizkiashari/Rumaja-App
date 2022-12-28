@@ -11,7 +11,7 @@ const EmptyContent = ({ image, title, subTitle }) => {
   if (!image) {
     return (
       <Box backgroundColor={colors.white} height={height / 6} justifyContent="center" alignItems="center">
-        <HStack space={1} alignItems="center">
+        <HStack space={2} alignItems="center">
           <InfoBlack />
           <Text fontFamily={fonts.primary[500]} color="black" fontSize={width / 32}>
             {title}
