@@ -1,4 +1,4 @@
-import { Dimensions, SafeAreaView, StyleSheet, TouchableOpacity } from 'react-native';
+import { Dimensions, SafeAreaView, TouchableOpacity } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { HStack, ScrollView, Text, VStack } from 'native-base';
 import { getData } from '../utils/getData';
@@ -95,5 +95,3 @@ const DaftarPelamar = ({ navigation, route }) => {
 };
 
 export default DaftarPelamar;
-
-const styles = StyleSheet.create({});

@@ -6,20 +6,22 @@ import { Badge, Card, EmptyContent, Header, LoadingSkeleton } from '../component
 import { ChevronBack, ILTersimpanEmpty, StarActive } from '../assets';
 import { fonts } from '../utils/fonts';
 import { colors } from '../utils/colors';
+import moment from 'moment';
 import { calculateAge } from '../utils/calculateAge';
 import { calculateRating } from '../utils/calculateRating';
 
-const DaftarBekerja = ({ navigation, route }) => {
+const DaftarSelesai = ({ navigation, route }) => {
   const { width, height } = Dimensions.get('window');
 
   const { idLowongan } = route.params;
   const [dataPelamar, setDataPelamar] = useState(null);
+
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const loadData = async () => {
       setIsLoading(true);
-      const res = await getData(`/lamaran/daftar-pelamar/${idLowongan}?status=bekerja`);
+      const res = await getData(`/lamaran/daftar-pelamar/${idLowongan}?status=selesai`);
       setIsLoading(false);
       setDataPelamar(res.data);
     };
@@ -29,7 +31,7 @@ const DaftarBekerja = ({ navigation, route }) => {
     return () => {
       setDataPelamar(null);
     };
-  }, [idLowongan]);
+  }, [idLowongan, setIsLoading]);
 
   return (
     <SafeAreaView>
@@ -63,14 +65,14 @@ const DaftarBekerja = ({ navigation, route }) => {
               onNavigation={() =>
                 navigation.navigate('DetailPencari', {
                   uuid: pelamar?.pencari?.users?.uuid_user,
-                  type: 'daftar-pekerja',
+                  type: 'daftar-selesai',
                   uuid_riwayat: pelamar?.uuid_riwayat,
                 })
               }
               id={+pelamar?.pencari?.id_bidang_kerja}
               title={pelamar?.pencari?.users?.nama_user}
               subTitle={`${pelamar?.pencari?.users?.domisili_kota}, ${pelamar?.pencari?.users?.domisili_provinsi?.split(',')[1]}`}
-              statusProgress="Bekerja"
+              statusProgress={pelamar?.status === 'selesai' ? 'Berakhir' : 'Ditolak'}
             >
               <HStack space={1}>
                 <Badge
@@ -80,9 +82,15 @@ const DaftarBekerja = ({ navigation, route }) => {
                 />
                 <Badge title={`${calculateRating(pelamar?.pencari?.ulasan)}`} type="rating" icon={<StarActive />} />
               </HStack>
-              <Text fontSize={width / 36} fontFamily={fonts.primary[400]} textTransform="capitalize">
-                {pelamar?.pencari?.pengalaman?.length} Pengalaman
-              </Text>
+              {pelamar?.status === 'ditolak' ? (
+                <Text fontSize={width / 36} fontFamily={fonts.primary[400]} textTransform="capitalize">
+                  {pelamar?.pencari?.pengalaman?.length} Pengalaman
+                </Text>
+              ) : (
+                <Text fontSize={width / 36} fontFamily={fonts.primary[400]} textTransform="capitalize">
+                  {moment(pelamar?.tanggal_mulai_kerja * 1000).format('MMM YYYY')} - {moment(pelamar?.createdAt * 1000).format('MMM YYYY')}
+                </Text>
+              )}
             </Card>
           ))
         )}
@@ -91,4 +99,4 @@ const DaftarBekerja = ({ navigation, route }) => {
   );
 };
 
-export default DaftarBekerja;
+export default DaftarSelesai;
