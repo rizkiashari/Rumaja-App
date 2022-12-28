@@ -1,9 +1,9 @@
 import { Dimensions, SafeAreaView, StyleSheet, TouchableOpacity } from 'react-native';
 import React, { useEffect, useState } from 'react';
-import { Card, EmptyContent, Header, LoadingSkeleton } from '../components';
-import { Box, HStack, Image, ScrollView, Text, VStack } from 'native-base';
+import { Badge, Card, EmptyContent, Header, LoadingSkeleton } from '../components';
+import { Box, HStack, ScrollView, Text, VStack } from 'native-base';
 import { fonts } from '../utils/fonts';
-import { FilterBlack, ILPlaceholder, ILTersimpanEmpty, StarActive, Timer, UnSaved } from '../assets';
+import { FilterBlack, ILPlaceholder, ILTersimpanEmpty, StarActive, Timer } from '../assets';
 import { colors } from '../utils/colors';
 import useUserStore from '../store/userStore';
 import { API } from '../config/api';
@@ -160,7 +160,7 @@ const Tersimpan = ({ navigation }) => {
       </Header>
       <ScrollView px={width / 28} py={width / 28} showsVerticalScrollIndicator={false} _contentContainerStyle={{ paddingBottom: width / 28 }}>
         {userData?.id_role === 2 && (
-          <VStack mt={1}>
+          <VStack mt={1} mb={height / 8}>
             {loading ? (
               <LoadingSkeleton jumlah={4} />
             ) : dataLowongan?.length === 0 ? (
@@ -170,13 +170,51 @@ const Tersimpan = ({ navigation }) => {
                 subTitle="Lowongan yang kamu simpan akan muncul di halaman ini."
               />
             ) : (
-              dataLowongan?.map((item, index) => <Text>Hel</Text>)
+              dataLowongan?.map((lowongan, index) => (
+                <Card
+                  key={index}
+                  title={lowongan?.bidang_kerja?.detail_bidang}
+                  subTitle={`${lowongan?.kota_lowongan}, ${lowongan?.provinsi_lowongan?.split(',')[1]}`}
+                  uriImage={{
+                    uri:
+                      lowongan?.bidang_kerja?.id === 1
+                        ? 'https://res.cloudinary.com/drcocoma3/image/upload/v1669642546/Rumaja/art_tqnghe.png'
+                        : lowongan?.bidang_kerja?.id === 2
+                        ? 'https://res.cloudinary.com/drcocoma3/image/upload/v1669642546/Rumaja/pengasuh_chdloc.png'
+                        : lowongan?.bidang_kerja?.id === 3
+                        ? 'https://res.cloudinary.com/drcocoma3/image/upload/v1669642546/Rumaja/sopir_pribadi_quexmw.png'
+                        : 'https://res.cloudinary.com/drcocoma3/image/upload/v1669642547/Rumaja/tukang_kebun_skhz9a.png',
+                  }}
+                  onSaved={() =>
+                    saveLowongan(
+                      lowongan?.simpan_lowongan === null ? lowongan?.uuid_lowongan : lowongan?.simpan_lowongan?.uuid_simpan,
+                      lowongan.simpan_lowongan
+                    )
+                  }
+                  dataSave={lowongan.simpan_lowongan}
+                  onNavigation={() => {
+                    navigation.navigate('DetailLowongan', {
+                      uuid: lowongan?.uuid_lowongan,
+                    });
+                  }}
+                >
+                  <Badge title={`${convertRupiah(lowongan.gaji)}/${lowongan.skala_gaji}`} />
+                  <HStack space={0.5} alignItems="center">
+                    <Timer />
+                    <Text fontSize={width / 32} fontFamily={fonts.primary[400]} mt={0.5}>
+                      {moment(new Date(lowongan.createdAt) * 1000)
+                        .startOf('minutes')
+                        .fromNow()}
+                    </Text>
+                  </HStack>
+                </Card>
+              ))
             )}
           </VStack>
         )}
 
         {userData?.id_role === 3 && (
-          <VStack mt={1}>
+          <VStack mt={1} mb={height / 8}>
             {loading ? (
               <LoadingSkeleton jumlah={4} />
             ) : dataSimpanPekerja?.length === 0 ? (
