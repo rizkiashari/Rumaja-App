@@ -83,6 +83,7 @@ const Input = ({ value, onChangeText, type, placeholder, icon, onPress }) => {
       value={value}
       onChangeText={onChangeText}
       placeholder={placeholder}
+      InputRightElement={<Box mr={4}>{icon}</Box>}
     />
   );
 };
