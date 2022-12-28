@@ -216,7 +216,14 @@ const Card = ({
                 <Text fontFamily={fonts.primary[600]} fontSize={width / 28} color="black" isTruncated numberOfLines={1}>
                   {title}
                 </Text>
-                <Text fontFamily={fonts.primary[400]} fontSize={width / 36} color={colors.text.black70} isTruncated numberOfLines={1}>
+                <Text
+                  fontFamily={fonts.primary[400]}
+                  fontSize={width / 36}
+                  color={colors.text.black70}
+                  isTruncated
+                  maxW={width / 1.3}
+                  numberOfLines={1}
+                >
                   {subTitle}
                 </Text>
               </VStack>
