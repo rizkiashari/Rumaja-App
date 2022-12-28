@@ -10,7 +10,7 @@ const TopProfile = ({ title, subtitle, type, bubble, photo }) => {
 
   return (
     <VStack p={width / 20} bgColor="white" space={2} alignItems="center">
-      <Box w={20} h={20} rounded="full">
+      <Box w={20} h={20} alignItems="center" justifyContent="center" backgroundColor={colors.blue[30]} rounded="full">
         <Image alt="photo profile" source={photo ? { uri: photo } : ILPlaceholder} width="full" height="full" rounded="full" />
       </Box>
       <VStack space={1} alignItems="center">
