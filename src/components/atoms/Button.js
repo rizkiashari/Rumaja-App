@@ -39,11 +39,11 @@ const Button = ({ onPress, width, text, type, fontSize }) => {
     );
   }
 
-  if (type === 'reset') {
+  if (type === 'red-border') {
     return (
       <ButtonNativeBase style={styles.btnReset(width)} onPress={onPress}>
-        <Text color="#C86161" textAlign="center" fontFamily={fonts.primary[500]}>
-          Reset
+        <Text color="#C86161" fontSize={fontSize / 28} textAlign="center" fontFamily={fonts.primary[500]}>
+          {text}
         </Text>
       </ButtonNativeBase>
     );
