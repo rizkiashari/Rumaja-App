@@ -84,11 +84,179 @@ const FilterHome = ({ navigation, route }) => {
       {userData?.id_role === 2 && (
         <VStack height={height / 1.2} mt={3} justifyContent="space-between">
           <View px={width / 28}>
-            <VStack space={3}></VStack>
-            <VStack space={3} my={5}></VStack>
-            <VStack space={3}></VStack>
+            <VStack space={3}>
+              <LabelInput text="Lokasi Kerja" />
+              <HStack space={2}>
+                <VStack w="1/2">
+                  <Select
+                    defaultValue={filterHome?.provinsi}
+                    accessibilityLabel="Pilih provinsi"
+                    placeholder="Pilih provinsi"
+                    rounded={8}
+                    px={4}
+                    py={2}
+                    fontFamily={fonts.primary[500]}
+                    borderColor={colors.text.black30}
+                    backgroundColor={colors.white}
+                    fontSize={width / 32}
+                    _selectedItem={{
+                      bg: colors.white,
+                      endIcon: <CheckIcon size={4} />,
+                    }}
+                    onValueChange={(itemValue) => {
+                      setProvinsi(itemValue);
+                    }}
+                  >
+                    {dataProvinsi?.map((item, index) => (
+                      <SelectItem key={index} label={item.nama} value={`${item.id},${item.nama}`} />
+                    ))}
+                  </Select>
+                </VStack>
+                <VStack w="1/2">
+                  <Select
+                    defaultValue={filterHome?.kota}
+                    accessibilityLabel="Pilih kota"
+                    placeholder="Pilih kota"
+                    rounded={8}
+                    px={4}
+                    py={2}
+                    fontFamily={fonts.primary[500]}
+                    borderColor={colors.text.black30}
+                    backgroundColor={colors.white}
+                    fontSize={width / 32}
+                    _selectedItem={{
+                      bg: colors.white,
+                      endIcon: <CheckIcon size={4} />,
+                    }}
+                    onValueChange={(itemValue) => {
+                      setCurrentKota(itemValue);
+                    }}
+                  >
+                    {dataKota?.map((item, index) => (
+                      <SelectItem key={index} label={item.nama} value={item.nama} />
+                    ))}
+                  </Select>
+                </VStack>
+              </HStack>
+            </VStack>
+            <VStack space={3} my={5}>
+              <LabelInput text="Jenis Gaji" />
+              <HStack w="full" justifyContent="space-between" space={2} mb={2}>
+                <TouchableOpacity onPress={() => setJenisGaji('Hari')}>
+                  <Box
+                    borderColor={jenisGaji === 'Hari' ? colors.blue[70] : colors.white}
+                    borderWidth={jenisGaji === 'Hari' ? 2 : 0}
+                    style={styles.btnFilter(width)}
+                  >
+                    <Text
+                      textAlign="center"
+                      fontFamily={fonts.primary[400]}
+                      fontSize={width / 32}
+                      color={jenisGaji === 'Hari' ? colors.blue[70] : colors.text.black50}
+                    >
+                      Per Hari
+                    </Text>
+                  </Box>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => setJenisGaji('Bulan')}>
+                  <Box
+                    borderColor={jenisGaji === 'Bulan' ? colors.blue[70] : colors.white}
+                    borderWidth={jenisGaji === 'Bulan' ? 2 : 0}
+                    style={styles.btnFilter(width)}
+                  >
+                    <Text
+                      textAlign="center"
+                      fontFamily={fonts.primary[400]}
+                      fontSize={width / 32}
+                      color={jenisGaji === 'Bulan' ? colors.blue[70] : colors.text.black50}
+                    >
+                      Per Bulan
+                    </Text>
+                  </Box>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => setJenisGaji('Tahun')}>
+                  <Box
+                    borderColor={jenisGaji === 'Tahun' ? colors.blue[70] : colors.white}
+                    borderWidth={jenisGaji === 'Tahun' ? 2 : 0}
+                    style={styles.btnFilter(width)}
+                  >
+                    <Text
+                      textAlign="center"
+                      fontFamily={fonts.primary[400]}
+                      fontSize={width / 32}
+                      color={jenisGaji === 'Tahun' ? colors.blue[70] : colors.text.black50}
+                    >
+                      Per Tahun
+                    </Text>
+                  </Box>
+                </TouchableOpacity>
+              </HStack>
+            </VStack>
+            <VStack space={3}>
+              <LabelInput text="Urutan Berdasarkan" />
+              <HStack w="full" justifyContent="space-between" space={2}>
+                <TouchableOpacity onPress={() => setUrutan('Terbaru')}>
+                  <Box
+                    style={styles.btnFilterPekerjaan(width)}
+                    borderWidth={urutan === 'Terbaru' ? 2 : 0}
+                    borderColor={urutan === 'Terbaru' ? colors.blue[70] : colors.white}
+                  >
+                    <Text
+                      textAlign="center"
+                      fontFamily={fonts.primary[400]}
+                      fontSize={width / 32}
+                      color={urutan === 'Terbaru' ? colors.blue[70] : colors.text.black50}
+                    >
+                      Terbaru
+                    </Text>
+                  </Box>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => setUrutan('GajiTertinggi')}>
+                  <Box
+                    borderWidth={urutan === 'GajiTertinggi' ? 2 : 0}
+                    style={styles.btnFilterPekerjaan(width)}
+                    borderColor={urutan === 'GajiTertinggi' ? colors.blue[70] : colors.white}
+                  >
+                    <Text
+                      textAlign="center"
+                      fontFamily={fonts.primary[400]}
+                      fontSize={width / 32}
+                      color={urutan === 'GajiTertinggi' ? colors.blue[70] : colors.text.black50}
+                    >
+                      Gaji Tertinggi
+                    </Text>
+                  </Box>
+                </TouchableOpacity>
+              </HStack>
+            </VStack>
           </View>
-          <HStack></HStack>
+          <HStack alignItems="center" justifyContent="space-between" px={width / 32} space={2}>
+            <Button
+              fontSize={width}
+              onPress={() => {
+                setCurrentKota('');
+                setProvinsi('');
+                setJenisGaji('');
+                setUrutan('');
+              }}
+              text="Reset"
+              type="red-border"
+              width={width / 3.5}
+            />
+            <Button
+              type="primary"
+              onPress={() => {
+                navigation.navigate('DetailBidangPekerjaan', {
+                  id: id,
+                  bidang: bidang,
+                });
+                setFilterHome(dataFilterLowongan);
+              }}
+              text="Simpan"
+              width={width / 1.6}
+              fontSize={width}
+            />
+          </HStack>
         </VStack>
       )}
 
@@ -271,7 +439,7 @@ const FilterHome = ({ navigation, route }) => {
                 setUrutan('');
               }}
               text="Reset"
-              type="reset"
+              type="red-border"
               width={width / 3.5}
             />
             <Button
@@ -304,6 +472,12 @@ const styles = StyleSheet.create({
   btnFilterPekerjaan: (width) => ({
     backgroundColor: colors.blue[10],
     width: width / 2.28,
+    paddingVertical: 6,
+    borderRadius: 8,
+  }),
+  btnFilter: (width) => ({
+    backgroundColor: colors.blue[10],
+    width: width / 3.6,
     paddingVertical: 6,
     borderRadius: 8,
   }),
