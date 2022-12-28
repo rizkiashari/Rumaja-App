@@ -8,12 +8,15 @@ import { fonts } from '../utils/fonts';
 import { convertRupiah } from '../utils/convertRupiah';
 import moment from 'moment';
 import { colors } from '../utils/colors';
+import useUserStore from '../store/userStore';
 
 const DetailPekerjaan = ({ navigation, route }) => {
   const { width, height } = Dimensions.get('window');
 
   const { uuid } = route.params;
   const isFocused = navigation.isFocused();
+
+  const { userData } = useUserStore();
 
   const [detailLowongan, setDetailLowongan] = useState();
 
@@ -30,6 +33,8 @@ const DetailPekerjaan = ({ navigation, route }) => {
       setDetailLowongan();
     };
   }, [isFocused, uuid]);
+
+  console.log(detailLowongan);
 
   return (
     <SafeAreaView>

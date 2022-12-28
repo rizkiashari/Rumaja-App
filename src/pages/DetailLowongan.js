@@ -171,13 +171,13 @@ const DetailLowongan = ({ navigation, route }) => {
           </HStack>
         }
       />
-      <View
+      <ScrollView
         px={width / 28}
         showsVerticalScrollIndicator={false}
         bgColor={colors.text.black10}
         pt={2}
         height={height / 1.68}
-        _contentContainerStyle={{ paddingBottom: height / 2.5 }}
+        _contentContainerStyle={{ paddingBottom: height / 10 }}
       >
         <VStack space={4}>
           <Card type="detail" title="Kualifikasi">
@@ -197,11 +197,13 @@ const DetailLowongan = ({ navigation, route }) => {
           </Card>
           <Card type="detail" title="Lokasi Kerja">
             <Text fontSize={width / 32} fontFamily={fonts.primary[500]} color={colors.text.black50} maxW={width / 1.2} width="full">
-              {`${detailLowongan?.kota_lowongan}, ${detailLowongan?.provinsi_lowongan?.split(',')[1]}`}
+              {`${userData?.id_role === 3 && detailLowongan?.alamat_lengkap}, ${detailLowongan?.kota_lowongan}, ${
+                detailLowongan?.provinsi_lowongan?.split(',')[1]
+              }`}
             </Text>
           </Card>
         </VStack>
-      </View>
+      </ScrollView>
 
       {userData?.id_role === 2 && (
         <Box
