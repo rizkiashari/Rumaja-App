@@ -3,10 +3,45 @@ import React from 'react';
 import { Box, HStack, Image, Text, VStack, View } from 'native-base';
 import { colors } from '../../utils/colors';
 import { fonts } from '../../utils/fonts';
-import { ILArt, ILPengasuh, ILSopirPribadi, ILTukangKebun, TersimpanActive, Timer, UnSaved } from '../../assets';
+import {
+  BekerjaIcon,
+  DiprosesIcon,
+  DitolakIcon,
+  ILArt,
+  ILPengasuh,
+  ILSopirPribadi,
+  ILTukangKebun,
+  SelesaiIcon,
+  TersimpanActive,
+  UnSaved,
+} from '../../assets';
 
-const Card = ({ type, uriImage, title, subTitle, detailContent, time, id, onSaved, onNavigation, dataSave, children, lokasi, icon }) => {
+const Card = ({
+  type,
+  uriImage,
+  title,
+  subTitle,
+  detailContent,
+  time,
+  id,
+  onSaved,
+  onNavigation,
+  dataSave,
+  children,
+  lokasi,
+  icon,
+  statusProgress,
+}) => {
   const { width } = Dimensions.get('window');
+
+  const IconCustom = () => {
+    if (statusProgress === 'Diproses') return <DiprosesIcon />;
+    if (statusProgress === 'Bekerja') return <BekerjaIcon />;
+    if (statusProgress === 'Berakhir') return <SelesaiIcon />;
+    if (statusProgress === 'Ditolak') return <DitolakIcon />;
+
+    return <DiprosesIcon />;
+  };
 
   if (type === 'notif') {
     return (
@@ -108,6 +143,66 @@ const Card = ({ type, uriImage, title, subTitle, detailContent, time, id, onSave
     );
   }
 
+  if (type === 'progres') {
+    return (
+      <TouchableOpacity onPress={onNavigation}>
+        <Box bgColor={colors.white} rounded={8}>
+          <VStack space={2} py={4} pl={5}>
+            <HStack justifyContent="space-between">
+              <HStack space={2} alignItems="center">
+                <Box bgColor={colors.blue[30]} w={12} h={12} rounded="full" px={2} py={1} alignItems="center" justifyContent="center">
+                  {id === 1 ? (
+                    <Image source={ILArt} width={8} height={8} alt="ART Icon" />
+                  ) : id === 2 ? (
+                    <Image source={ILPengasuh} width={8} height={8} alt="Pengasuh Icon" />
+                  ) : id === 3 ? (
+                    <Image source={ILSopirPribadi} width={8} height={8} alt="Supier Pribadi Icon" />
+                  ) : (
+                    <Image source={ILTukangKebun} width={8} height={8} alt="Tukang Kebun Icon" />
+                  )}
+                </Box>
+                <VStack space={0.5}>
+                  <VStack space={0.5}>
+                    <Text fontFamily={fonts.primary[600]} fontSize={width / 28} color="black">
+                      {title}
+                    </Text>
+                    <Text fontFamily={fonts.primary[400]} fontSize={width / 36} color={colors.text.black70}>
+                      {subTitle}
+                    </Text>
+                  </VStack>
+                </VStack>
+              </HStack>
+              <HStack
+                space={1.5}
+                px={2}
+                style={styles.boxStatus(width)}
+                backgroundColor={
+                  statusProgress === 'Diproses'
+                    ? colors.proses
+                    : statusProgress === 'Bekerja'
+                    ? colors.blue[60]
+                    : statusProgress === 'Berakhir'
+                    ? colors.text.green
+                    : statusProgress === 'Ditolak'
+                    ? 'red.600'
+                    : colors.proses
+                }
+              >
+                <IconCustom />
+                <Text fontFamily={fonts.primary[600]} fontSize={width / 34} color={colors.text.white}>
+                  {statusProgress}
+                </Text>
+              </HStack>
+            </HStack>
+            <HStack justifyContent="space-between" alignItems="center" px={4}>
+              {children}
+            </HStack>
+          </VStack>
+        </Box>
+      </TouchableOpacity>
+    );
+  }
+
   return (
     <TouchableOpacity onPress={onNavigation}>
       <Box bgColor={colors.white} rounded={8} px={5} py={4}>
@@ -115,7 +210,7 @@ const Card = ({ type, uriImage, title, subTitle, detailContent, time, id, onSave
           <HStack justifyContent="space-between">
             <HStack space={3} alignItems="center">
               <Box w={12} h={12} rounded="full" alignItems="center" justifyContent="center" bgColor={colors.blue[30]}>
-                <Image alt="photo profile" source={uriImage} width="10" height="10" rounded="full" />
+                <Image alt="photo profile" source={uriImage} width="8" height="8" rounded="full" />
               </Box>
               <VStack space={0.5}>
                 <Text fontFamily={fonts.primary[600]} fontSize={width / 28} color="black" isTruncated numberOfLines={1}>
@@ -141,4 +236,10 @@ const Card = ({ type, uriImage, title, subTitle, detailContent, time, id, onSave
 
 export default Card;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  boxStatus: (width) => ({
+    width: width / 4.5,
+    height: width / 18,
+    alignItems: 'center',
+  }),
+});

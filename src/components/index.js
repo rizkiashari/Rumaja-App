@@ -10,6 +10,7 @@ import SelectItem from './atoms/SelectItem';
 import LabelInput from './atoms/LabelInput';
 import TextArea from './atoms/TextArea';
 import Badge from './atoms/Badge';
+import KontakItem from './atoms/KontakItem';
 
 // Molecules
 import BottomNavigator from './molecules/BottomNavigator';
@@ -21,6 +22,7 @@ import TopProfile from './molecules/TopProfile';
 import Tab from './molecules/Tab';
 import Tawarkan from './molecules/Tawarkan';
 import PesanSukses from './molecules/PesanSukses';
+import DaftarWithJumlah from './molecules/DaftarWithJumlah';
 
 export {
   TabItem,
@@ -34,6 +36,7 @@ export {
   LabelInput,
   TextArea,
   Badge,
+  KontakItem,
   BottomNavigator,
   Header,
   LoadingSkeleton,
@@ -43,4 +46,5 @@ export {
   Tab,
   Tawarkan,
   PesanSukses,
+  DaftarWithJumlah,
 };

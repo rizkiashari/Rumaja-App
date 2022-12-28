@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { Text, Button as ButtonNativeBase, HStack } from 'native-base';
 import { colors } from '../../utils/colors';
@@ -9,7 +9,7 @@ const Button = ({ onPress, width, text, type, fontSize }) => {
   if (type === 'secondary') {
     return (
       <ButtonNativeBase onPress={onPress} style={styles.btnSecondary(width)}>
-        <Text fontFamily={fonts.primary[500]} color={colors.blue[80]} fontSize={fontSize / 30} textAlign="center">
+        <Text fontFamily={fonts.primary[500]} color={colors.blue[80]} fontSize={fontSize / 28} textAlign="center">
           {text}
         </Text>
       </ButtonNativeBase>
@@ -18,12 +18,14 @@ const Button = ({ onPress, width, text, type, fontSize }) => {
 
   if (type === 'bg-white') {
     return (
-      <HStack justifyContent="space-between" px="4" rounded={8} py="3" alignItems="center" bgColor={colors.white}>
-        <Text fontFamily={fonts.primary[500]} color="black" fontSize={fontSize / 28}>
-          {text}
-        </Text>
-        <ChevronRight width={28} />
-      </HStack>
+      <TouchableOpacity onPress={onPress}>
+        <HStack justifyContent="space-between" px="4" rounded={8} py="3" alignItems="center" bgColor={colors.white}>
+          <Text fontFamily={fonts.primary[500]} color="black" fontSize={fontSize / 28}>
+            {text}
+          </Text>
+          <ChevronRight width={28} />
+        </HStack>
+      </TouchableOpacity>
     );
   }
 
@@ -37,9 +39,19 @@ const Button = ({ onPress, width, text, type, fontSize }) => {
     );
   }
 
+  if (type === 'reset') {
+    return (
+      <ButtonNativeBase style={styles.btnReset(width)} onPress={onPress}>
+        <Text color="#C86161" textAlign="center" fontFamily={fonts.primary[500]}>
+          Reset
+        </Text>
+      </ButtonNativeBase>
+    );
+  }
+
   return (
     <ButtonNativeBase style={styles.btnPrimary(width)} onPress={onPress}>
-      <Text fontFamily={fonts.primary[500]} color={colors.white} fontSize={fontSize / 30} textAlign="center">
+      <Text fontFamily={fonts.primary[500]} color={colors.white} fontSize={fontSize / 28} textAlign="center">
         {text}
       </Text>
     </ButtonNativeBase>
@@ -72,5 +84,13 @@ const styles = StyleSheet.create({
     width: width,
     borderWidth: 1,
     borderColor: colors.red,
+  }),
+  btnReset: (width) => ({
+    backgroundColor: colors.white,
+    width: width,
+    borderColor: '#C86161',
+    borderWidth: 2,
+    borderRadius: 8,
+    paddingVertical: 6,
   }),
 });
