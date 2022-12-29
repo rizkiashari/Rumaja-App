@@ -208,17 +208,21 @@ const DetailLowongan = ({ navigation, route }) => {
           </Card>
           {type === 'tawaran' && (
             <>
-              <Card type="detail" title="Permintaan Waktu Mulai Bekerja">
-                <Text fontSize={width / 32} fontFamily={fonts.primary[500]} color={colors.text.black50} maxW={width / 1.2} width="full">
-                  {moment(detailLowongan?.riwayat?.tanggal_mulai_kerja * 1000).format('dddd, DD MMMM YYYY')} -{' '}
-                  {detailLowongan?.riwayat?.waktu_mulai_kerja?.split(':')[0]}:{detailLowongan?.riwayat?.waktu_mulai_kerja?.split(':')[1]} WIB
-                </Text>
-              </Card>
-              <Card type="detail" title="Catatan Dari Penyedia">
-                <Text fontSize={width / 32} fontFamily={fonts.primary[500]} color={colors.text.black50} maxW={width / 1.2} width="full">
-                  {detailLowongan?.riwayat?.catatan_riwayat_penyedia}
-                </Text>
-              </Card>
+              {detailLowongan?.riwayat?.tanggal_mulai_kerja && detailLowongan?.riwayat?.waktu_mulai_kerja && (
+                <Card type="detail" title="Permintaan Waktu Mulai Bekerja">
+                  <Text fontSize={width / 32} fontFamily={fonts.primary[500]} color={colors.text.black50} maxW={width / 1.2} width="full">
+                    {moment(detailLowongan?.riwayat?.tanggal_mulai_kerja * 1000).format('dddd, DD MMMM YYYY')} -{' '}
+                    {detailLowongan?.riwayat?.waktu_mulai_kerja?.split(':')[0]}:{detailLowongan?.riwayat?.waktu_mulai_kerja?.split(':')[1]} WIB
+                  </Text>
+                </Card>
+              )}
+              {detailLowongan?.riwayat?.catatan_riwayat_penyedia && (
+                <Card type="detail" title="Catatan Dari Penyedia">
+                  <Text fontSize={width / 32} fontFamily={fonts.primary[500]} color={colors.text.black50} maxW={width / 1.2} width="full">
+                    {detailLowongan?.riwayat?.catatan_riwayat_penyedia}
+                  </Text>
+                </Card>
+              )}
             </>
           )}
         </VStack>
