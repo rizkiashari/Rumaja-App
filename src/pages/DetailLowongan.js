@@ -17,7 +17,7 @@ import { colors } from '../utils/colors';
 const DetailLowongan = ({ navigation, route }) => {
   const { width, height } = Dimensions.get('window');
 
-  const { uuid } = route.params;
+  const { uuid, type } = route.params;
   const isFocused = navigation.isFocused();
 
   const [detailLowongan, setDetailLowongan] = useState();
@@ -43,6 +43,8 @@ const DetailLowongan = ({ navigation, route }) => {
       setDetailLowongan();
     };
   }, [isFocused, uuid, invoke, setLoading]);
+
+  console.log('detailLowongan', detailLowongan);
 
   const handleLamaran = async (id) => {
     setLoading(true);
@@ -137,7 +139,7 @@ const DetailLowongan = ({ navigation, route }) => {
           </Text>
         </HStack>
         <HStack space={2.5}>
-          {userData?.id_role === 2 && (
+          {userData?.id_role === 2 && type !== 'tawaran' && (
             <TouchableOpacity
               onPress={() =>
                 saveLowongan(
@@ -204,10 +206,25 @@ const DetailLowongan = ({ navigation, route }) => {
               }`}
             </Text>
           </Card>
+          {type === 'tawaran' && (
+            <>
+              <Card type="detail" title="Permintaan Waktu Mulai Bekerja">
+                <Text fontSize={width / 32} fontFamily={fonts.primary[500]} color={colors.text.black50} maxW={width / 1.2} width="full">
+                  {moment(detailLowongan?.riwayat?.tanggal_mulai_kerja * 1000).format('dddd, DD MMMM YYYY')} -{' '}
+                  {detailLowongan?.riwayat?.waktu_mulai_kerja?.split(':')[0]}:{detailLowongan?.riwayat?.waktu_mulai_kerja?.split(':')[1]} WIB
+                </Text>
+              </Card>
+              <Card type="detail" title="Catatan Dari Penyedia">
+                <Text fontSize={width / 32} fontFamily={fonts.primary[500]} color={colors.text.black50} maxW={width / 1.2} width="full">
+                  {detailLowongan?.riwayat?.catatan_riwayat_penyedia}
+                </Text>
+              </Card>
+            </>
+          )}
         </VStack>
       </ScrollView>
 
-      {userData?.id_role === 2 && (
+      {userData?.id_role === 2 && type !== 'tawaran' && (
         <Box
           position="absolute"
           bottom={0}
