@@ -1,4 +1,4 @@
-import { Dimensions, StyleSheet } from 'react-native';
+import { Dimensions } from 'react-native';
 import React from 'react';
 import { View, Box, VStack } from 'native-base';
 import { ILSuksesGantiPass } from '../assets';
@@ -11,7 +11,7 @@ const SuksesGantiPassword = ({ navigation }) => {
   const menujuPengaturan = () => navigation.navigate('Pengaturan');
 
   return (
-    <View bgColor={colors.white} style={styles.container} minH={height}>
+    <View bgColor={colors.white} minH={height}>
       <VStack justifyContent="space-between" height={height / 1.14} px={width / 28}>
         <Box height={height / 2} mt={20} justifyContent="center">
           <PesanSukses
@@ -29,5 +29,3 @@ const SuksesGantiPassword = ({ navigation }) => {
 };
 
 export default SuksesGantiPassword;
-
-const styles = StyleSheet.create({});
