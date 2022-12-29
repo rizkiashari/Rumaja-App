@@ -47,6 +47,11 @@ import SuksesTerimaTawaran from '../pages/SuksesTerimaTawaran';
 import DetailPenyedia from '../pages/DetailPenyedia';
 import TolakTawaran from '../pages/TolakTawaran';
 import SuksesTolakTawaran from '../pages/SuksesTolakTawaran';
+import DetailLamaran from '../pages/DetailLamaran';
+import SuksesBekerja from '../pages/SuksesBekerja';
+import TolakLamaran from '../pages/TolakLamaran';
+import SuksesTolakPelamar from '../pages/SuksesTolakPelamar';
+import DetailBekerja from '../pages/DetailBekerja';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -254,6 +259,27 @@ const Authenticated = () => {
         }}
       />
       <Stack.Screen
+        name="DetailLamaran"
+        component={DetailLamaran}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="DetailTawaranPekerjaan"
+        component={DetailTawaranPekerjaan}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="DetailBekerja"
+        component={DetailBekerja}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
         name="TambahPendidikan"
         component={TambahPendidikan}
         options={{
@@ -289,13 +315,6 @@ const Authenticated = () => {
         }}
       />
       <Stack.Screen
-        name="DetailTawaranPekerjaan"
-        component={DetailTawaranPekerjaan}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
         name="SuksesTerimaTawaran"
         component={SuksesTerimaTawaran}
         options={{
@@ -310,8 +329,29 @@ const Authenticated = () => {
         }}
       />
       <Stack.Screen
+        name="SuksesBekerja"
+        component={SuksesBekerja}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="SuksesTolakPelamar"
+        component={SuksesTolakPelamar}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
         name="TolakTawaran"
         component={TolakTawaran}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="TolakLamaran"
+        component={TolakLamaran}
         options={{
           headerShown: false,
         }}
