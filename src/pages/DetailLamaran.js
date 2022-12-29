@@ -65,7 +65,7 @@ const DetailLamaran = ({ navigation, route }) => {
             <ChevronBack width={28} />
           </TouchableOpacity>
           <Text fontFamily={fonts.primary[600]} fontSize={width / 24} color="black">
-            Detail Lamaran
+            {dataDetail?.info_riwayat === 'applied' ? 'Detail Lamaran' : 'Detail Tawaran'}
           </Text>
         </HStack>
       </Header>
@@ -158,27 +158,30 @@ const DetailLamaran = ({ navigation, route }) => {
               </Box>
             ))}
           </Card>
-          {dataDetail?.tanggal_mulai_kerja && dataDetail?.catatan_riwayat_pencari === null && (
-            <Card type="detail" title="Permintaan Waktu Mulai Bekerja">
-              <Text fontFamily={fonts.primary[400]} fontSize={width / 32} color={colors.text.black70} textTransform="capitalize">
-                {moment(dataDetail?.tanggal_mulai_kerja * 1000).format('dddd, DD MMMM YYYY')} - {dataDetail?.waktu_mulai_kerja.split(':')[0]}:
-                {dataDetail?.waktu_mulai_kerja.split(':')[1]} WIB
-              </Text>
-            </Card>
-          )}
-          {dataDetail?.catatan_riwayat_pencari && (
+          {type === 'ditolak' ? (
             <Card type="detail" title="Alasan Ditolak">
               <Text fontFamily={fonts.primary[400]} fontSize={width / 32} color={colors.text.black70} textTransform="capitalize">
                 {dataDetail?.catatan_riwayat_pencari}
               </Text>
             </Card>
-          )}
-          {dataDetail?.catatan_riwayat_penyedia && dataDetail?.catatan_riwayat_pencari === null && (
-            <Card type="detail" title="Catatan Penyedia">
-              <Text fontFamily={fonts.primary[400]} fontSize={width / 32} color={colors.text.black70} textTransform="capitalize">
-                {dataDetail?.catatan_riwayat_penyedia}
-              </Text>
-            </Card>
+          ) : (
+            <>
+              {dataDetail?.tanggal_mulai_kerja && dataDetail?.catatan_riwayat_pencari === null && (
+                <Card type="detail" title="Permintaan Waktu Mulai Bekerja">
+                  <Text fontFamily={fonts.primary[400]} fontSize={width / 32} color={colors.text.black70} textTransform="capitalize">
+                    {moment(dataDetail?.tanggal_mulai_kerja * 1000).format('dddd, DD MMMM YYYY')} - {dataDetail?.waktu_mulai_kerja.split(':')[0]}:
+                    {dataDetail?.waktu_mulai_kerja.split(':')[1]} WIB
+                  </Text>
+                </Card>
+              )}
+              {dataDetail?.catatan_riwayat_penyedia && dataDetail?.catatan_riwayat_pencari === null && (
+                <Card type="detail" title="Catatan Penyedia">
+                  <Text fontFamily={fonts.primary[400]} fontSize={width / 32} color={colors.text.black70} textTransform="capitalize">
+                    {dataDetail?.catatan_riwayat_penyedia}
+                  </Text>
+                </Card>
+              )}
+            </>
           )}
         </VStack>
       </ScrollView>
