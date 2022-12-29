@@ -34,8 +34,6 @@ const DetailPekerjaan = ({ navigation, route }) => {
     };
   }, [isFocused, uuid]);
 
-  console.log(detailLowongan);
-
   return (
     <SafeAreaView>
       <Header>
