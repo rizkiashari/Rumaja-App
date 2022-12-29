@@ -59,6 +59,7 @@ const DetailPencari = ({ navigation, route }) => {
         title={dataPencari?.nama_user}
         subtitle={dataPencari?.pencari?.bidang_kerja?.detail_bidang}
         type="pekerja"
+        photo={dataPencari?.photo_profile}
         bubble={
           <HStack space={2} alignItems="center">
             <Badge
@@ -196,7 +197,7 @@ const DetailPencari = ({ navigation, route }) => {
                   uriImage={item?.lowongan?.bidang_kerja?.photo ? { uri: item?.lowongan?.bidang_kerja?.photo } : ILPlaceholder}
                 >
                   <HStack justifyContent="space-between" alignItems="center">
-                    <Badge title={rating} type="rating" icon={<StarActive />} />
+                    <Badge title={item?.rating} type="rating" icon={<StarActive />} />
                     <HStack alignItems="center" space={1}>
                       <Timer />
                       <Text fontSize={width / 32} fontFamily={fonts.primary[400]}>

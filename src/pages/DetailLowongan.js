@@ -154,6 +154,8 @@ const DetailLowongan = ({ navigation, route }) => {
 
       <TopProfile
         photo={detailLowongan?.bidang_kerja?.photo}
+        photoHeight="10"
+        photoWidth="10"
         title={detailLowongan?.bidang_kerja?.detail_bidang}
         subtitle={`${detailLowongan?.kota_lowongan}, ${detailLowongan?.provinsi_lowongan?.split(',')[1]}`}
         type="pekerja"
