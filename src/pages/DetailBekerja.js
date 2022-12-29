@@ -31,6 +31,8 @@ const DetailBekerja = ({ navigation, route }) => {
     };
   }, [isFocused, uuid_riwayat]);
 
+  console.log('detailBekerja', detailBekerja);
+
   return (
     <SafeAreaView>
       <Header>
@@ -133,6 +135,16 @@ const DetailBekerja = ({ navigation, route }) => {
           <Card type="detail" title="Lokasi Kerja">
             <Text fontSize={width / 32} fontFamily={fonts.primary[500]} color={colors.text.black50} maxW={width / 1.2} width="full">
               {`${detailBekerja?.lowongan?.kota_lowongan}, ${detailBekerja?.lowongan?.provinsi_lowongan?.split(',')[1]}`}
+            </Text>
+          </Card>
+          <Card type="detail" title="Waktu Mulai Bekerja">
+            <Text fontFamily={fonts.primary[400]} fontSize={width / 32} color={colors.text.black70} textTransform="capitalize">
+              {moment(detailBekerja?.tanggal_mulai_kerja * 1000).format('dddd, DD MMMM YYYY - HH:mm')}
+            </Text>
+          </Card>
+          <Card type="detail" title="Catatan Dari Penyedia">
+            <Text fontFamily={fonts.primary[400]} fontSize={width / 32} color={colors.text.black70} textTransform="capitalize">
+              {detailBekerja?.catatan_riwayat_penyedia}
             </Text>
           </Card>
         </VStack>
