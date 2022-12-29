@@ -42,6 +42,9 @@ import EditPendidikan from '../pages/EditPendidikan';
 import TambahPengalaman from '../pages/TambahPengalaman';
 import EditPengalaman from '../pages/EditPengalaman';
 import SplashScreen from '../pages/SplashScreen';
+import DetailTawaranPekerjaan from '../pages/DetailTawaranPekerjaan';
+import SuksesTerimaTawaran from '../pages/SuksesTerimaTawaran';
+import DetailPenyedia from '../pages/DetailPenyedia';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -132,6 +135,13 @@ const Authenticated = () => {
       <Stack.Screen
         name="DetailPencari"
         component={DetailPencari}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="DetailPenyedia"
+        component={DetailPenyedia}
         options={{
           headerShown: false,
         }}
@@ -273,6 +283,20 @@ const Authenticated = () => {
       <Stack.Screen
         name="EditLowongan"
         component={EditLowongan}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="DetailTawaranPekerjaan"
+        component={DetailTawaranPekerjaan}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="SuksesTerimaTawaran"
+        component={SuksesTerimaTawaran}
         options={{
           headerShown: false,
         }}
