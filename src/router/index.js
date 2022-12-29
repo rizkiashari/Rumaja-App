@@ -309,20 +309,7 @@ const UnAuthenticated = () => {
       />
     </Stack.Navigator>
   );
-};
-
-const Splash = () => {
-  return (
-    <Stack.Navigator
-      screenOptions={{
-        gestureEnabled: true,
-        contentStyle: { backgroundColor: '#fafafa' },
-      }}
-    >
-      <Stack.Screen name="SplashScreen" component={SplashScreen} options={{ headerShown: false }} />
-    </Stack.Navigator>
-  );
-};
+};  
 
 const Router = () => {
   const { isLogin, splashScreen } = useAuthStore();
