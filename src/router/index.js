@@ -52,6 +52,8 @@ import SuksesBekerja from '../pages/SuksesBekerja';
 import TolakLamaran from '../pages/TolakLamaran';
 import SuksesTolakPelamar from '../pages/SuksesTolakPelamar';
 import DetailBekerja from '../pages/DetailBekerja';
+import LihatProgres from '../pages/LihatProgres';
+import DetailPekerjaanSelesai from '../pages/DetailPekerjaanSelesai';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -352,6 +354,20 @@ const Authenticated = () => {
       <Stack.Screen
         name="TolakLamaran"
         component={TolakLamaran}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="LihatProgres"
+        component={LihatProgres}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="DetailPekerjaanSelesai"
+        component={DetailPekerjaanSelesai}
         options={{
           headerShown: false,
         }}
