@@ -67,6 +67,7 @@ import ILTolakDiproses from './ilustrations/tolak_diproses.png';
 import ILOnBoarding1 from './ilustrations/onboarding1.png';
 import ILOnBoarding2 from './ilustrations/onboarding2.png';
 import ILOnBoarding3 from './ilustrations/onboarding3.png';
+import ILLogoRumaja from './ilustrations/logo_splash.png';
 
 export {
   BerandaActive,
@@ -135,4 +136,5 @@ export {
   ILOnBoarding1,
   ILOnBoarding2,
   ILOnBoarding3,
+  ILLogoRumaja,
 };

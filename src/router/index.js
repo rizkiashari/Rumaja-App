@@ -41,6 +41,7 @@ import TambahPendidikan from '../pages/TambahPendidikan';
 import EditPendidikan from '../pages/EditPendidikan';
 import TambahPengalaman from '../pages/TambahPengalaman';
 import EditPengalaman from '../pages/EditPengalaman';
+import SplashScreen from '../pages/SplashScreen';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -310,8 +311,23 @@ const UnAuthenticated = () => {
   );
 };
 
+const Splash = () => {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        gestureEnabled: true,
+        contentStyle: { backgroundColor: '#fafafa' },
+      }}
+    >
+      <Stack.Screen name="SplashScreen" component={SplashScreen} options={{ headerShown: false }} />
+    </Stack.Navigator>
+  );
+};
+
 const Router = () => {
-  const { isLogin } = useAuthStore();
+  const { isLogin, splashScreen } = useAuthStore();
+
+  if (splashScreen) return <SplashScreen />;
 
   return isLogin ? <Authenticated /> : <UnAuthenticated />;
 };
