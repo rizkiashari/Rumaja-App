@@ -157,8 +157,10 @@ const Card = ({
                     <Image source={ILPengasuh} width={8} height={8} alt="Pengasuh Icon" />
                   ) : id === 3 ? (
                     <Image source={ILSopirPribadi} width={8} height={8} alt="Supier Pribadi Icon" />
-                  ) : (
+                  ) : id === 4 ? (
                     <Image source={ILTukangKebun} width={8} height={8} alt="Tukang Kebun Icon" />
+                  ) : (
+                    <Image source={uriImage} width={8} height={8} alt="Photo" />
                   )}
                 </Box>
                 <VStack space={0.5}>
@@ -166,7 +168,7 @@ const Card = ({
                     <Text fontFamily={fonts.primary[600]} fontSize={width / 28} color="black">
                       {title}
                     </Text>
-                    <Text fontFamily={fonts.primary[400]} fontSize={width / 36} color={colors.text.black70}>
+                    <Text fontFamily={fonts.primary[400]} isTruncated maxW={width / 2} fontSize={width / 36} color={colors.text.black70}>
                       {subTitle}
                     </Text>
                   </VStack>
@@ -194,7 +196,7 @@ const Card = ({
                 </Text>
               </HStack>
             </HStack>
-            <HStack justifyContent="space-between" alignItems="center" px={4}>
+            <HStack justifyContent="space-between" alignItems="center">
               {children}
             </HStack>
           </VStack>
