@@ -22,7 +22,7 @@ const SuksesMelamar = ({ navigation }) => {
             uriImage={ILTerimaDiproses2}
           />
         </Box>
-        <Button type="primary" fontSize={width} text="Kembali ke Halaman Beranda" onPress={menujuBeranda} />
+        <Button type="primary" fontSize={width} text="Kembali" onPress={menujuBeranda} />
       </VStack>
     </View>
   );

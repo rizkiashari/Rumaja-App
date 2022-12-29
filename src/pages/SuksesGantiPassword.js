@@ -22,7 +22,7 @@ const SuksesGantiPassword = ({ navigation }) => {
             uriImage={ILSuksesGantiPass}
           />
         </Box>
-        <Button type="primary" fontSize={width} text="Kembali ke Pengaturan" onPress={menujuPengaturan} />
+        <Button type="primary" fontSize={width} text="Kembali" onPress={menujuPengaturan} />
       </VStack>
     </View>
   );
