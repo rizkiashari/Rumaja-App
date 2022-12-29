@@ -19,7 +19,7 @@ const Pengaturan = ({ navigation }) => {
 
   const isFocused = navigation.isFocused();
 
-  const { setUserData, userData, setIsBoarding } = useUserStore();
+  const { setUserData, userData } = useUserStore();
   const { setFilterHome } = useFilterHome();
   const { setFilterTersimpan } = useFilterTersimpan();
   const { setIsLogin } = useAuthStore();
@@ -35,7 +35,6 @@ const Pengaturan = ({ navigation }) => {
       setUserData(null);
       setFilterHome(null);
       setFilterTersimpan(null);
-      setIsBoarding(false);
       showSuccess('Berhasil Logout');
     } else {
       showError('Gagal Logout');

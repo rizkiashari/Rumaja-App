@@ -15,8 +15,7 @@ const OnBoarding = ({ navigation }) => {
     {
       id: 1,
       title: 'Selamat Datang Di Rumaja!',
-      subTitle:
-        'Rumaja membantu kamu menghubungkan antara pencari kerja dan pemberi kerja',
+      subTitle: 'Rumaja membantu kamu menghubungkan antara pencari kerja dan pemberi kerja',
       image: ILOnBoarding1,
     },
     {
@@ -33,7 +32,7 @@ const OnBoarding = ({ navigation }) => {
     },
   ];
 
-  const { isBoarding } = useUserStore();
+  const { isBoarding, setIsBoarding } = useUserStore();
 
   useEffect(() => {
     if (!isBoarding) {
@@ -44,20 +43,13 @@ const OnBoarding = ({ navigation }) => {
   console.log(isBoarding);
 
   return (
-    <ScrollView
-      style={styles.container(width)}
-      showsVerticalScrollIndicator={false}
-    >
+    <ScrollView style={styles.container(width)} showsVerticalScrollIndicator={false}>
       {dataOnBoarding.map((item) => {
         if (item.id === urutan) {
           return (
             <View key={item.id} style={styles.content(width)}>
               <Box alignItems="center" height={heigth / 1.65}>
-                <Image
-                  source={item.image}
-                  alt="OnBoarding"
-                  style={styles.image(width)}
-                />
+                <Image source={item.image} alt="OnBoarding" style={styles.image(width)} />
               </Box>
               <View>
                 <Text style={styles.title}>{item.title}</Text>
@@ -75,13 +67,10 @@ const OnBoarding = ({ navigation }) => {
             background={colors.blue[80]}
             onPress={() => {
               navigation.replace('Login');
+              setIsBoarding(false);
             }}
           >
-            <Text
-              color={colors.white}
-              fontSize="14"
-              fontFamily={fonts.primary[500]}
-            >
+            <Text color={colors.white} fontSize="14" fontFamily={fonts.primary[500]}>
               Mulai Sekarang
             </Text>
           </Button>
@@ -96,21 +85,11 @@ const OnBoarding = ({ navigation }) => {
               setUrutan(urutan + 1);
             }}
           >
-            <Text
-              color={colors.white}
-              fontSize="14"
-              fontFamily={fonts.primary[500]}
-            >
+            <Text color={colors.white} fontSize="14" fontFamily={fonts.primary[500]}>
               Selanjutnya
             </Text>
           </Button>
-          <Button
-            py="3"
-            my="3"
-            rounded={8}
-            background={colors.white}
-            onPress={() => setUrutan(3)}
-          >
+          <Button py="3" my="3" rounded={8} background={colors.white} onPress={() => setUrutan(3)}>
             <Text color="#1F1F1F" fontSize="14" fontFamily={fonts.primary[500]}>
               Lewati
             </Text>
