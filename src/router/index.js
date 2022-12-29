@@ -192,13 +192,7 @@ const Authenticated = () => {
           headerShown: false,
         }}
       />
-      <Stack.Screen
-        name="LupaKataSandi"
-        component={LupaKataSandi}
-        options={{
-          headerShown: false,
-        }}
-      />
+
       <Stack.Screen
         name="SuksesGantiPassword"
         component={SuksesGantiPassword}
@@ -307,9 +301,16 @@ const UnAuthenticated = () => {
           headerShown: false,
         }}
       />
+      <Stack.Screen
+        name="LupaKataSandi"
+        component={LupaKataSandi}
+        options={{
+          headerShown: false,
+        }}
+      />
     </Stack.Navigator>
   );
-};  
+};
 
 const Router = () => {
   const { isLogin, splashScreen } = useAuthStore();
