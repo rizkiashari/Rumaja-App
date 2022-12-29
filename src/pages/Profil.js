@@ -5,7 +5,7 @@ import useLoading from '../store/loadingStore';
 import { getData } from '../utils/getData';
 import { colors } from '../utils/colors';
 import { Badge, Card, EmptyContent, Header, KontakItem, LoadingSkeleton, Tab, TopProfile } from '../components';
-import { ILEmptyLowongan, SettingBlack, Timer } from '../assets';
+import { EditIcon, ILEmptyLowongan, ILPlaceholder, SettingBlack, StarActive, Timer } from '../assets';
 import { fonts } from '../utils/fonts';
 import useUserStore from '../store/userStore';
 import { calculateAge } from '../utils/calculateAge';
@@ -104,7 +104,7 @@ const Profil = ({ navigation }) => {
           type="pekerja"
           photo={detailProfile?.photo_profile}
           bubble={
-            <HStack space={2} alignItems="center">
+            <HStack mt={4} space={2} alignItems="center">
               <Badge
                 title={`${detailProfile?.pencari?.gender ?? '-'}, ${
                   detailProfile?.pencari?.tanggal_lahir ? calculateAge(detailProfile?.pencari?.tanggal_lahir) : '-'
@@ -125,6 +125,52 @@ const Profil = ({ navigation }) => {
         </HStack>
       )}
 
+      {jenisTabs === 'Detail' && userData?.id_role === 2 && (
+        <ScrollView
+          px={width / 28}
+          showsVerticalScrollIndicator={false}
+          bgColor={colors.text.black10}
+          pt={2}
+          height={height}
+          _contentContainerStyle={{ paddingBottom: height / 1.5 }}
+        >
+          <VStack space={4}>
+            <Card type="detail" title="Tentang">
+              <Text fontFamily={fonts.primary[400]} fontSize={width / 36} color={colors.text.black70}>
+                {detailProfile?.pencari?.tentang ? detailProfile?.pencari?.tentang : '-'}
+              </Text>
+            </Card>
+            <Card type="detail" title="Domisili">
+              <Text fontFamily={fonts.primary[400]} fontSize={width / 36} color={colors.text.black70}>
+                {detailProfile?.domisili_kota ? detailProfile?.domisili_kota : '-'},{' '}
+                {detailProfile?.domisili_provinsi ? detailProfile?.domisili_provinsi : '-'}
+              </Text>
+            </Card>
+            <Card type="detail" title="Kontak">
+              <KontakItem nomor={detailProfile?.nomor_wa} email={detailProfile?.email} />
+            </Card>
+            <Card type="detail" title="Indeks Massa Tubuh (IMT)">
+              <VStack space={1}>
+                <Text fontFamily={fonts.primary[600]} fontSize={width / 32} color="black">
+                  Tinggi Badan
+                </Text>
+                <Text fontFamily={fonts.primary[400]} fontSize={width / 36} color={colors.text.black70}>
+                  {detailProfile?.pencari?.tinggi_badan ? detailProfile?.pencari?.tinggi_badan : '-'} cm
+                </Text>
+              </VStack>
+              <VStack size={1}>
+                <Text fontFamily={fonts.primary[600]} fontSize={width / 32} color="black">
+                  Berat Badan
+                </Text>
+                <Text fontFamily={fonts.primary[400]} fontSize={width / 36} color={colors.text.black70}>
+                  {detailProfile?.pencari?.berat_badan ? detailProfile?.pencari?.berat_badan : '-'} kg
+                </Text>
+              </VStack>
+            </Card>
+          </VStack>
+        </ScrollView>
+      )}
+
       {jenisTabs === 'Pengalaman' && userData?.id_role === 2 && (
         <ScrollView
           px={width / 28}
@@ -134,20 +180,89 @@ const Profil = ({ navigation }) => {
           height={height}
           _contentContainerStyle={{ paddingBottom: height / 2.5 }}
         >
-          <VStack space={4}></VStack>
-        </ScrollView>
-      )}
-
-      {jenisTabs === 'Detail' && userData?.id_role === 2 && (
-        <ScrollView
-          px={width / 28}
-          showsVerticalScrollIndicator={false}
-          bgColor={colors.text.black10}
-          pt={2}
-          height={height}
-          _contentContainerStyle={{ paddingBottom: height / 2.5 }}
-        >
-          <VStack space={4}></VStack>
+          <VStack space={4}>
+            <VStack space={3}>
+              <HStack alignItems="center" justifyContent="space-between">
+                <Text fontFamily={fonts.primary[600]} fontSize={width / 28} color="black">
+                  Pengalaman Kerja
+                </Text>
+                <TouchableOpacity onPress={() => navigation.navigate('TambahPengalaman')}>
+                  <Text fontFamily={fonts.primary[400]} fontSize={width / 32} color={colors.blue[80]}>
+                    + Tambah Pengalaman
+                  </Text>
+                </TouchableOpacity>
+              </HStack>
+              <VStack space={4}>
+                {loading ? (
+                  <LoadingSkeleton jumlah={3} />
+                ) : pengalaman?.length === 0 ? (
+                  <EmptyContent title="Tidak ada pengalaman kerja" />
+                ) : (
+                  pengalaman?.map((item, idx) => (
+                    <Card
+                      type="pengalaman"
+                      key={idx}
+                      title={item?.nama_pengalaman}
+                      subTitle={`${moment(item?.tahun_mulai).format('MMMM YYYY')} - ${
+                        item?.tahun_akhir === 'Sekarang' ? 'Sekarang' : moment(item?.tahun_akhir).format('MMMM YYYY')
+                      }`}
+                      lokasi={item?.pengalaman_prov?.split(',')[1]}
+                      icon={
+                        <TouchableOpacity
+                          onPress={() => {
+                            navigation.navigate('EditPengalaman', {
+                              uuid: item?.uuid_pengalaman,
+                            });
+                          }}
+                        >
+                          <EditIcon />
+                        </TouchableOpacity>
+                      }
+                    />
+                  ))
+                )}
+              </VStack>
+            </VStack>
+            <VStack space={3} mb={height / 3}>
+              <HStack alignItems="center" justifyContent="space-between">
+                <Text fontFamily={fonts.primary[600]} fontSize={width / 28} color="black">
+                  Riwayat Pendidikan
+                </Text>
+                <TouchableOpacity onPress={() => navigation.navigate('TambahPendidikan')}>
+                  <Text fontFamily={fonts.primary[400]} fontSize={width / 32} color={colors.blue[80]}>
+                    + Tambah Pendidikan
+                  </Text>
+                </TouchableOpacity>
+              </HStack>
+              <VStack space={4}>
+                {loading ? (
+                  <LoadingSkeleton jumlah={3} />
+                ) : pendidikan?.length === 0 ? (
+                  <EmptyContent title="Tidak ada riwayat pendidikan" />
+                ) : (
+                  pendidikan?.map((item, idx) => (
+                    <Card
+                      type="pengalaman"
+                      key={idx}
+                      title={item?.nama_pendidikan}
+                      subTitle={`${item?.tahun_awal} - ${item?.tahun_akhir}`}
+                      icon={
+                        <TouchableOpacity
+                          onPress={() => {
+                            navigation.navigate('EditPendidikan', {
+                              uuid: item?.uuid_pendidikan,
+                            });
+                          }}
+                        >
+                          <EditIcon />
+                        </TouchableOpacity>
+                      }
+                    />
+                  ))
+                )}
+              </VStack>
+            </VStack>
+          </VStack>
         </ScrollView>
       )}
 
@@ -160,7 +275,33 @@ const Profil = ({ navigation }) => {
           height={height}
           _contentContainerStyle={{ paddingBottom: height / 2.5 }}
         >
-          <VStack space={4}></VStack>
+          <VStack space={4} mb={height / 3}>
+            {ulasan?.length === 0 ? (
+              <EmptyContent title="Tidak ada ulasan" />
+            ) : (
+              ulasan?.map((item, idx) => (
+                <Card
+                  key={idx}
+                  type="ulasan"
+                  title={item?.nama_penyedia}
+                  subTitle={item?.catatan}
+                  uriImage={item?.lowongan?.bidang_kerja?.photo ? { uri: item?.lowongan?.bidang_kerja?.photo } : ILPlaceholder}
+                >
+                  <HStack justifyContent="space-between" alignItems="center">
+                    <Badge title={item?.rating} type="rating" icon={<StarActive />} />
+                    <HStack alignItems="center" space={1}>
+                      <Timer />
+                      <Text fontSize={width / 32} fontFamily={fonts.primary[400]}>
+                        {moment(new Date(item?.createdAt * 1000))
+                          .startOf('minutes')
+                          .fromNow()}
+                      </Text>
+                    </HStack>
+                  </HStack>
+                </Card>
+              ))
+            )}
+          </VStack>
         </ScrollView>
       )}
 
