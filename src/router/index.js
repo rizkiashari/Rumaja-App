@@ -45,6 +45,8 @@ import SplashScreen from '../pages/SplashScreen';
 import DetailTawaranPekerjaan from '../pages/DetailTawaranPekerjaan';
 import SuksesTerimaTawaran from '../pages/SuksesTerimaTawaran';
 import DetailPenyedia from '../pages/DetailPenyedia';
+import TolakTawaran from '../pages/TolakTawaran';
+import SuksesTolakTawaran from '../pages/SuksesTolakTawaran';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -202,7 +204,6 @@ const Authenticated = () => {
           headerShown: false,
         }}
       />
-
       <Stack.Screen
         name="SuksesGantiPassword"
         component={SuksesGantiPassword}
@@ -297,6 +298,20 @@ const Authenticated = () => {
       <Stack.Screen
         name="SuksesTerimaTawaran"
         component={SuksesTerimaTawaran}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="SuksesTolakTawaran"
+        component={SuksesTolakTawaran}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="TolakTawaran"
+        component={TolakTawaran}
         options={{
           headerShown: false,
         }}
