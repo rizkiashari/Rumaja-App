@@ -5,7 +5,7 @@ import { colors } from '../../utils/colors';
 import { fonts } from '../../utils/fonts';
 import { ChevronRight } from '../../assets';
 
-const Button = ({ onPress, width, text, type, fontSize }) => {
+const Button = ({ onPress, width, text, type, fontSize, bgColor }) => {
   if (type === 'secondary') {
     return (
       <ButtonNativeBase onPress={onPress} style={styles.btnSecondary(width)}>
@@ -43,6 +43,24 @@ const Button = ({ onPress, width, text, type, fontSize }) => {
     return (
       <ButtonNativeBase style={styles.btnReset(width)} onPress={onPress}>
         <Text color="#C86161" fontSize={fontSize / 28} textAlign="center" fontFamily={fonts.primary[500]}>
+          {text}
+        </Text>
+      </ButtonNativeBase>
+    );
+  }
+
+  if (type === 'progres') {
+    return (
+      <ButtonNativeBase
+        borderWidth={2}
+        borderColor={bgColor}
+        borderRadius={8}
+        paddingVertical={8}
+        backgroundColor={bgColor}
+        width={width}
+        onPress={onPress}
+      >
+        <Text color={colors.white} fontSize={fontSize / 28} textAlign="center" fontFamily={fonts.primary[500]}>
           {text}
         </Text>
       </ButtonNativeBase>
