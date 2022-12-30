@@ -38,7 +38,10 @@ const TolakLamaran = ({ navigation, route }) => {
         const res = await API.patch(`/lamaran/tolak/${uuid}`, payload);
         setLoading(false);
         if (res.data.message === 'SUCCESS_TOLAK_LAMARAN') {
-          navigation.replace('SuksesTolakPelamar');
+          navigation.replace('SuksesTolakPelamar', {
+            title: 'Tawaran berhasil ditolak!',
+            subTitle: 'Tawaran kerja yang anda dapat berhasil ditolak. Alasan penolakan telah dikirim ke penyedia kerja.',
+          });
           setLoading(true);
         } else {
           showError('Gagal menolak pelamar');
