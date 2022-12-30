@@ -32,6 +32,8 @@ const DaftarPelamar = ({ navigation, route }) => {
     };
   }, [idLowongan, setIsLoading]);
 
+  console.log(dataPelamar);
+
   return (
     <SafeAreaView>
       <Header>
@@ -63,11 +65,14 @@ const DaftarPelamar = ({ navigation, route }) => {
                 key={index}
                 type="progres"
                 onNavigation={() =>
-                  navigation.navigate('DetailPencari', {
-                    uuid: pelamar?.pencari?.users?.uuid_user,
-                    type: 'daftar-pelamar',
-                    uuid_riwayat: pelamar?.uuid_riwayat,
-                  })
+                  navigation.navigate(
+                    pelamar?.temp_status === 'menunggu-penyedia' || pelamar?.temp_status === 'menunggu-pencari' ? 'DetailPelamar' : 'DetailPencari',
+                    {
+                      uuid: pelamar?.pencari?.users?.uuid_user,
+                      type: 'daftar-pelamar',
+                      uuid_riwayat: pelamar?.uuid_riwayat,
+                    }
+                  )
                 }
                 id={+pelamar?.pencari?.id_bidang_kerja}
                 title={pelamar?.pencari?.users?.nama_user}

@@ -10,6 +10,8 @@ import { calculateAge } from '../utils/calculateAge';
 import { colors } from '../utils/colors';
 import { fonts } from '../utils/fonts';
 import moment from 'moment';
+import { API } from '../config/api';
+import { showError, showSuccess } from '../utils/showMessages';
 
 const DetailPencari = ({ navigation, route }) => {
   const { uuid, type, uuid_riwayat } = route.params;
@@ -38,6 +40,59 @@ const DetailPencari = ({ navigation, route }) => {
       setDataPencari();
     };
   }, [invoke, uuid, setInvoke, loading, type, uuid_riwayat, isFocused]);
+
+  const savePekerja = async (id, simpan_pencari) => {
+    setInvoke(!invoke);
+    setLoading(true);
+    if (simpan_pencari === null) {
+      try {
+        const res = await API.post('/user/save-pencari', {
+          id_pencari: id,
+          isSave: true,
+        });
+        if (res.data.message === 'SUCCESS_SAVE_PENCARI') {
+          showSuccess('Berhasil menyimpan pencari kerja');
+        } else {
+          showError('Gagal menyimpan pencari kerja');
+        }
+      } catch ({ response }) {
+        showError(response.data.message);
+      }
+    } else {
+      try {
+        const res = await API.patch(`/user/unsave-pencari/${simpan_pencari?.uuid_simpan}`);
+        if (res.data.message === 'SUCCESS_UNSAVE_PENCARI') {
+          showSuccess('Berhasil menghapus data simpan pencari kerja');
+        } else {
+          showError('Gagal menghapus pencari kerja');
+        }
+      } catch ({ response }) {
+        showError(response.data.message);
+      }
+    }
+    setLoading(false);
+  };
+
+  const onAkhirPekerjaan = async () => {
+    setLoading(true);
+
+    try {
+      const res = await API.patch(`/lamaran/akhiri-pekerjaan/${uuid_riwayat}`);
+      setLoading(false);
+      if (res.data.message === 'SUCCESS_AKHIRI_PEKERJAAN') {
+        setLoading(true);
+        navigation.replace('Nilai', {
+          id_lowongan: res?.data?.data?.id_lowongan,
+          id_pencari: res?.data?.data?.id_pencari,
+        });
+      } else {
+        showError('Gagal mengakhiri pekerjaan');
+      }
+    } catch ({ response }) {
+      setLoading(false);
+      showError(response.data.message);
+    }
+  };
 
   return (
     <SafeAreaView>
@@ -120,7 +175,7 @@ const DetailPencari = ({ navigation, route }) => {
                   <EmptyContent title="Tidak ada riwayat pendidikan" />
                 ) : (
                   dataPencari?.pencari?.pendidikan?.map((item, index) => (
-                    <Card key={idx} title={item?.nama_pendidikan} subtitle={`${item?.tahun_awal} - ${item?.tahun_akhir}`} type="pengalaman" />
+                    <Card key={index} title={item?.nama_pendidikan} subTitle={`${item?.tahun_awal} - ${item?.tahun_akhir}`} type="pengalaman" />
                   ))
                 )}
               </VStack>
@@ -214,17 +269,67 @@ const DetailPencari = ({ navigation, route }) => {
         </ScrollView>
       )}
 
-      <Box position="absolute" bottom={height / 2.3} width="100%" px={width / 28} justifyContent="center" py={4} backgroundColor="white">
-        <Button
-          type="primary"
-          text="Tawarkan Pekerjaan"
-          fontSize={width}
-          onPress={() => {
-            setIdPencari(dataPencari?.pencari?.id);
-            navigation.navigate('TawarkanPekerjaan');
-          }}
-        />
-      </Box>
+      {type === 'daftar-pelamar' ? (
+        <Box position="absolute" bottom={height / 2.25} width="full" px={width / 28} justifyContent="center" py={4} backgroundColor="white">
+          <HStack space={2}>
+            <Button
+              type="progres"
+              fontSize={width}
+              text="Tolak"
+              onPress={() => {
+                navigation.navigate('TolakPelamar', {
+                  uuid: uuid_riwayat,
+                });
+              }}
+              width={width / 2.25}
+              bgColor={colors.red}
+            />
+            <Button
+              type="progres"
+              fontSize={width}
+              text="Terima"
+              onPress={() => {
+                navigation.navigate('TerimaPelamar', {
+                  uuid: uuid_riwayat,
+                  noWa: dataPencari?.nomor_wa,
+                });
+              }}
+              width={width / 2.2}
+              bgColor={colors.text.green}
+            />
+          </HStack>
+        </Box>
+      ) : type === 'detail-pelamar' ? null : type === 'daftar-pekerja' ? (
+        <Box position="absolute" bottom={height / 2.25} width="full" px={width / 28} justifyContent="center" py={4} backgroundColor="white">
+          <HStack alignItems="center" justifyContent="center" space={2}>
+            <Button
+              type="primary"
+              fontSize={width}
+              text="Lihat Progres"
+              onPress={() => {
+                navigation.navigate('LihatProgres', {
+                  uuid: uuid_riwayat,
+                  type: 'penyedia',
+                });
+              }}
+              width={width / 2.2}
+            />
+            <Button type="progres" fontSize={width} text="Akhiri Pekerjaan" onPress={onAkhirPekerjaan} width={width / 2.2} bgColor={colors.red} />
+          </HStack>
+        </Box>
+      ) : (
+        <Box position="absolute" bottom={height / 2.25} width="full" px={width / 28} justifyContent="center" py={4} backgroundColor="white">
+          <Button
+            type="primary"
+            text="Tawarkan Pekerjaan"
+            fontSize={width}
+            onPress={() => {
+              setIdPencari(dataPencari?.pencari?.id);
+              navigation.navigate('TawarkanPekerjaan');
+            }}
+          />
+        </Box>
+      )}
     </SafeAreaView>
   );
 };

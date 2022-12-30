@@ -54,6 +54,12 @@ import SuksesTolakPelamar from '../pages/SuksesTolakPelamar';
 import DetailBekerja from '../pages/DetailBekerja';
 import LihatProgres from '../pages/LihatProgres';
 import DetailPekerjaanSelesai from '../pages/DetailPekerjaanSelesai';
+import Nilai from '../pages/Nilai';
+import TerimaPelamar from '../pages/TerimaPelamar';
+import TolakPelamar from '../pages/TolakPelamar';
+import SuksesTerimaPelamar from '../pages/SuksesTerimaPelamar';
+import DetailPelamar from '../pages/DetailPelamar';
+import SuksesMengakhiriPekerjaan from '../pages/SuksesMengakhiriPekerjaan';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -282,6 +288,20 @@ const Authenticated = () => {
         }}
       />
       <Stack.Screen
+        name="DetailPelamar"
+        component={DetailPelamar}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="SuksesMengakhiriPekerjaan"
+        component={SuksesMengakhiriPekerjaan}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
         name="TambahPendidikan"
         component={TambahPendidikan}
         options={{
@@ -338,6 +358,13 @@ const Authenticated = () => {
         }}
       />
       <Stack.Screen
+        name="SuksesTerimaPelamar"
+        component={SuksesTerimaPelamar}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
         name="SuksesTolakPelamar"
         component={SuksesTolakPelamar}
         options={{
@@ -366,8 +393,29 @@ const Authenticated = () => {
         }}
       />
       <Stack.Screen
+        name="TerimaPelamar"
+        component={TerimaPelamar}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="TolakPelamar"
+        component={TolakPelamar}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
         name="DetailPekerjaanSelesai"
         component={DetailPekerjaanSelesai}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Nilai"
+        component={Nilai}
         options={{
           headerShown: false,
         }}

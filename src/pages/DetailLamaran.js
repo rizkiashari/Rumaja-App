@@ -148,14 +148,14 @@ const DetailLamaran = ({ navigation, route }) => {
           </Card>
           <Card type="detail" title="Progres">
             {dataDetail?.progres?.map((progres, idx) => (
-              <Box key={idx}>
+              <VStack space={0.5} key={idx}>
                 <Text fontFamily={fonts.primary[400]} fontSize={width / 32} color={colors.text.black80}>
                   {progres?.informasi}
                 </Text>
                 <Text fontFamily={fonts.primary[400]} fontSize={width / 32} color={colors.text.black50}>
                   {moment(progres?.createdAt * 1000).format('dddd, DD MMMM YYYY - HH:mm')} WIB
                 </Text>
-              </Box>
+              </VStack>
             ))}
           </Card>
           {type === 'ditolak' ? (
