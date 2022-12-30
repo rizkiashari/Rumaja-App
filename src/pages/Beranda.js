@@ -276,7 +276,7 @@ const Beranda = ({ navigation }) => {
                       <Box bgColor={colors.blue[10]} rounded={12} px={2} py={0.5}>
                         <HStack alignItems="center" space={1}>
                           <Text fontSize={width / 32} fontFamily={fonts.primary[500]}>
-                            {pekerja?.ulasan ? pekerja?.ulasan : 0}
+                            {pekerja?.ulasan ? pekerja?.ulasan?.toFixed(1) : 0}
                           </Text>
                           <StarActive />
                         </HStack>

@@ -8,5 +8,5 @@ export const calculateRating = (arrayRating) => {
       return acc + curr.rating;
     }, 0) / arrayRating?.length;
 
-  return total;
+  return total?.toFixed(1);
 };

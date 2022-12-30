@@ -148,6 +148,8 @@ const Tersimpan = ({ navigation }) => {
     }
   };
 
+  console.log(dataSimpanPekerja);
+
   return (
     <SafeAreaView>
       <Header>
@@ -160,7 +162,7 @@ const Tersimpan = ({ navigation }) => {
       </Header>
       <ScrollView px={width / 28} py={width / 28} showsVerticalScrollIndicator={false} _contentContainerStyle={{ paddingBottom: width / 28 }}>
         {userData?.id_role === 2 && (
-          <VStack mt={1} mb={height / 8}>
+          <VStack mt={1} space={4} mb={height / 8}>
             {loading ? (
               <LoadingSkeleton jumlah={4} />
             ) : dataLowongan?.length === 0 ? (
@@ -214,7 +216,7 @@ const Tersimpan = ({ navigation }) => {
         )}
 
         {userData?.id_role === 3 && (
-          <VStack mt={1} mb={height / 8}>
+          <VStack mt={1} space={4} mb={height / 8}>
             {loading ? (
               <LoadingSkeleton jumlah={4} />
             ) : dataSimpanPekerja?.length === 0 ? (
@@ -249,7 +251,7 @@ const Tersimpan = ({ navigation }) => {
                     <Box bgColor={colors.blue[10]} rounded={12} px={2} py={0.5}>
                       <HStack alignItems="center" space={1}>
                         <Text fontSize={width / 32} fontFamily={fonts.primary[500]}>
-                          {pekerja?.ulasan ? pekerja?.ulasan : 0}
+                          {pekerja?.rating ? pekerja?.rating?.toFixed(1) : 0}
                         </Text>
                         <StarActive />
                       </HStack>
