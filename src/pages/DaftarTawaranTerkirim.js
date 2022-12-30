@@ -82,7 +82,7 @@ const DaftarTawaranTerkirim = ({ navigation, route }) => {
                   />
                   <Badge type="rating" icon={<StarActive />} title={`${calculateRating(tawaran?.pencari?.ulasan)}`} />
                 </HStack>
-                <Text fontSize={width / 36} fontFamily={fonts.primary[400]} textTransform="capitalize">
+                <Text fontSize={width / 36} pr={width / 28} fontFamily={fonts.primary[400]} textTransform="capitalize">
                   {tawaran?.pencari?.pengalaman?.length} Pengalaman
                 </Text>
               </Card>

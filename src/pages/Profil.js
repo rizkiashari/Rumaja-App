@@ -103,6 +103,8 @@ const Profil = ({ navigation }) => {
           subtitle={detailProfile?.pencari?.bidang_kerja?.detail_bidang}
           type="pekerja"
           photo={detailProfile?.photo_profile}
+          photoHeight="full"
+          photoWidth="full"
           bubble={
             <HStack mt={4} space={2} alignItems="center">
               <Badge
@@ -311,6 +313,8 @@ const Profil = ({ navigation }) => {
           title={detailProfile?.nama_user}
           subtitle={`${detailProfile?.domisili_kota}, ${detailProfile?.domisili_provinsi}`}
           photo={detailProfile?.photo_profile}
+          photoHeight="full"
+          photoWidth="full"
         />
       )}
 

@@ -153,7 +153,7 @@ const DetailLamaran = ({ navigation, route }) => {
                   {progres?.informasi}
                 </Text>
                 <Text fontFamily={fonts.primary[400]} fontSize={width / 32} color={colors.text.black50}>
-                  {moment(progres?.createdAt * 1000).format('dddd, DD MMMM YYYY - HH:mm')} WIB
+                  {moment(progres?.createdAt * 1000).format('dddd, DD MMMM YYYY - HH:mm')}
                 </Text>
               </VStack>
             ))}
@@ -170,7 +170,7 @@ const DetailLamaran = ({ navigation, route }) => {
                 <Card type="detail" title="Permintaan Waktu Mulai Bekerja">
                   <Text fontFamily={fonts.primary[400]} fontSize={width / 32} color={colors.text.black70} textTransform="capitalize">
                     {moment(dataDetail?.tanggal_mulai_kerja * 1000).format('dddd, DD MMMM YYYY')} - {dataDetail?.waktu_mulai_kerja.split(':')[0]}:
-                    {dataDetail?.waktu_mulai_kerja.split(':')[1]} WIB
+                    {dataDetail?.waktu_mulai_kerja.split(':')[1]}
                   </Text>
                 </Card>
               )}

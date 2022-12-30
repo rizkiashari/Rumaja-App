@@ -60,6 +60,7 @@ import TolakPelamar from '../pages/TolakPelamar';
 import SuksesTerimaPelamar from '../pages/SuksesTerimaPelamar';
 import DetailPelamar from '../pages/DetailPelamar';
 import SuksesMengakhiriPekerjaan from '../pages/SuksesMengakhiriPekerjaan';
+import DetailTawaranTerkirim from '../pages/DetailTawaranTerkirim';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -409,6 +410,13 @@ const Authenticated = () => {
       <Stack.Screen
         name="DetailPekerjaanSelesai"
         component={DetailPekerjaanSelesai}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="DetailTawaranTerkirim"
+        component={DetailTawaranTerkirim}
         options={{
           headerShown: false,
         }}

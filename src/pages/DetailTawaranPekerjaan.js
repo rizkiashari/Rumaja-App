@@ -11,7 +11,6 @@ import { fonts } from '../utils/fonts';
 import { convertRupiah } from '../utils/convertRupiah';
 import moment from 'moment';
 import { colors } from '../utils/colors';
-import { getDataLocal, storeData } from '../utils/localStorage';
 
 const DetailTawaranPekerjaan = ({ navigation, route }) => {
   const { width, height } = Dimensions.get('window');
@@ -46,7 +45,6 @@ const DetailTawaranPekerjaan = ({ navigation, route }) => {
           title: 'Tawaran berhasil diterima',
           subTitle: 'Tawaran kerja yang anda dapat berhasil diterima. Menunggu konfirmasi dari penyedia kerja.',
         });
-        storeData('terima-tawaran', 'menunggu');
       } else {
         showError('Gagal menolak pelamar');
       }
@@ -167,7 +165,7 @@ const DetailTawaranPekerjaan = ({ navigation, route }) => {
                 <Card type="detail" title="Permintaan Waktu Mulai Bekerja">
                   <Text fontFamily={fonts.primary[400]} fontSize={width / 32} color={colors.text.black70} textTransform="capitalize">
                     {moment(dataDetail?.tanggal_mulai_kerja * 1000).format('dddd, DD MMMM YYYY')} - {dataDetail?.waktu_mulai_kerja.split(':')[0]}:
-                    {dataDetail?.waktu_mulai_kerja.split(':')[1]} WIB
+                    {dataDetail?.waktu_mulai_kerja.split(':')[1]}
                   </Text>
                 </Card>
                 <Card type="detail" title="Catatan Dari Penyedia">

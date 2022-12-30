@@ -189,7 +189,7 @@ const Progres = ({ navigation }) => {
                         title={lamaran?.lowongan?.bidang_kerja?.detail_bidang}
                         subTitle={`${lamaran?.lowongan?.kota_lowongan}, ${lamaran?.lowongan?.provinsi_lowongan?.split(',')[1]}`}
                         onNavigation={() => {
-                          navigation.navigate('DetailTawaranPekerjaan', {
+                          navigation.navigate('DetailLamaran', {
                             uuid_riwayat: lamaran?.uuid_riwayat,
                             type: 'diproses',
                           });
@@ -275,8 +275,9 @@ const Progres = ({ navigation }) => {
                   title={selesai?.lowongan?.bidang_kerja?.detail_bidang}
                   subTitle={`${selesai?.lowongan?.kota_lowongan}, ${selesai?.lowongan?.provinsi_lowongan?.split(',')[1]}`}
                   onNavigation={() => {
-                    navigation.navigate('DetailBekerja', {
+                    navigation.navigate(selesai?.status === 'selesai' ? 'DetailPekerjaanSelesai' : 'DetailLamaran', {
                       uuid_riwayat: selesai?.uuid_riwayat,
+                      type: selesai?.status,
                     });
                   }}
                 >
@@ -314,7 +315,6 @@ const Progres = ({ navigation }) => {
       )}
 
       {/* Penyedia */}
-
       {jenisTabs === 'Diproses' && userData?.id_role === 3 && (
         <ScrollView
           px={width / 28}
