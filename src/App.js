@@ -10,6 +10,7 @@ import { getDataLocal, storeData } from './utils/localStorage';
 import { getData } from './utils/getData';
 import { setAuthToken } from './config/api';
 import { postWithJson } from './utils/postData';
+import { showError } from './utils/showMessages';
 
 const App = () => {
   const { setIsLogin } = useAuthStore();
@@ -28,6 +29,7 @@ const App = () => {
       switch (resp.message) {
         case 'UNAUTHORIZED':
           setIsLogin(false);
+          showError('Sesi anda telah berakhir, silahkan login kembali');
           break;
         case 'TOKEN_EXPIRED':
           setExpired(true);
@@ -37,6 +39,7 @@ const App = () => {
           if (respRefresh?.message === 'TOKEN_EXPIRED') {
             setExpired(true);
             setIsLogin(false);
+            showError('Sesi anda telah berakhir, silahkan login kembali');
             removeLocalStorage('token');
           } else if (respRefresh?.message === 'REFRESH_TOKEN_SUCCESS') {
             setExpired(false);
