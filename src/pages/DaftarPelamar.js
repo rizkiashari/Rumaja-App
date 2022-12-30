@@ -32,8 +32,6 @@ const DaftarPelamar = ({ navigation, route }) => {
     };
   }, [idLowongan, setIsLoading]);
 
-  console.log(dataPelamar);
-
   return (
     <SafeAreaView>
       <Header>

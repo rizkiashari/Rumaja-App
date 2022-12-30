@@ -55,8 +55,6 @@ const DetailLamaran = ({ navigation, route }) => {
     }
   };
 
-  console.log('dataDetail', dataDetail);
-
   return (
     <SafeAreaView>
       <Header>

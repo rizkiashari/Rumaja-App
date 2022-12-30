@@ -13,6 +13,8 @@ import { useFilterTersimpan } from '../store/filterHome';
 import { showError } from '../utils/showMessages';
 
 const FilterTersimpan = ({ navigation }) => {
+  // Belum default value
+
   const width = Dimensions.get('window').width;
   const height = Dimensions.get('window').height;
 

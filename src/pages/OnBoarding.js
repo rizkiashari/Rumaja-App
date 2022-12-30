@@ -40,8 +40,6 @@ const OnBoarding = ({ navigation }) => {
     }
   }, [isBoarding, navigation]);
 
-  console.log(isBoarding);
-
   return (
     <ScrollView style={styles.container(width)} showsVerticalScrollIndicator={false}>
       {dataOnBoarding.map((item) => {

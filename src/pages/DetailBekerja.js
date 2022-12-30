@@ -31,8 +31,6 @@ const DetailBekerja = ({ navigation, route }) => {
     };
   }, [isFocused, uuid_riwayat]);
 
-  console.log('detailBekerja', detailBekerja);
-
   return (
     <SafeAreaView>
       <Header>

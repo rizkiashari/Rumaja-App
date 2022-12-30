@@ -33,8 +33,6 @@ const DaftarSelesai = ({ navigation, route }) => {
     };
   }, [idLowongan, setIsLoading]);
 
-  console.log(dataPelamar);
-
   return (
     <SafeAreaView>
       <Header>

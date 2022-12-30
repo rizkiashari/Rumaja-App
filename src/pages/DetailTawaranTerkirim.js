@@ -9,6 +9,8 @@ import { calculateAge } from '../utils/calculateAge';
 import { colors } from '../utils/colors';
 import moment from 'moment';
 import useLoading from '../store/loadingStore';
+import { API } from '../config/api';
+import { showError } from '../utils/showMessages';
 
 const DetailTawaranTerkirim = ({ navigation, route }) => {
   const { width, height } = Dimensions.get('window');
@@ -29,11 +31,26 @@ const DetailTawaranTerkirim = ({ navigation, route }) => {
     loadDetail();
   }, [isFocused, id_riwayat]);
 
-  console.log('dataDetail', dataDetail?.riwayat);
+  const mulaiPekerjaan = async (uuid_riwayat) => {
+    try {
+      setLoading(true);
+      const res = await API.patch(`/lamaran/mulai-bekerja/${uuid_riwayat}`);
 
-  // menunggu_respons_pencari
-
-  const mulaiPekerjaan = async () => {};
+      if (res.data.message === 'SUCCESS_MULAI_BEKERJA') {
+        navigation.navigate('SuksesBekerja', {
+          title: 'Berhasil memulai pekerjaan!',
+          subTitle: 'Kandidat akan mulai bekerja pada waktu dan lokasi yang sudah ditetapkan.',
+        });
+        setLoading(false);
+      } else {
+        showError('Gagal memulai pekerjaan!');
+        setLoading(false);
+      }
+    } catch ({ response }) {
+      showError(response.data.message);
+      setLoading(false);
+    }
+  };
 
   return (
     <SafeAreaView>
@@ -93,7 +110,7 @@ const DetailTawaranTerkirim = ({ navigation, route }) => {
           <Card type="detail" title="Permintaan Waktu Mulai Bekerja">
             <Text fontFamily={fonts.primary[400]} fontSize={width / 32} color={colors.text.black70} textTransform="capitalize">
               {moment(dataDetail?.riwayat?.tanggal_mulai_kerja * 1000).format('dddd, DD MMMM YYYY')} -{' '}
-              {dataDetail?.riwayat?.waktu_mulai_kerja?.split(':')[0]}:{dataDetail?.riwayat?.waktu_mulai_kerja?.split(':')[1]} WIB
+              {dataDetail?.riwayat?.waktu_mulai_kerja?.split(':')[0]}:{dataDetail?.riwayat?.waktu_mulai_kerja?.split(':')[1]}
             </Text>
           </Card>
           <Card type="detail" title="Catatan Tambahan">
@@ -133,7 +150,13 @@ const DetailTawaranTerkirim = ({ navigation, route }) => {
               </Text>
             </Box>
           ) : (
-            <Button type="primary" fontSize={width} text={loading ? 'Loading...' : 'Mulai Pekerjaan'} onPress={mulaiPekerjaan} width={width / 1.7} />
+            <Button
+              type="primary"
+              fontSize={width}
+              text={loading ? 'Loading...' : 'Mulai Pekerjaan'}
+              onPress={() => mulaiPekerjaan(dataDetail?.riwayat?.uuid_riwayat)}
+              width={width / 1.7}
+            />
           )}
         </HStack>
       </Box>

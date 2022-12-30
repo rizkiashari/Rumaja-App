@@ -148,8 +148,6 @@ const Tersimpan = ({ navigation }) => {
     }
   };
 
-  console.log(dataSimpanPekerja);
-
   return (
     <SafeAreaView>
       <Header>

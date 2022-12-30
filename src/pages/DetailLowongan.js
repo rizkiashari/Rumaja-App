@@ -44,8 +44,6 @@ const DetailLowongan = ({ navigation, route }) => {
     };
   }, [isFocused, uuid, invoke, setLoading]);
 
-  console.log('detailLowongan', detailLowongan);
-
   const handleLamaran = async (id) => {
     setLoading(true);
     const payload = {

@@ -99,8 +99,6 @@ const DetailLayanan = ({ navigation, route }) => {
     setDataPekerja(resp.data.pekerja);
   };
 
-  console.log(dataPekerja);
-
   return (
     <SafeAreaView>
       <View bgColor={colors.text.black10} minH={height}>

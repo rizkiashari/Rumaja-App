@@ -37,8 +37,6 @@ const DetailPelamar = ({ navigation, route }) => {
     };
   }, [isFocused, uuid_riwayat]);
 
-  console.log(detailPelamar);
-
   const mulaiPekerjaan = async () => {
     try {
       setLoading(true);
@@ -59,8 +57,6 @@ const DetailPelamar = ({ navigation, route }) => {
       setLoading(false);
     }
   };
-
-  console.log(detailPelamar);
 
   return (
     <SafeAreaView>
