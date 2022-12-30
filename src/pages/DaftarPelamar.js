@@ -71,7 +71,7 @@ const DaftarPelamar = ({ navigation, route }) => {
                 }
                 id={+pelamar?.pencari?.id_bidang_kerja}
                 title={pelamar?.pencari?.users?.nama_user}
-                subTitle={`${pelamar?.pencari?.users?.domisili_kota}, ${pelamar?.pencari?.users?.domisili_provinsi?.split(',')[0]}`}
+                subTitle={`${pelamar?.pencari?.users?.domisili_kota}, ${pelamar?.pencari?.users?.domisili_provinsi?.split(',')[1]}`}
                 statusProgress="Diproses"
               >
                 <HStack space={1}>
