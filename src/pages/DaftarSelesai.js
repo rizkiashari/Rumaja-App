@@ -33,6 +33,8 @@ const DaftarSelesai = ({ navigation, route }) => {
     };
   }, [idLowongan, setIsLoading]);
 
+  console.log(dataPelamar);
+
   return (
     <SafeAreaView>
       <Header>
@@ -62,13 +64,22 @@ const DaftarSelesai = ({ navigation, route }) => {
             <Card
               type="progres"
               key={index}
-              onNavigation={() =>
-                navigation.navigate('DetailPencari', {
-                  uuid: pelamar?.pencari?.users?.uuid_user,
-                  type: 'daftar-selesai',
-                  uuid_riwayat: pelamar?.uuid_riwayat,
-                })
-              }
+              onNavigation={() => {
+                if (pelamar?.status === 'selesai') {
+                  navigation.navigate('DetailPencari', {
+                    uuid: pelamar?.pencari?.users?.uuid_user,
+                    type: 'daftar-selesai',
+                    uuid_riwayat: pelamar?.uuid_riwayat,
+                  });
+                }
+                if (pelamar?.status === 'ditolak') {
+                  navigation.navigate('DetailPelamar', {
+                    uuid: pelamar?.pencari?.users?.uuid_user,
+                    type: 'daftar-tolak',
+                    uuid_riwayat: pelamar?.uuid_riwayat,
+                  });
+                }
+              }}
               id={+pelamar?.pencari?.id_bidang_kerja}
               title={pelamar?.pencari?.users?.nama_user}
               subTitle={`${pelamar?.pencari?.users?.domisili_kota}, ${pelamar?.pencari?.users?.domisili_provinsi?.split(',')[1]}`}

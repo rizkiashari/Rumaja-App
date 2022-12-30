@@ -99,6 +99,8 @@ const DetailLayanan = ({ navigation, route }) => {
     setDataPekerja(resp.data.pekerja);
   };
 
+  console.log(dataPekerja);
+
   return (
     <SafeAreaView>
       <View bgColor={colors.text.black10} minH={height}>
@@ -185,7 +187,7 @@ const DetailLayanan = ({ navigation, route }) => {
                 >
                   <HStack space={0.5} alignItems="center">
                     {pekerja?.gender && pekerja?.tanggal_lahir && <Badge title={`${pekerja?.gender}, ${calculateAge(pekerja?.tanggal_lahir)}`} />}
-                    <Badge title={pekerja?.ulasan ? pekerja?.ulasan : 0} type="rating" icon={<StarActive />} />
+                    <Badge title={pekerja?.rating ? pekerja?.rating.toFixed(1) : 0} type="rating" icon={<StarActive />} />
                   </HStack>
                   <Text fontSize={width / 32} fontFamily={fonts.primary[400]}>
                     {pekerja?.pengalaman} Pengalaman

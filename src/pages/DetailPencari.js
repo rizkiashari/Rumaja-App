@@ -317,6 +317,20 @@ const DetailPencari = ({ navigation, route }) => {
             <Button type="progres" fontSize={width} text="Akhiri Pekerjaan" onPress={onAkhirPekerjaan} width={width / 2.2} bgColor={colors.red} />
           </HStack>
         </Box>
+      ) : type === 'daftar-selesai' ? (
+        <Box position="absolute" bottom={height / 2.25} width="full" px={width / 28} justifyContent="center" py={4} backgroundColor="white">
+          <Button
+            type="primary"
+            fontSize={width}
+            text="Lihat Progres"
+            onPress={() => {
+              navigation.navigate('LihatProgres', {
+                uuid: uuid_riwayat,
+                type: 'penyedia',
+              });
+            }}
+          />
+        </Box>
       ) : (
         <Box position="absolute" bottom={height / 2.25} width="full" px={width / 28} justifyContent="center" py={4} backgroundColor="white">
           <Button
