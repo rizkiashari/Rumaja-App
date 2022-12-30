@@ -5,8 +5,10 @@ import { colors } from '../utils/colors';
 import { Button, PesanSukses } from '../components';
 import { ILTolakDiproses } from '../assets';
 
-const SuksesTolakPelamar = ({ navigation }) => {
+const SuksesTolakPelamar = ({ navigation, route }) => {
   const { width, height } = Dimensions.get('window');
+
+  const { title, subTitle } = route.params;
 
   const menujuProgres = () => navigation.navigate('MainApp');
 
@@ -14,13 +16,7 @@ const SuksesTolakPelamar = ({ navigation }) => {
     <View bgColor={colors.white} minH={height}>
       <VStack justifyContent="space-between" height={height / 1.14} px={width / 28}>
         <Box height={height / 2} mt={20} justifyContent="center">
-          <PesanSukses
-            w={width / 1.6}
-            h={width / 1.6}
-            title="Tawaran berhasil ditolak!"
-            subTitle="Tawaran kerja yang anda dapat berhasil ditolak. Alasan penolakan telah dikirim ke penyedia kerja."
-            uriImage={ILTolakDiproses}
-          />
+          <PesanSukses w={width / 1.6} h={width / 1.6} title={title} subTitle={subTitle} uriImage={ILTolakDiproses} />
         </Box>
         <Button type="primary" fontSize={width} text="Kembali" onPress={menujuProgres} />
       </VStack>
