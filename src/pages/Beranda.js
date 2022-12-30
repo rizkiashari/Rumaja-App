@@ -14,6 +14,7 @@ import { convertRupiah } from '../utils/convertRupiah';
 import moment from 'moment';
 import { showError, showSuccess } from '../utils/showMessages';
 import { calculateAge } from '../utils/calculateAge';
+import useAuthStore from '../store/authStore';
 
 const Beranda = ({ navigation }) => {
   const { width, height } = Dimensions.get('window');
@@ -25,6 +26,7 @@ const Beranda = ({ navigation }) => {
   const [invoke, setInvoke] = useState(false);
 
   const [countNotif, setCountNotif] = useState(0);
+  const { setIsLogin } = useAuthStore();
 
   const { setFilterHome } = useFilterHome();
   const { setFilterTersimpan } = useFilterTersimpan();
@@ -46,10 +48,20 @@ const Beranda = ({ navigation }) => {
       if (userData?.id_role === 2) {
         const resp = await getData(`/lowongan/rekomendasi?bidang_kerja=${userData?.id_bidang_kerja}&page=${page}&limit=5`);
 
+        if (resp?.code === 403) {
+          setIsLogin(false);
+          showError('Sesi anda telah berakhir, silahkan login kembali');
+          return;
+        }
+
         setDataLowongan(resp.data.lowongan);
       } else {
         const resp = await getData('/user/rekomendasi-pencari');
-
+        if (resp?.code === 403) {
+          setIsLogin(false);
+          showError('Sesi anda telah berakhir, silahkan login kembali');
+          return;
+        }
         setDataPekerja(resp.data);
       }
     };

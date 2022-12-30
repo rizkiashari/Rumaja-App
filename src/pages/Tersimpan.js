@@ -14,6 +14,7 @@ import moment from 'moment';
 import { convertRupiah } from '../utils/convertRupiah';
 import { useFilterTersimpan } from '../store/filterHome';
 import useLoading from '../store/loadingStore';
+import useAuthStore from '../store/authStore';
 
 const Tersimpan = ({ navigation }) => {
   const { width, height } = Dimensions.get('window');
@@ -22,6 +23,8 @@ const Tersimpan = ({ navigation }) => {
   const [dataLowongan, setDataLowongan] = useState(null);
 
   const [invoke, setInvoke] = useState(false);
+
+  const { setIsLogin } = useAuthStore();
 
   const isFocused = navigation.isFocused();
 
@@ -35,10 +38,20 @@ const Tersimpan = ({ navigation }) => {
       if (filterTersimpan === null) {
         if (userData?.id_role === 3) {
           const resp = await getData('/user/pencari/all-save');
+          if (resp?.code === 403) {
+            setIsLogin(false);
+            showError('Sesi anda telah berakhir, silahkan login kembali');
+            return;
+          }
           setDataSimpanPekerja(resp.data.pekerja);
         }
         if (userData?.id_role === 2) {
           const resp = await getData('/lowongan/list-save');
+          if (resp?.code === 403) {
+            setIsLogin(false);
+            showError('Sesi anda telah berakhir, silahkan login kembali');
+            return;
+          }
           setDataLowongan(resp?.data?.lowongan);
         }
       } else {
@@ -51,11 +64,20 @@ const Tersimpan = ({ navigation }) => {
             filterTersimpan.urutan === ''
           ) {
             const resp = await getData('/lowongan/list-save');
+            if (resp?.code === 403) {
+              setIsLogin(false);
+              showError('Sesi anda telah berakhir, silahkan login kembali');
+              return;
+            }
             setDataLowongan(resp?.data?.lowongan);
           } else {
             const resp = await getData(
               `/lowongan/list-save?bidang_kerja=${filterTersimpan.bidang_kerja}&kota=${filterTersimpan.kota}&provinsi=${filterTersimpan.provinsi}&skala_gaji=${filterTersimpan.skala_gaji}&urutan=${filterTersimpan.urutan}`
             );
+            if (resp?.code === 403) {
+              setIsLogin(false);
+              return;
+            }
             setDataLowongan(resp?.data?.lowongan);
           }
         }
@@ -71,11 +93,21 @@ const Tersimpan = ({ navigation }) => {
             filterTersimpan.urutan === ''
           ) {
             const resp = await getData('/user/pencari/all-save');
+            if (resp?.code === 403) {
+              setIsLogin(false);
+              showError('Sesi anda telah berakhir, silahkan login kembali');
+              return;
+            }
             setDataSimpanPekerja(resp.data.pekerja);
           } else {
             const resp = await getData(
               `/user/pencari/all-save?bidang_kerja=${filterTersimpan.bidang_kerja}&provinsi=${filterTersimpan.provinsi}&gender=${filterTersimpan.jenis_kelamin}&max_usia=${filterTersimpan.max_usia}&min_usia=${filterTersimpan.min_usia}&urutan=${filterTersimpan.urutan}`
             );
+            if (resp?.code === 403) {
+              setIsLogin(false);
+              showError('Sesi anda telah berakhir, silahkan login kembali');
+              return;
+            }
             setDataSimpanPekerja(resp.data.pekerja);
           }
         }

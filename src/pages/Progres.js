@@ -3,13 +3,15 @@ import React, { useEffect, useState } from 'react';
 import useLoading from '../store/loadingStore';
 import useUserStore from '../store/userStore';
 import { getData } from '../utils/getData';
-import { Badge, Button, Card, DaftarWithJumlah, EmptyContent, Header, LoadingSkeleton, Tab } from '../components';
+import { Badge, Card, DaftarWithJumlah, EmptyContent, Header, LoadingSkeleton, Tab } from '../components';
 import { Box, HStack, ScrollView, Text, VStack } from 'native-base';
 import { ChevronDown, ChevronRight, Notification, Timer } from '../assets';
 import { fonts } from '../utils/fonts';
 import { colors } from '../utils/colors';
 import { convertRupiah } from '../utils/convertRupiah';
 import moment from 'moment';
+import useAuthStore from '../store/authStore';
+import { showError } from '../utils/showMessages';
 
 const Progres = ({ navigation }) => {
   const { width, height } = Dimensions.get('window');
@@ -26,6 +28,8 @@ const Progres = ({ navigation }) => {
 
   const [countNotif, setCountNotif] = useState(0);
 
+  const { setIsLogin } = useAuthStore();
+
   const [tawaranPekerjaan, setTawaranPekerjaan] = useState(null);
   const [lamaranTerkirim, setLamaranTerkirim] = useState(null);
   const [allProgres, setAllProgres] = useState(null);
@@ -38,7 +42,11 @@ const Progres = ({ navigation }) => {
       if (jenisTabs === 'Diproses' && userData?.id_role === 2) {
         const resTawaran = await getData('/tawarkan/tawarkan-all');
         setTawaranPekerjaan(resTawaran.data);
-
+        if (resTawaran?.code === 403) {
+          setIsLogin(false);
+          showError('Sesi anda telah berakhir, silahkan login kembali');
+          return;
+        }
         const resLamaran = await getData('/lamaran/applied-all');
         setLamaranTerkirim(resLamaran.data);
       }
@@ -56,7 +64,11 @@ const Progres = ({ navigation }) => {
       if (jenisTabs === 'Diproses' && userData?.id_role === 3) {
         const resPelamar = await getData('/lamaran/pelamar');
         setDataPelamar(resPelamar.data);
-
+        if (resPelamar?.code === 403) {
+          setIsLogin(false);
+          showError('Sesi anda telah berakhir, silahkan login kembali');
+          return;
+        }
         const resTawaranTerkirim = await getData('/tawarkan/tawaran-terkirim');
         setDataTawaranTerkirim(resTawaranTerkirim.data);
       }

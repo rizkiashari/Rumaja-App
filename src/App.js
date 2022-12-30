@@ -29,6 +29,7 @@ const App = () => {
       switch (resp.message) {
         case 'UNAUTHORIZED':
           setIsLogin(false);
+          console.log('Logout 1');
           showError('Sesi anda telah berakhir, silahkan login kembali');
           break;
         case 'TOKEN_EXPIRED':
@@ -41,6 +42,7 @@ const App = () => {
             setIsLogin(false);
             showError('Sesi anda telah berakhir, silahkan login kembali');
             removeLocalStorage('token');
+            console.log('Logout 2');
           } else if (respRefresh?.message === 'REFRESH_TOKEN_SUCCESS') {
             setExpired(false);
             storeData('token', {

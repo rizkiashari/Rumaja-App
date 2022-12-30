@@ -12,6 +12,7 @@ import { calculateAge } from '../utils/calculateAge';
 import { calculateRating } from '../utils/calculateRating';
 import { convertRupiah } from '../utils/convertRupiah';
 import moment from 'moment';
+import { showError } from '../utils/showMessages';
 
 const Profil = ({ navigation }) => {
   const { width, height } = Dimensions.get('window');
@@ -22,6 +23,8 @@ const Profil = ({ navigation }) => {
   const [pendidikan, setPendidikan] = useState(null);
   const [lowongan, setLowongan] = useState(null);
   const [ulasan, setUlasan] = useState(null);
+
+  const { setIsLogin } = useUserStore();
 
   const [detailProfile, setDetailProfile] = useState(null);
 
@@ -36,6 +39,11 @@ const Profil = ({ navigation }) => {
     const getAllData = async () => {
       if (userData?.id_role === 3) {
         const resp = await getData('/lowongan/list-lowongan?publish=publish');
+        if (resp?.code === 403) {
+          setIsLogin(false);
+          showError('Sesi anda telah berakhir, silahkan login kembali');
+          return;
+        }
         if (resp.message === 'SUCCESS_GET_ALL_LOWONGAN') {
           setLowongan(resp?.data?.lowongan);
           setLoading(false);
@@ -49,6 +57,11 @@ const Profil = ({ navigation }) => {
       }
       if (userData?.id_role === 2) {
         const profileRes = await getData('/user/profile-pencari');
+        if (resp?.code === 403) {
+          setIsLogin(false);
+          showError('Sesi anda telah berakhir, silahkan login kembali');
+          return;
+        }
         if (profileRes.message === 'SUCCESS_GET_PROFILE_PENCARI') {
           setDetailProfile(profileRes.data);
           setLoading(false);
