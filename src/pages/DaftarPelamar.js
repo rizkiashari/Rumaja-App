@@ -82,7 +82,7 @@ const DaftarPelamar = ({ navigation, route }) => {
                   />
                   <Badge title={`${calculateRating(pelamar?.pencari?.ulasan)}`} type="rating" icon={<StarActive />} />
                 </HStack>
-                <Text fontSize={width / 36} fontFamily={fonts.primary[400]} textTransform="capitalize">
+                <Text pr={width / 28} fontSize={width / 36} fontFamily={fonts.primary[400]} textTransform="capitalize">
                   {pelamar?.pencari?.pengalaman?.length} Pengalaman
                 </Text>
               </Card>
