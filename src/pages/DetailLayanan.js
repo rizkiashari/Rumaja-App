@@ -36,19 +36,12 @@ const DetailLayanan = ({ navigation, route }) => {
         const resp = await getData(`/user/pencari/${idPekerjaan}`);
         setDataPekerja(resp?.data?.pekerja);
       } else {
-        if (
-          filterHome.kota === '' &&
-          filterHome.provinsi === '' &&
-          filterHome.urutan === '' &&
-          filterHome.gender === '' &&
-          filterHome.min_rentang === '' &&
-          filterHome.max_rentang === ''
-        ) {
+        if (filterHome.urutan === '' && filterHome.gender === '' && filterHome.min_rentang === '' && filterHome.max_rentang === '') {
           const resp = await getData(`/user/pencari/${idPekerjaan}`);
           setDataPekerja(resp?.data?.pekerja);
         } else {
           const resp = await getData(
-            `/user/pencari/${idPekerjaan}?kota=${filterHome.kota}&provinsi=${filterHome.provinsi}&urutan=${filterHome.urutan}&jenis_kelamin=${
+            `/user/pencari/${idPekerjaan}?urutan=${filterHome.urutan}&jenis_kelamin=${
               filterHome.gender
             }&min_usia=${+filterHome.min_rentang}&max_usia=${+filterHome.max_rentang}`
           );

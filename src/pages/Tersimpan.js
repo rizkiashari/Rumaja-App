@@ -56,13 +56,7 @@ const Tersimpan = ({ navigation }) => {
         }
       } else {
         if (userData?.id_role === 2) {
-          if (
-            filterTersimpan.bidang_kerja === '' &&
-            filterTersimpan.kota === '' &&
-            filterTersimpan.provinsi === '' &&
-            filterTersimpan.skala_gaji === '' &&
-            filterTersimpan.urutan === ''
-          ) {
+          if (filterTersimpan.bidang_kerja === '' && filterTersimpan.skala_gaji === '' && filterTersimpan.urutan === '') {
             const resp = await getData('/lowongan/list-save');
             if (resp?.code === 403) {
               setIsLogin(false);
@@ -72,7 +66,7 @@ const Tersimpan = ({ navigation }) => {
             setDataLowongan(resp?.data?.lowongan);
           } else {
             const resp = await getData(
-              `/lowongan/list-save?bidang_kerja=${filterTersimpan.bidang_kerja}&kota=${filterTersimpan.kota}&provinsi=${filterTersimpan.provinsi}&skala_gaji=${filterTersimpan.skala_gaji}&urutan=${filterTersimpan.urutan}`
+              `/lowongan/list-save?bidang_kerja=${filterTersimpan.bidang_kerja}&skala_gaji=${filterTersimpan.skala_gaji}&urutan=${filterTersimpan.urutan}`
             );
             if (resp?.code === 403) {
               setIsLogin(false);

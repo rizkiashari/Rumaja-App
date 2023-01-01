@@ -33,13 +33,11 @@ const DetailBidangPekerjaan = ({ navigation, route }) => {
         const resp = await getData(`/lowongan/list/${idPekerjaan}`);
         setDataLowongan(resp?.data?.lowongan);
       } else {
-        if (filterHome.jenis_gaji === '' && filterHome.kota === '' && filterHome.provinsi === '' && filterHome.urutan === '') {
+        if (filterHome.jenis_gaji === '' && filterHome.urutan === '') {
           const resp = await getData(`/lowongan/list/${idPekerjaan}`);
           setDataLowongan(resp?.data?.lowongan);
         } else {
-          const resp = await getData(
-            `/lowongan/list/${idPekerjaan}?urutan=${filterHome.urutan}&kota=${filterHome.kota}&provinsi=${filterHome.provinsi}&jenis_gaji=${filterHome.jenis_gaji}`
-          );
+          const resp = await getData(`/lowongan/list/${idPekerjaan}?urutan=${filterHome.urutan}&jenis_gaji=${filterHome.jenis_gaji}`);
           setDataLowongan(resp.data.lowongan);
         }
       }

@@ -45,29 +45,17 @@ const FilterHome = ({ navigation, route }) => {
     setDataKota(resp.data);
   };
 
-  useEffect(() => {
-    getDataProvinsi();
-    getDataKota(provinsi);
-  }, [provinsi, isFocused]);
-
   const dataFilterLowongan = {
-    provinsi: provinsi ? provinsi : '',
     jenis_gaji: jenisGaji,
     urutan: urutan,
-    kota: currentKota,
   };
 
   const dataFilterPekerja = {
-    provinsi: provinsi ? provinsi : '',
-    kota: currentKota ? currentKota : '',
     urutan: urutan ? urutan : '',
     gender: gender !== 0 ? gender : '',
     min_rentang: minRentang !== 0 ? minRentang : '',
     max_rentang: maxRentang !== 0 ? maxRentang : '',
   };
-
-  console.log('dataFilterPekerja', dataFilterPekerja);
-  console.log('filterHome', filterHome);
 
   return (
     <View bgColor={colors.white} minH={height}>
@@ -86,61 +74,6 @@ const FilterHome = ({ navigation, route }) => {
         <VStack height={height / 1.2} mt={3} justifyContent="space-between">
           <ScrollView showsVerticalScrollIndicator={false}>
             <View px={width / 28}>
-              <VStack space={3}>
-                <LabelInput text="Lokasi Kerja" />
-                <HStack space={2}>
-                  <VStack w="1/2">
-                    <Select
-                      defaultValue={filterHome?.provinsi}
-                      accessibilityLabel="Pilih provinsi"
-                      placeholder="Pilih provinsi"
-                      rounded={8}
-                      px={4}
-                      py={2}
-                      fontFamily={fonts.primary[500]}
-                      borderColor={colors.text.black30}
-                      backgroundColor={colors.white}
-                      fontSize={width / 32}
-                      _selectedItem={{
-                        bg: colors.white,
-                        endIcon: <CheckIcon size={4} />,
-                      }}
-                      onValueChange={(itemValue) => {
-                        setProvinsi(itemValue);
-                      }}
-                    >
-                      {dataProvinsi?.map((item, index) => (
-                        <SelectItem key={index} label={item.nama} value={`${item.id},${item.nama}`} />
-                      ))}
-                    </Select>
-                  </VStack>
-                  <VStack w="1/2">
-                    <Select
-                      defaultValue={filterHome?.kota}
-                      accessibilityLabel="Pilih kota"
-                      placeholder="Pilih kota"
-                      rounded={8}
-                      px={4}
-                      py={2}
-                      fontFamily={fonts.primary[500]}
-                      borderColor={colors.text.black30}
-                      backgroundColor={colors.white}
-                      fontSize={width / 32}
-                      _selectedItem={{
-                        bg: colors.white,
-                        endIcon: <CheckIcon size={4} />,
-                      }}
-                      onValueChange={(itemValue) => {
-                        setCurrentKota(itemValue);
-                      }}
-                    >
-                      {dataKota?.map((item, index) => (
-                        <SelectItem key={index} label={item.nama} value={item.nama} />
-                      ))}
-                    </Select>
-                  </VStack>
-                </HStack>
-              </VStack>
               <VStack space={3} my={5}>
                 <LabelInput text="Jenis Gaji" />
                 <HStack w="full" justifyContent="space-between" space={2} mb={2}>
@@ -267,61 +200,6 @@ const FilterHome = ({ navigation, route }) => {
         <VStack height={height / 1.2} mt={3} justifyContent="space-between">
           <ScrollView showsVerticalScrollIndicator={false}>
             <View px={width / 28}>
-              <VStack space={3}>
-                <LabelInput text="Domisili" />
-                <HStack space={2}>
-                  <VStack w="1/2">
-                    <Select
-                      defaultValue={filterHome?.provinsi}
-                      accessibilityLabel="Pilih provinsi"
-                      placeholder="Pilih provinsi"
-                      rounded={8}
-                      px={4}
-                      py={2}
-                      fontFamily={fonts.primary[500]}
-                      borderColor={colors.text.black30}
-                      backgroundColor={colors.white}
-                      fontSize={width / 32}
-                      _selectedItem={{
-                        bg: colors.white,
-                        endIcon: <CheckIcon size={4} />,
-                      }}
-                      onValueChange={(itemValue) => {
-                        setProvinsi(itemValue);
-                      }}
-                    >
-                      {dataProvinsi?.map((item, index) => (
-                        <SelectItem key={index} label={item.nama} value={`${item.id},${item.nama}`} />
-                      ))}
-                    </Select>
-                  </VStack>
-                  <VStack w="1/2">
-                    <Select
-                      defaultValue={filterHome?.kota}
-                      accessibilityLabel="Pilih kota"
-                      placeholder="Pilih kota"
-                      rounded={8}
-                      px={4}
-                      py={2}
-                      fontFamily={fonts.primary[500]}
-                      borderColor={colors.text.black30}
-                      backgroundColor={colors.white}
-                      fontSize={width / 32}
-                      _selectedItem={{
-                        bg: colors.white,
-                        endIcon: <CheckIcon size={4} />,
-                      }}
-                      onValueChange={(itemValue) => {
-                        setCurrentKota(itemValue);
-                      }}
-                    >
-                      {dataKota?.map((item, index) => (
-                        <SelectItem key={index} label={item.nama} value={item.nama} />
-                      ))}
-                    </Select>
-                  </VStack>
-                </HStack>
-              </VStack>
               <HStack w="full" space={2} mt={4}>
                 <VStack w="1/2" space={2}>
                   <LabelInput text="Jenis Kelamin" />

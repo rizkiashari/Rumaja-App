@@ -45,22 +45,13 @@ const FilterTersimpan = ({ navigation }) => {
     setDataKota(resp.data);
   };
 
-  useEffect(() => {
-    getDataProvinsi();
-    getDataKota(currentProvinsi);
-  }, [currentProvinsi]);
-
   const dataFilterLowongan = {
     bidang_kerja: pekerjaan !== 0 ? pekerjaan : '',
-    kota: currentKota ? currentKota : '',
-    provinsi: currentProvinsi ? currentProvinsi : '',
     skala_gaji: jenisGaji ? jenisGaji : '',
     urutan: urutan ? urutan : '',
   };
 
   const dataFilterPencari = {
-    kota: currentKota ? currentKota : '',
-    provinsi: currentProvinsi ? currentProvinsi : '',
     bidang_kerja: pekerjaan !== 0 ? pekerjaan : '',
     jenis_kelamin: gender ? gender : '',
     min_usia: minUsia ? minUsia : '',
@@ -157,129 +148,6 @@ const FilterTersimpan = ({ navigation }) => {
                 </HStack>
               </VStack>
             </VStack>
-
-            {/* START: Lokasi Kerja */}
-            {userData?.id_role === 2 && (
-              <VStack space={2}>
-                <LabelInput text="Lokasi Kerja" />
-                <HStack w="full" space={3}>
-                  <VStack w={width / 2.3}>
-                    <Select
-                      accessibilityLabel="Pilih provinsi"
-                      placeholder="Pilih provinsi"
-                      rounded={8}
-                      px="4"
-                      fontFamily={fonts.primary[500]}
-                      type="text"
-                      borderColor={colors.text.black30}
-                      backgroundColor={colors.white}
-                      py="2"
-                      fontSize={width / 30}
-                      w="100%"
-                      _selectedItem={{
-                        bg: colors.white,
-                        endIcon: <CheckIcon size={0.5} />,
-                      }}
-                      onValueChange={(itemValue) => {
-                        setCurrentProvinsi(itemValue);
-                        setCurrentKota('');
-                      }}
-                    >
-                      {dataProvinsi.map((item, index) => {
-                        return <Select.Item key={index} label={item.nama} value={`${item.id},${item.nama}`} />;
-                      })}
-                    </Select>
-                  </VStack>
-                  <VStack w={width / 2.3}>
-                    <Select
-                      accessibilityLabel="Pilih kota"
-                      placeholder="Pilih kota"
-                      rounded={8}
-                      px="3"
-                      fontFamily={fonts.primary[500]}
-                      type="text"
-                      borderColor={colors.text.black30}
-                      backgroundColor={colors.white}
-                      py="2"
-                      fontSize={width / 30}
-                      w="100%"
-                      _selectedItem={{
-                        bg: colors.white,
-                        endIcon: <CheckIcon size={1} />,
-                      }}
-                      onValueChange={(itemValue) => {
-                        setCurrentKota(itemValue);
-                      }}
-                    >
-                      {dataKota.map((item, index) => {
-                        return <Select.Item key={index} label={item.nama} value={item.nama} />;
-                      })}
-                    </Select>
-                  </VStack>
-                </HStack>
-              </VStack>
-            )}
-            {/* END: Lokasi Kerja */}
-            {userData?.id_role === 3 && (
-              <VStack space={2}>
-                <LabelInput text="Domisili" />
-                <HStack w="full" space={2}>
-                  <VStack w={width / 2.3}>
-                    <Select
-                      accessibilityLabel="Pilih provinsi"
-                      placeholder="Pilih provinsi"
-                      rounded={8}
-                      px="3"
-                      fontFamily={fonts.primary[500]}
-                      type="text"
-                      borderColor={colors.text.black30}
-                      backgroundColor={colors.white}
-                      py="2"
-                      fontSize={width / 30}
-                      w="100%"
-                      _selectedItem={{
-                        bg: colors.white,
-                        endIcon: <CheckIcon size={0.5} />,
-                      }}
-                      onValueChange={(itemValue) => {
-                        setCurrentProvinsi(itemValue);
-                        setCurrentKota('');
-                      }}
-                    >
-                      {dataProvinsi.map((item, index) => {
-                        return <Select.Item key={index} label={item.nama} value={`${item.id},${item.nama}`} />;
-                      })}
-                    </Select>
-                  </VStack>
-                  <VStack w={width / 2.3}>
-                    <Select
-                      accessibilityLabel="Pilih kota"
-                      placeholder="Pilih kota"
-                      rounded={8}
-                      px="3"
-                      fontFamily={fonts.primary[500]}
-                      type="text"
-                      borderColor={colors.text.black30}
-                      backgroundColor={colors.white}
-                      py="2"
-                      fontSize={width / 30}
-                      w="100%"
-                      _selectedItem={{
-                        bg: colors.white,
-                        endIcon: <CheckIcon size={1} />,
-                      }}
-                      onValueChange={(itemValue) => {
-                        setCurrentKota(itemValue);
-                      }}
-                    >
-                      {dataKota.map((item, index) => {
-                        return <Select.Item key={index} label={item.nama} value={item.id} />;
-                      })}
-                    </Select>
-                  </VStack>
-                </HStack>
-              </VStack>
-            )}
 
             {userData?.id_role === 3 && (
               <HStack w="full" space={2}>
