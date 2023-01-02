@@ -5,7 +5,7 @@ const baseUrl = REACT_APP_BASE_URL;
 console.log(baseUrl);
 
 export const API = axios.create({
-  baseURL: `${baseUrl}/api`,
+  baseURL: `https://rumaja.rizkiashari.xyz/api`,
 });
 
 export const configFormData = {
