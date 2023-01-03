@@ -49,7 +49,6 @@ const LupaKataSandi = ({ navigation }) => {
   };
 
   const onForgotPassword = async () => {
-    console.log(valReset);
     const payload = {
       resetPassword: valReset,
       password: password,
