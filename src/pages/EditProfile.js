@@ -99,10 +99,7 @@ const EditProfile = ({ navigation }) => {
       nama_lengkap: Yup.string().required('Nama lengkap harus diisi').min(3, 'Nama lengkap minimal 3 karakter'),
       jenis_kelamin: Yup.string().required('Jenis kelamin harus diisi'),
       bidang_pekerjaan: Yup.number().optional(),
-      nomor_wa: Yup.string()
-        .required('Nomor WA harus diisi')
-        .min(10, 'Nomor Whatsapp minimal 10 karakter')
-        .max(17, 'Nomor Whatsapp maksimal 17 karakter'),
+      nomor_wa: Yup.string().required('Nomor Hp harus diisi').min(10, 'Nomor Hp minimal 10 karakter').max(17, 'Nomor Hp maksimal 17 karakter'),
       tanggal_lahir: Yup.string().required('Tanggal lahir harus diisi'),
       domisili_kota: Yup.string().required('Kota harus diisi'),
       domisili_provinsi: Yup.string().required('Provinsi harus diisi'),
@@ -307,9 +304,9 @@ const EditProfile = ({ navigation }) => {
               </VStack>
             )}
             <VStack space={2}>
-              <LabelInput text="Nomor Whatsapp" />
+              <LabelInput text="Nomor Telepon" />
               <Input
-                placeholder="Masukkan nomor whatsapp"
+                placeholder="Masukkan nomor telepon"
                 type="number"
                 value={updateProfil.values.nomor_wa}
                 onChangeText={updateProfil.handleChange('nomor_wa')}

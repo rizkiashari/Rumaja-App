@@ -38,7 +38,7 @@ const DetailBidangPekerjaan = ({ navigation, route }) => {
           setDataLowongan(resp?.data?.lowongan);
         } else {
           const resp = await getData(`/lowongan/list/${idPekerjaan}?urutan=${filterHome.urutan}&jenis_gaji=${filterHome.jenis_gaji}`);
-          setDataLowongan(resp.data.lowongan);
+          setDataLowongan(resp?.data?.lowongan);
         }
       }
     };

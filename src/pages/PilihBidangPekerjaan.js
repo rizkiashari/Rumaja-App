@@ -51,9 +51,9 @@ const PilihBidangPekerjaan = ({ navigation }) => {
   return (
     <ScrollView showsVerticalScrollIndicator={false} bgColor={colors.white}>
       <Box pt="10" pb="5" width="full">
-        <VStack h={height / 1.13} alignItems="center" justifyContent="space-between">
-          <Text color="black" textAlign="center" fontSize={width / 22} fontFamily={fonts.primary[600]}>
-            Pilih Spesialisasi Pekerjaan
+        <VStack h={height / 1.13} alignItems="center">
+          <Text color="black" textAlign="center" fontSize={width / 22} fontFamily={fonts.primary[600]} mb={20}>
+            Pilih Bidang Pekerjaan
           </Text>
           <Center>
             <HStack mx={3} flexWrap="wrap" alignContent="center">
@@ -74,7 +74,7 @@ const PilihBidangPekerjaan = ({ navigation }) => {
                           rounded={8}
                           py={5}
                           w={width / 2.22}
-                          h={height / 3.4}
+                          h={height / 4}
                         >
                           <VStack alignItems="center" space="1.5">
                             <Box alignContent="center" rounded="lg">
@@ -96,14 +96,14 @@ const PilihBidangPekerjaan = ({ navigation }) => {
                                 <ArtInactive />
                               )}
                             </Box>
-                            <Text
+                            {/* <Text
                               fontFamily={fonts.primary[500]}
                               fontSize={width / 32}
                               textAlign="center"
                               color={+currentBidang === +item.id ? colors.blue[80] : colors.text.black70}
                             >
                               {item.nama_bidang}
-                            </Text>
+                            </Text> */}
                             <Text
                               fontFamily={fonts.primary[400]}
                               fontSize={width / 32}
@@ -147,16 +147,11 @@ const PilihBidangPekerjaan = ({ navigation }) => {
                     })}
             </HStack>
           </Center>
-          <Center>
+          <Center mt={20}>
             <HStack alignItems="center" space={3} w="full" px={width / 14} justifyContent="space-between">
               <Button text="Kembali" onPress={goBackPilihPeran} type="secondary" width={width / 2.3} fontSize={width} />
               {currentBidang !== '' && currentBidang !== undefined ? (
-                <Button
-                  onPress={() => navigation.navigate('Register')}
-                  text="Selanjutnya"
-                  width={width / 2.3}
-                  fontSize={width}
-                />
+                <Button onPress={() => navigation.navigate('Register')} text="Selanjutnya" width={width / 2.3} fontSize={width} />
               ) : (
                 <Box style={styles.btnSelanjutnyaDisabled(width)}>
                   <Text color={colors.text.black50} fontFamily={fonts.primary[500]} textAlign="center" paddingY={2}>

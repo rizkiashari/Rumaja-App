@@ -44,44 +44,44 @@ const Profil = ({ navigation }) => {
           showError('Sesi anda telah berakhir, silahkan login kembali');
           return;
         }
-        if (resp.message === 'SUCCESS_GET_ALL_LOWONGAN') {
+        if (resp?.message === 'SUCCESS_GET_ALL_LOWONGAN') {
           setLowongan(resp?.data?.lowongan);
           setLoading(false);
         }
         const profileRes = await getData('/user/profile-penyedia');
-        if (profileRes.message === 'SUCCESS_GET_PROFILE_PENYEDIA') {
-          setDetailProfile(profileRes.data);
+        if (profileRes?.message === 'SUCCESS_GET_PROFILE_PENYEDIA') {
+          setDetailProfile(profileRes?.data);
           setLoading(false);
         }
         setLoading(false);
       }
       if (userData?.id_role === 2) {
         const profileRes = await getData('/user/profile-pencari');
-        if (resp?.code === 403) {
+        if (profileRes?.code === 403) {
           setIsLogin(false);
           showError('Sesi anda telah berakhir, silahkan login kembali');
           return;
         }
-        if (profileRes.message === 'SUCCESS_GET_PROFILE_PENCARI') {
-          setDetailProfile(profileRes.data);
+        if (profileRes?.message === 'SUCCESS_GET_PROFILE_PENCARI') {
+          setDetailProfile(profileRes?.data);
           setLoading(false);
         }
 
         const respPengalaman = await getData('/pengalaman/list-all');
-        if (respPengalaman.message === 'LIST_ALL_PENGALAMAN_SUCCESS') {
-          setPengalaman(respPengalaman.data);
+        if (respPengalaman?.message === 'LIST_ALL_PENGALAMAN_SUCCESS') {
+          setPengalaman(respPengalaman?.data);
           setLoading(false);
         }
 
         const respPendidikan = await getData('/pendidikan/list-all');
-        if (respPendidikan.message === 'LIST_ALL_PENDIDIKAN_SUCCESS') {
-          setPendidikan(respPendidikan.data);
+        if (respPendidikan?.message === 'LIST_ALL_PENDIDIKAN_SUCCESS') {
+          setPendidikan(respPendidikan?.data);
           setLoading(false);
         }
 
         const respUlasan = await getData('/ulasan/list-all');
-        if (respUlasan.message === 'GET_ALL_ULASAN_PENCARI_SUCCESS') {
-          setUlasan(respUlasan.data);
+        if (respUlasan?.message === 'GET_ALL_ULASAN_PENCARI_SUCCESS') {
+          setUlasan(respUlasan?.data);
           setLoading(false);
         }
       }

@@ -16,7 +16,7 @@ const KontakItem = ({ nomor, email }) => {
         </Box>
         <VStack space={0.5}>
           <Text fontFamily={fonts.primary[500]} fontSize={width / 32} color="black">
-            WhatsApp
+            Nomor Telepon
           </Text>
           <HStack space={1.5}>
             <Text fontFamily={fonts.primary[400]} fontSize={width / 36} color={colors.text.black70}>

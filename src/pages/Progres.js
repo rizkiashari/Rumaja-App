@@ -239,7 +239,7 @@ const Progres = ({ navigation }) => {
             {isLoading ? (
               <LoadingSkeleton jumlah={4} />
             ) : allProgres?.length === 0 ? (
-              <EmptyContent title="Belum ada history bekerja" />
+              <EmptyContent title="Belum ada riwayat bekerja" />
             ) : (
               allProgres?.map((progres, index) => (
                 <Card
@@ -276,7 +276,7 @@ const Progres = ({ navigation }) => {
             {isLoading ? (
               <LoadingSkeleton jumlah={4} />
             ) : allProgres?.length === 0 ? (
-              <EmptyContent title="Belum ada history selesai atau ditolak" />
+              <EmptyContent title="Belum ada riwayat selesai atau ditolak" />
             ) : (
               allProgres?.map((selesai, index) => (
                 <Card

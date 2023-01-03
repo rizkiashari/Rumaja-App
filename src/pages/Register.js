@@ -71,10 +71,10 @@ const Register = ({ navigation }) => {
       email: Yup.string().email('Email tidak valid').required('Email tidak boleh kosong'),
       nomor_wa: Yup.string()
         .required('Nomor WA harus diisi')
-        .matches(/^[0-9]+$/, 'Nomor Whatsapp harus berupa angka')
-        .matches(/^(08)/, 'Nomor Whatsapp harus diawali dengan 08')
-        .min(10, 'Nomor Whatsapp minimal 10 karakter')
-        .max(17, 'Nomor Whatsapp maksimal 17 karakter'),
+        .matches(/^[0-9]+$/, 'Nomor Telepon harus berupa angka')
+        .matches(/^(08)/, 'Nomor Telepon harus diawali dengan 08')
+        .min(10, 'Nomor Telepon minimal 10 karakter')
+        .max(17, 'Nomor Telepon maksimal 17 karakter'),
       domisili_kota: Yup.string().required('Kota harus diisi'),
       domisili_provinsi: Yup.string().required('Provinsi harus diisi'),
       password: Yup.string().required('Password tidak boleh kosong').min(8, 'Password minimal 8 karakter'),
@@ -148,10 +148,10 @@ const Register = ({ navigation }) => {
             {registerUser.touched.email && registerUser.errors.email ? <ErrorInput error={registerUser.errors.email} /> : null}
           </VStack>
           <VStack space={2}>
-            <LabelInput text="Nomor Whatsapp" />
+            <LabelInput text="Nomor Telepon" />
             <Input
               type="number"
-              placeholder="Masukkan nomor whatsapp"
+              placeholder="Masukkan nomor telepon"
               value={registerUser.values.nomor_wa}
               onChangeText={registerUser.handleChange('nomor_wa')}
             />
