@@ -150,7 +150,7 @@ const Profil = ({ navigation }) => {
           _contentContainerStyle={{ paddingBottom: height / 1.5 }}
         >
           <VStack space={4}>
-            <Card type="detail" title="Tentang">
+            <Card type="detail" title="Keahlian">
               <Text fontFamily={fonts.primary[400]} fontSize={width / 36} color={colors.text.black70}>
                 {detailProfile?.pencari?.tentang ? detailProfile?.pencari?.tentang : '-'}
               </Text>
@@ -158,7 +158,7 @@ const Profil = ({ navigation }) => {
             <Card type="detail" title="Domisili">
               <Text fontFamily={fonts.primary[400]} fontSize={width / 36} color={colors.text.black70}>
                 {detailProfile?.domisili_kota ? detailProfile?.domisili_kota : '-'},{' '}
-                {detailProfile?.domisili_provinsi ? detailProfile?.domisili_provinsi : '-'}
+                {detailProfile?.domisili_provinsi ? detailProfile?.domisili_provinsi?.split(',')[1] : '-'}
               </Text>
             </Card>
             <Card type="detail" title="Kontak">
@@ -324,7 +324,7 @@ const Profil = ({ navigation }) => {
       {userData?.id_role === 3 && (
         <TopProfile
           title={detailProfile?.nama_user}
-          subtitle={`${detailProfile?.domisili_kota}, ${detailProfile?.domisili_provinsi}`}
+          subtitle={`${detailProfile?.domisili_kota}, ${detailProfile?.domisili_provinsi?.split(',')[1]}`}
           photo={detailProfile?.photo_profile}
           photoHeight="full"
           photoWidth="full"

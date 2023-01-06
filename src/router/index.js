@@ -75,7 +75,7 @@ const MainApp = () => {
     >
       <Tab.Screen name="Beranda" component={Beranda} options={{ headerShown: false }} />
       <Tab.Screen name="Tersimpan" component={Tersimpan} options={{ headerShown: false }} />
-      <Tab.Screen name="Progres" component={Progres} options={{ headerShown: false }} />
+      <Tab.Screen name="Status" component={Progres} options={{ headerShown: false }} />
       <Tab.Screen name="Profil" component={Profil} options={{ headerShown: false }} />
     </Tab.Navigator>
   );

@@ -194,7 +194,7 @@ const DetailPencari = ({ navigation, route }) => {
           _contentContainerStyle={{ paddingBottom: height / 2.5 }}
         >
           <VStack space={4} mb={height / 3.5}>
-            <Card type="detail" title="Tentang">
+            <Card type="detail" title="Keahlian">
               <Text fontFamily={fonts.primary[400]} fontSize={width / 36} color={colors.text.black70}>
                 {dataPencari?.pencari?.tentang ? dataPencari?.pencari?.tentang : '-'}
               </Text>

@@ -109,7 +109,7 @@ const Progres = ({ navigation }) => {
     <SafeAreaView>
       <Header>
         <Text fontFamily={fonts.primary[600]} fontSize={width / 28} color="black">
-          Progres
+          Status
         </Text>
         <TouchableOpacity style={styles.containerNotif} onPress={() => navigation.navigate('Notifikasi')}>
           <Notification width={28} />

@@ -332,10 +332,21 @@ const EditProfile = ({ navigation }) => {
                 onPress={() => setOpen(true)}
               />
             </VStack>
+            {userData?.id_role === 2 && (
+              <VStack space={2}>
+                <LabelInput text="Keahlian" />
+                <TextArea
+                  placeholder="Ceritakan keahlian diri anda"
+                  value={updateProfil.values.tentang}
+                  onChangeText={updateProfil.handleChange('tentang')}
+                />
+                {updateProfil.errors.tentang && updateProfil.touched.tentang ? <ErrorInput error={updateProfil.errors.tentang} /> : null}
+              </VStack>
+            )}
             <VStack space={2}>
               <LabelInput text="Domisili" />
-              <HStack space={3}>
-                <VStack w={width / 2.2}>
+              <HStack space={2}>
+                <VStack w={width / 2.24}>
                   <Select
                     selectedValue={updateProfil.values.domisili_provinsi}
                     accessibilityLabel="Pilih provinsi"
@@ -365,7 +376,7 @@ const EditProfile = ({ navigation }) => {
                     <ErrorInput error={updateProfil.errors.domisili_provinsi} />
                   ) : null}
                 </VStack>
-                <VStack w={width / 2.2}>
+                <VStack w={width / 2.24}>
                   <Select
                     selectedValue={updateProfil.values.domisili_kota}
                     accessibilityLabel="Pilih kota"
@@ -430,19 +441,21 @@ const EditProfile = ({ navigation }) => {
                 {updateProfil.errors.berat_badan && updateProfil.touched.berat_badan ? <ErrorInput error={updateProfil.errors.berat_badan} /> : null}
               </VStack>
             )}
-            <VStack space={2}>
-              <LabelInput text="Tentang" />
-              <TextArea
-                placeholder="Ceritakan tentang diri anda"
-                value={updateProfil.values.tentang}
-                onChangeText={updateProfil.handleChange('tentang')}
-              />
-              {updateProfil.errors.tentang && updateProfil.touched.tentang ? <ErrorInput error={updateProfil.errors.tentang} /> : null}
-            </VStack>
+            {userData?.id_role == 3 && (
+              <VStack space={2}>
+                <LabelInput text="Tentang" />
+                <TextArea
+                  placeholder="Ceritakan tentang diri anda"
+                  value={updateProfil.values.tentang}
+                  onChangeText={updateProfil.handleChange('tentang')}
+                />
+                {updateProfil.errors.tentang && updateProfil.touched.tentang ? <ErrorInput error={updateProfil.errors.tentang} /> : null}
+              </VStack>
+            )}
             {loading ? (
               <LoadingButton />
             ) : (
-              <Button type="primary" onPress={updateProfil.handleSubmit} text="Simpan" width={width / 1.1} fontSize={width} />
+              <Button type="primary" onPress={updateProfil.handleSubmit} text="Simpan" width={width / 1.09} fontSize={width} />
             )}
           </VStack>
         </ScrollView>

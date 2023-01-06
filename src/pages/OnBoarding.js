@@ -14,21 +14,15 @@ const OnBoarding = ({ navigation }) => {
   const dataOnBoarding = [
     {
       id: 1,
-      title: 'Selamat Datang Di Rumaja!',
-      subTitle: 'Rumaja membantu kamu menghubungkan antara pencari kerja dan pemberi kerja',
+      title: 'Selamat Datang Di Rumaja',
+      subTitle: 'Rumaja membantu proses perekrutan dari pihak pencari kerja dan penyedia kerja',
       image: ILOnBoarding1,
     },
     {
       id: 2,
-      title: 'Pilih Pekerja Dan Pekerjaan',
-      subTitle: 'Cari pekerja dan bantu mereka mendapatkan pekerjaan',
+      title: 'Cari Pekerja atau Pekerjaan',
+      subTitle: 'Tentukan peran dan temukan kebutuhan anda',
       image: ILOnBoarding2,
-    },
-    {
-      id: 3,
-      title: 'Mulai Cari & Bekerja di Rumaja',
-      subTitle: 'Mulai sekarang jangan di tunda-tunda',
-      image: ILOnBoarding3,
     },
   ];
 
@@ -57,7 +51,7 @@ const OnBoarding = ({ navigation }) => {
           );
         }
       })}
-      {urutan === 3 ? (
+      {urutan === 2 ? (
         <View marginTop={10}>
           <Button
             py="3"
@@ -87,7 +81,7 @@ const OnBoarding = ({ navigation }) => {
               Selanjutnya
             </Text>
           </Button>
-          <Button py="3" my="3" rounded={8} background={colors.white} onPress={() => setUrutan(3)}>
+          <Button py="3" my="3" rounded={8} background={colors.white} onPress={() => setUrutan(2)}>
             <Text color="#1F1F1F" fontSize="14" fontFamily={fonts.primary[500]}>
               Lewati
             </Text>

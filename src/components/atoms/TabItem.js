@@ -29,7 +29,7 @@ const TabItem = ({ title, active, onPress, onLongPress }) => {
         <ProfilInactive width={24} height={24} />
       );
     }
-    if (title === 'Progres') {
+    if (title === 'Status') {
       return active ? (
         <ProgresActive width={24} height={24} />
       ) : (

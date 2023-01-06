@@ -223,7 +223,7 @@ const Card = ({
                   fontSize={width / 36}
                   color={colors.text.black70}
                   isTruncated
-                  maxW={width / 1.3}
+                  maxW={width / 1.6}
                   numberOfLines={1}
                 >
                   {subTitle}
