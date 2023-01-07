@@ -159,7 +159,7 @@ const DetailPencari = ({ navigation, route }) => {
                       subTitle={`${moment(item?.tahun_mulai).format('MMMM YYYY')} - ${
                         item?.tahun_akhir === 'Sekarang' ? 'Sekarang' : moment(item?.tahun_akhir).format('MMMM YYYY')
                       }`}
-                      lokasi={item?.pengalaman_prov}
+                      lokasi={item?.pengalaman_prov?.split(',')[1]}
                       type="pengalaman"
                     />
                   ))
