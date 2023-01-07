@@ -68,6 +68,12 @@ const TambahPengalaman = ({ navigation }) => {
     onSubmit: async (values) => {
       setLoading(true);
 
+      if (values.tahun_mulai > values.tahun_akhir) {
+        showError('Mulai kerja tidak boleh lebih besar dari selesai kerja');
+        setLoading(false);
+        return;
+      }
+
       const payload = {
         nama: values.nama,
         pengalaman_prov: values.pengalaman_prov,

@@ -46,16 +46,16 @@ const DetailPekerjaanSelesai = ({ navigation, route }) => {
     };
     const pengalaman = await postWithJson('/pengalaman/add', payload);
 
-    if (pengalaman.message === 'YEAR_NOT_VALID') {
-      showError('Tahun mulai kerja tidak boleh lebih besar dari tahun sekarang');
-    } else {
-      try {
-        await API.patch(`/pengalaman/ulasan/${uuid_riwayat}`);
-        setInvoke(!invoke);
-        showSuccess('Pengalaman berhasil ditambahkan');
-      } catch ({ response }) {
-        showError(response.data.message);
-      }
+    if (pengalaman.code === 423) {
+      showError('Pengalaman anda tidak dapat ditambahkan');
+    }
+
+    try {
+      await API.patch(`/pengalaman/ulasan/${uuid_riwayat}`);
+      setInvoke(!invoke);
+      showSuccess('Pengalaman berhasil ditambahkan');
+    } catch ({ response }) {
+      showError(response.data.message);
     }
   };
 
