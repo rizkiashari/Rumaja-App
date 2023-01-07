@@ -44,14 +44,18 @@ const DetailPekerjaanSelesai = ({ navigation, route }) => {
       tahun_akhir: moment(dataDetail?.createdAt * 1000).format('YYYY-MM-DD'),
       isWork: 0,
     };
-    await postWithJson('/pengalaman/add', payload);
+    const pengalaman = await postWithJson('/pengalaman/add', payload);
 
-    try {
-      await API.patch(`/pengalaman/ulasan/${uuid_riwayat}`);
-      setInvoke(!invoke);
-      showSuccess('Pengalaman berhasil ditambahkan');
-    } catch ({ response }) {
-      showError(response.data.message);
+    if (pengalaman.message === 'YEAR_NOT_VALID') {
+      showError('Tahun mulai kerja tidak boleh lebih besar dari tahun sekarang');
+    } else {
+      try {
+        await API.patch(`/pengalaman/ulasan/${uuid_riwayat}`);
+        setInvoke(!invoke);
+        showSuccess('Pengalaman berhasil ditambahkan');
+      } catch ({ response }) {
+        showError(response.data.message);
+      }
     }
   };
 

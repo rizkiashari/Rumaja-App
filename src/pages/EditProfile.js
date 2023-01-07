@@ -167,6 +167,7 @@ const EditProfile = ({ navigation }) => {
     const loadProfil = async () => {
       if (userData?.id_role === 3) {
         const { data } = await getData('/user/profile-penyedia');
+        console.log(data);
         updateProfil.setFieldValue('nama_lengkap', data?.nama_user);
         updateProfil.setFieldValue('jenis_kelamin', data?.penyedia?.gender);
         updateProfil.setFieldValue('nomor_wa', data?.nomor_wa);
@@ -180,6 +181,7 @@ const EditProfile = ({ navigation }) => {
         updateProfil.setFieldValue('alamat_rumah', data?.penyedia?.alamat_rumah);
         updateProfil.setFieldValue('tentang', data?.penyedia?.tentang);
         setPhoto(data?.photo_profile);
+        setTglLahir(moment(data?.penyedia?.tanggal_lahir).format('DD/MM/YYYY'));
       }
       if (userData?.id_role === 2) {
         const { data } = await getData('/user/profile-pencari');
@@ -199,6 +201,7 @@ const EditProfile = ({ navigation }) => {
         updateProfil.setFieldValue('domisili_provinsi', data?.domisili_provinsi);
         updateProfil.setFieldValue('tentang', data?.pencari?.tentang);
         setPhoto(data?.photo_profile);
+        setTglLahir(moment(data?.pencari?.tanggal_lahir).format('DD/MM/YYYY'));
       }
     };
 
@@ -296,7 +299,7 @@ const EditProfile = ({ navigation }) => {
                   }}
                   onValueChange={(itemValue) => updateProfil.setFieldValue('bidang_pekerjaan', itemValue)}
                 >
-                  {bidang?.length > bidang?.map((item, index) => <SelectItem key={index} label={item.detail_bidang} value={item.id} />)}
+                  {bidang?.length > 0 && bidang?.map((item, index) => <SelectItem key={index} label={item.detail_bidang} value={item.id} />)}
                 </Select>
                 {updateProfil.errors.bidang_pekerjaan && updateProfil.touched.bidang_pekerjaan ? (
                   <ErrorInput error={updateProfil.errors.bidang_pekerjaan} />

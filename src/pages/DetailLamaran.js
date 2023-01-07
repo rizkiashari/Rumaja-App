@@ -212,7 +212,7 @@ const DetailLamaran = ({ navigation, route }) => {
           {(dataDetail?.catatan_riwayat_penyedia === null || dataDetail?.tanggal_mulai_kerja === null) && type === 'diproses' && (
             <Box
               position="absolute"
-              bottom={height / 4.1}
+              bottom={height / 2.8}
               backgroundColor={colors.white}
               px={width / 28}
               py={4}
