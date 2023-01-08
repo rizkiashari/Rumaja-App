@@ -130,7 +130,7 @@ const KonfirmasiWaktu = ({ navigation }) => {
             </VStack>
           </VStack>
 
-          {loading ? <LoadingButton /> : <Button type="primary" text="Selanjutnya" fontSize={width} onPress={onKonfirmasiWaktu.handleSubmit} />}
+          {loading ? <LoadingButton /> : <Button type="primary" text="Konfirmasi" fontSize={width} onPress={onKonfirmasiWaktu.handleSubmit} />}
         </VStack>
       </ScrollView>
 
