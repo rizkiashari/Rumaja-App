@@ -1,8 +1,8 @@
 import { Dimensions, SafeAreaView, StyleSheet, TouchableOpacity } from 'react-native';
 import React, { useEffect, useState } from 'react';
-import { Text, View, Box, VStack, HStack, ScrollView, Input, Image } from 'native-base';
-import { Badge, Card, Cards, EmptyContent, Header, LoadingSkeleton } from '../components';
-import { ChevronBack, FilterBlack, ILPlaceholder, ILTersimpanEmpty, SearchBlack, SearchGray, StarActive, Timer } from '../assets';
+import { Text, View, Box, VStack, HStack, ScrollView, Input } from 'native-base';
+import { Badge, Card, EmptyContent, Header, LoadingSkeleton } from '../components';
+import { ChevronBack, FilterBlack, ILPlaceholder, ILTersimpanEmpty, SearchBlack, SearchGray, StarActive } from '../assets';
 import { fonts } from '../utils/fonts';
 import { colors } from '../utils/colors';
 import { getData } from '../utils/getData';
