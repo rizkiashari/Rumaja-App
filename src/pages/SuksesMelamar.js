@@ -17,7 +17,7 @@ const SuksesMelamar = ({ navigation }) => {
           <PesanSukses
             w={width / 1.6}
             h={width / 1.6}
-            title="Selamat! Lamaran Berhasil Dikirim"
+            title="Selamat! Lamaran Berhasil Terkirim"
             subTitle="Menunggu konfirmasi penyedia. Pantau terus progres dan notifikasi untuk informasi lebih lanjut!"
             uriImage={ILTerimaDiproses2}
           />

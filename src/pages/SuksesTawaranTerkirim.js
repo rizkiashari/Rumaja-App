@@ -17,8 +17,8 @@ const SuksesTawaranTerkirim = ({ navigation }) => {
           <PesanSukses
             w={width / 1.6}
             h={width / 1.6}
-            title="Tawaran anda sudah terkirim!"
-            subTitle="Tawaran anda sudah terkirim ke pelamar, silahkan tunggu konfirmasi dari pelamar."
+            title="Selamat! Tawaran Berhasil Terkirim"
+            subTitle="Menunggu Konfirmasi kandidat. Pantau terus progres dan notifikasi untuk informasi lebih lanjut!"
             uriImage={ILTerimaDiproses}
           />
         </Box>
