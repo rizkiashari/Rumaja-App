@@ -167,7 +167,6 @@ const EditProfile = ({ navigation }) => {
     const loadProfil = async () => {
       if (userData?.id_role === 3) {
         const { data } = await getData('/user/profile-penyedia');
-        console.log(data);
         updateProfil.setFieldValue('nama_lengkap', data?.nama_user);
         updateProfil.setFieldValue('jenis_kelamin', data?.penyedia?.gender);
         updateProfil.setFieldValue('nomor_wa', data?.nomor_wa);

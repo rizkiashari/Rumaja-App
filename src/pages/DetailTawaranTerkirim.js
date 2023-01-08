@@ -11,6 +11,7 @@ import moment from 'moment';
 import useLoading from '../store/loadingStore';
 import { API } from '../config/api';
 import { showError } from '../utils/showMessages';
+import { calculateRating } from '../utils/calculateRating';
 
 const DetailTawaranTerkirim = ({ navigation, route }) => {
   const { width, height } = Dimensions.get('window');
@@ -77,7 +78,7 @@ const DetailTawaranTerkirim = ({ navigation, route }) => {
             {dataDetail?.riwayat?.pencari?.gender && dataDetail?.riwayat?.pencari?.tanggal_lahir && (
               <Badge title={`${dataDetail?.riwayat?.pencari?.gender}, ${calculateAge(dataDetail?.riwayat?.pencari?.tanggal_lahir)}`} />
             )}
-            <Badge type="rating" icon={<StarActive />} title={dataDetail?.riwayat?.pencari?.ulasan?.length} />
+            <Badge type="rating" icon={<StarActive />} title={calculateRating(dataDetail?.riwayat?.pencari?.ulasan)} />
           </HStack>
         }
       />

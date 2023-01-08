@@ -12,6 +12,7 @@ import { fonts } from '../utils/fonts';
 import moment from 'moment';
 import { API } from '../config/api';
 import { showError, showSuccess } from '../utils/showMessages';
+import { calculateRating } from '../utils/calculateRating';
 
 const DetailPencari = ({ navigation, route }) => {
   const { uuid, type, uuid_riwayat } = route.params;
@@ -114,6 +115,8 @@ const DetailPencari = ({ navigation, route }) => {
         title={dataPencari?.nama_user}
         subtitle={dataPencari?.pencari?.bidang_kerja?.detail_bidang}
         type="pekerja"
+        photoHeight="full"
+        photoWidth="full"
         photo={dataPencari?.photo_profile}
         bubble={
           <HStack space={2} alignItems="center">
@@ -122,7 +125,7 @@ const DetailPencari = ({ navigation, route }) => {
                 dataPencari?.pencari?.tanggal_lahir ? calculateAge(dataPencari?.pencari?.tanggal_lahir) : '-'
               }`}
             />
-            <Badge title={dataPencari?.pencari?.ulasan?.length} type="rating" icon={<StarActive />} />
+            <Badge title={calculateRating(dataPencari?.pencari?.ulasan)} type="rating" icon={<StarActive />} />
           </HStack>
         }
       />
