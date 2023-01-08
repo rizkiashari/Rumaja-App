@@ -54,6 +54,12 @@ const DetailTawaranPekerjaan = ({ navigation, route }) => {
     }
   };
 
+  const tolakTawaranPekerjaan = () => {
+    navigation.navigate('TolakTawaran', {
+      uuid: uuid_riwayat,
+    });
+  };
+
   return (
     <SafeAreaView>
       <Header>
@@ -213,18 +219,7 @@ const DetailTawaranPekerjaan = ({ navigation, route }) => {
             <LoadingButton />
           ) : (
             <HStack alignItems="center" space={2} justifyContent="center">
-              <Button
-                type="progres"
-                fontSize={width}
-                text="Tolak"
-                onPress={() => {
-                  navigation.navigate('TolakTawaran', {
-                    uuid: uuid_riwayat,
-                  });
-                }}
-                bgColor={colors.red}
-                width={width / 2.2}
-              />
+              <Button type="progres" fontSize={width} text="Tolak" onPress={tolakTawaranPekerjaan} bgColor={colors.red} width={width / 2.2} />
               <Button
                 type="progres"
                 fontSize={width}
