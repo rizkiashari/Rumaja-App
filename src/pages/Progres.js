@@ -498,7 +498,7 @@ const Progres = ({ navigation }) => {
                 {isLoading ? (
                   <LoadingSkeleton jumlah={3} />
                 ) : allProgres?.length === 0 ? (
-                  <EmptyContent title="Tidak ada data selesai or ditolak" />
+                  <EmptyContent title="Tidak ada data selesai atau ditolak" />
                 ) : (
                   allProgres?.map((progres, index) => (
                     <DaftarWithJumlah
