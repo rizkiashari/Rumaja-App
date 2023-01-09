@@ -112,12 +112,7 @@ const TambahLowongan = ({ navigation }) => {
           </Text>
         </HStack>
       </Header>
-      <KeyboardAwareScrollView
-        extraHeight={height / 2}
-        enableAutomaticScroll={true}
-        showsVerticalScrollIndicator={false}
-        extraScrollHeight={height / 2}
-      >
+      <KeyboardAwareScrollView extraHeight={height} enableAutomaticScroll={true} showsVerticalScrollIndicator={false} extraScrollHeight={height}>
         <ScrollView showsVerticalScrollIndicator={false} _contentContainerStyle={{ paddingBottom: height / 4 }} px={width / 28}>
           <VStack space={4}>
             <VStack space={2}>
@@ -278,7 +273,7 @@ const TambahLowongan = ({ navigation }) => {
                   )}
                 </VStack>
               </HStack>
-              <Box mt={2}>
+              <Box mt={2} mb={32}>
                 <TextArea
                   value={onTambahLowongan.values.alamat_lengkap}
                   onChangeText={onTambahLowongan.handleChange('alamat_lengkap')}
