@@ -77,51 +77,51 @@ const FilterHome = ({ navigation, route }) => {
               <VStack space={3} my={5}>
                 <LabelInput text="Jenis Gaji" />
                 <HStack w="full" justifyContent="space-between" space={2} mb={2}>
-                  <TouchableOpacity onPress={() => setJenisGaji('Hari')}>
+                  <TouchableOpacity onPress={() => setJenisGaji('hari')}>
                     <Box
-                      borderColor={jenisGaji === 'Hari' ? colors.blue[70] : colors.white}
-                      borderWidth={jenisGaji === 'Hari' ? 2 : 0}
+                      borderColor={jenisGaji === 'hari' ? colors.blue[70] : colors.white}
+                      borderWidth={jenisGaji === 'hari' ? 2 : 0}
                       style={styles.btnFilter(width)}
                     >
                       <Text
                         textAlign="center"
                         fontFamily={fonts.primary[400]}
                         fontSize={width / 32}
-                        color={jenisGaji === 'Hari' ? colors.blue[70] : colors.text.black50}
+                        color={jenisGaji === 'hari' ? colors.blue[70] : colors.text.black50}
                       >
                         Per Hari
                       </Text>
                     </Box>
                   </TouchableOpacity>
-                  <TouchableOpacity onPress={() => setJenisGaji('Bulan')}>
+                  <TouchableOpacity onPress={() => setJenisGaji('minggu')}>
                     <Box
-                      borderColor={jenisGaji === 'Bulan' ? colors.blue[70] : colors.white}
-                      borderWidth={jenisGaji === 'Bulan' ? 2 : 0}
+                      borderColor={jenisGaji === 'minggu' ? colors.blue[70] : colors.white}
+                      borderWidth={jenisGaji === 'minggu' ? 2 : 0}
                       style={styles.btnFilter(width)}
                     >
                       <Text
                         textAlign="center"
                         fontFamily={fonts.primary[400]}
                         fontSize={width / 32}
-                        color={jenisGaji === 'Bulan' ? colors.blue[70] : colors.text.black50}
+                        color={jenisGaji === 'minggu' ? colors.blue[70] : colors.text.black50}
                       >
-                        Per Bulan
+                        Per Minggu
                       </Text>
                     </Box>
                   </TouchableOpacity>
-                  <TouchableOpacity onPress={() => setJenisGaji('Tahun')}>
+                  <TouchableOpacity onPress={() => setJenisGaji('bulan')}>
                     <Box
-                      borderColor={jenisGaji === 'Tahun' ? colors.blue[70] : colors.white}
-                      borderWidth={jenisGaji === 'Tahun' ? 2 : 0}
+                      borderColor={jenisGaji === 'bulan' ? colors.blue[70] : colors.white}
+                      borderWidth={jenisGaji === 'bulan' ? 2 : 0}
                       style={styles.btnFilter(width)}
                     >
                       <Text
                         textAlign="center"
                         fontFamily={fonts.primary[400]}
                         fontSize={width / 32}
-                        color={jenisGaji === 'Tahun' ? colors.blue[70] : colors.text.black50}
+                        color={jenisGaji === 'bulan' ? colors.blue[70] : colors.text.black50}
                       >
-                        Per Tahun
+                        Per Bulan
                       </Text>
                     </Box>
                   </TouchableOpacity>
