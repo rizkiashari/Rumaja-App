@@ -22,6 +22,8 @@ const EditProfile = ({ navigation }) => {
 
   const { userData } = useUserStore();
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const isFocused = navigation.isFocused();
   const { setLoading, loading } = useLoading();
 
@@ -167,6 +169,7 @@ const EditProfile = ({ navigation }) => {
     const loadProfil = async () => {
       if (userData?.id_role === 3) {
         const { data } = await getData('/user/profile-penyedia');
+        setIsLoading(true);
         updateProfil.setFieldValue('nama_lengkap', data?.nama_user);
         updateProfil.setFieldValue('jenis_kelamin', data?.penyedia?.gender);
         updateProfil.setFieldValue('nomor_wa', data?.nomor_wa);
@@ -180,7 +183,7 @@ const EditProfile = ({ navigation }) => {
         updateProfil.setFieldValue('alamat_rumah', data?.penyedia?.alamat_rumah);
         updateProfil.setFieldValue('tentang', data?.penyedia?.tentang);
         setPhoto(data?.photo_profile);
-        setTglLahir(moment(data?.penyedia?.tanggal_lahir).format('DD/MM/YYYY'));
+        setTglLahir(data?.penyedia?.tanggal_lahir ? moment(data?.penyedia?.tanggal_lahir).format('DD/MM/YYYY') : '');
       }
       if (userData?.id_role === 2) {
         const { data } = await getData('/user/profile-pencari');
@@ -200,18 +203,22 @@ const EditProfile = ({ navigation }) => {
         updateProfil.setFieldValue('domisili_provinsi', data?.domisili_provinsi);
         updateProfil.setFieldValue('tentang', data?.pencari?.tentang);
         setPhoto(data?.photo_profile);
-        setTglLahir(moment(data?.pencari?.tanggal_lahir).format('DD/MM/YYYY'));
+        setTglLahir(data?.pencari?.tanggal_lahir ? moment(data?.pencari?.tanggal_lahir).format('DD/MM/YYYY') : '');
+        setIsLoading(false);
       }
     };
 
     loadProfil();
-  }, [userData?.id_role, isFocused]);
+  }, [userData?.id_role, isFocused, setIsLoading]);
 
   useEffect(() => {
     getBidangPekerjaan();
     getDataProvinsi();
     getDataKota(provinsi);
   }, [isFocused, provinsi]);
+
+  console.log(isLoading);
+  console.log(updateProfil.values);
 
   return (
     <SafeAreaView>
@@ -243,6 +250,9 @@ const EditProfile = ({ navigation }) => {
               </Text>
             </TouchableOpacity>
           </VStack>
+          {/* {isLoading ? (
+            <Text>Loading...</Text>
+          ) : ( */}
           <VStack space={4} mt={height / 36} mb={height / 8}>
             <VStack space={2}>
               <LabelInput text="Nama Lengkap" />
@@ -460,6 +470,7 @@ const EditProfile = ({ navigation }) => {
               <Button type="primary" onPress={updateProfil.handleSubmit} text="Simpan" width={width / 1.09} fontSize={width} />
             )}
           </VStack>
+          {/* )} */}
         </ScrollView>
       </KeyboardAwareScrollView>
 
