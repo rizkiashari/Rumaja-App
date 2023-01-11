@@ -68,7 +68,7 @@ const DaftarBekerja = ({ navigation, route }) => {
                 })
               }
               id={+pelamar?.pencari?.id_bidang_kerja}
-              title={pelamar?.pencari?.users?.nama_user}
+              title={`${pelamar?.pencari?.users?.nama_user?.split(' ')[0]} ${pelamar?.pencari?.users?.nama_user?.split(' ')[1]}`}
               subTitle={`${pelamar?.pencari?.users?.domisili_kota}, ${pelamar?.pencari?.users?.domisili_provinsi?.split(',')[1]}`}
               statusProgress="Bekerja"
             >

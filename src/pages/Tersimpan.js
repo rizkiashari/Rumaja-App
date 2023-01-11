@@ -252,7 +252,7 @@ const Tersimpan = ({ navigation }) => {
             ) : (
               dataSimpanPekerja?.map((pekerja, index) => (
                 <Card
-                  title={pekerja.users.nama_user}
+                  title={`${pekerja.users.nama_user?.split(' ')[0]} ${pekerja.users.nama_user?.split(' ')[1]}`}
                   subTitle={`${pekerja?.users?.domisili_kota}, ${pekerja?.users?.domisili_provinsi?.split(',')[1]}`}
                   key={index}
                   uriImage={pekerja?.users?.photo_profile ? { uri: pekerja?.users?.photo_profile } : ILPlaceholder}

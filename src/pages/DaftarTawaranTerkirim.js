@@ -70,7 +70,7 @@ const DaftarTawaranTerkirim = ({ navigation, route }) => {
                   });
                 }}
                 id={+tawaran?.pencari?.id_bidang_kerja}
-                title={tawaran?.pencari?.users?.nama_user}
+                title={`${tawaran?.pencari?.users?.nama_user?.split(' ')[0]} ${tawaran?.pencari?.users?.nama_user?.split(' ')[1]}`}
                 subTitle={`${tawaran?.pencari?.users?.domisili_kota}, ${tawaran?.pencari?.users?.domisili_provinsi?.split(',')[1]}`}
                 statusProgress="Diproses"
               >

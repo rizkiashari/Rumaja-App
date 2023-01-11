@@ -94,7 +94,8 @@ const DetailBekerja = ({ navigation, route }) => {
                 </Box>
                 <VStack space={1}>
                   <Text fontSize={width / 32} fontFamily={fonts.primary[500]} color="black">
-                    {detailBekerja?.lowongan?.penyedia?.users?.nama_user}
+                    {detailBekerja?.lowongan?.penyedia?.users?.nama_user?.split(' ')[0]}{' '}
+                    {detailBekerja?.lowongan?.penyedia?.users?.nama_user?.split(' ')[1]}
                   </Text>
                   <Text fontSize={width / 32} fontFamily={fonts.primary[500]} color={colors.text.black50}>
                     {detailBekerja?.lowongan?.penyedia?.users?.nomor_wa}

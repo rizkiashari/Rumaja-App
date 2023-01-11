@@ -123,7 +123,8 @@ const DetailTawaranPekerjaan = ({ navigation, route }) => {
                   </Box>
                   <VStack space={1}>
                     <Text fontSize={width / 32} fontFamily={fonts.primary[500]} color="black">
-                      {dataDetail?.lowongan?.penyedia?.users?.nama_user}
+                      {dataDetail?.lowongan?.penyedia?.users?.nama_user?.split(' ')[0]}{' '}
+                      {dataDetail?.lowongan?.penyedia?.users?.nama_user?.split(' ')[1]}
                     </Text>
                     <Text fontSize={width / 32} fontFamily={fonts.primary[500]} color={colors.text.black50}>
                       {dataDetail?.lowongan?.penyedia?.users?.nomor_wa}
