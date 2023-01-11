@@ -267,7 +267,7 @@ const Beranda = ({ navigation }) => {
                   <Card
                     key={index}
                     uriImage={pekerja.users.photo_profile ? { uri: pekerja.users.photo_profile } : ILPlaceholder}
-                    title={`${pekerja.users.nama_user?.split(' ')[0]} ${pekerja.users.nama_user?.split(' ')[1]}`}
+                    title={`${pekerja.users.nama_user?.split(' ')[0]} ${pekerja.users.nama_user?.split(' ')[1] || ''}`}
                     uriType="pekerja"
                     subTitle={`${pekerja?.users?.domisili_kota}, ${pekerja?.users?.domisili_provinsi?.split(',')[1]}`}
                     onNavigation={() =>

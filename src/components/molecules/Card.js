@@ -46,10 +46,16 @@ const Card = ({
 
   if (type === 'notif') {
     return (
-      <HStack w="full" space={4}>
-        <Box w={12} h={12} rounded="full" alignItems="center" justifyContent="center" bgColor={colors.blue[30]}>
-          <Image alt="photo profile" source={uriImage} width="10" height="10" />
-        </Box>
+      <HStack alignItems="flex-start" w="full" space={4}>
+        {uriType === 'pekerja' ? (
+          <Box alignItems="center" justifyContent="center">
+            <Image alt="photo profile" source={uriImage} w={12} h={12} rounded="full" />
+          </Box>
+        ) : (
+          <Box w={12} h={12} rounded="full" alignItems="center" justifyContent="center" bgColor={colors.blue[30]}>
+            <Image alt="photo profile" source={uriImage} width="8" height="8" />
+          </Box>
+        )}
         <VStack>
           <Text fontFamily={fonts.primary[600]} fontSize={width / 28} color="black" width={width / 1.5} mb={1}>
             {title}
