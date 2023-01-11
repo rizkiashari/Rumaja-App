@@ -303,7 +303,7 @@ const EditLowongan = ({ navigation, route }) => {
                     </Select>
                   </VStack>
                 </HStack>
-                <Box mt={2}>
+                <Box mt={2} mb={32}>
                   <TextArea
                     placeholder="Masukkan alamat lengkap"
                     value={onEditLowongan.values.alamat_lengkap}
