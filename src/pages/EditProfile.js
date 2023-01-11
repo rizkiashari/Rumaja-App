@@ -217,9 +217,6 @@ const EditProfile = ({ navigation }) => {
     getDataKota(provinsi);
   }, [isFocused, provinsi]);
 
-  console.log(isLoading);
-  console.log(updateProfil.values);
-
   return (
     <SafeAreaView>
       <Header>

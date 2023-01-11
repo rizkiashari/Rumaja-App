@@ -45,8 +45,6 @@ const Notifikasi = ({ navigation }) => {
     }
   };
 
-  console.log('dataNotif', dataNotif);
-
   return (
     <SafeAreaView>
       <View bgColor={colors.text.black20} minH={height}>
