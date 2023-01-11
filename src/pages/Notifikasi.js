@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import useUserStore from '../store/userStore';
 import { getData } from '../utils/getData';
 import { API } from '../config/api';
-import { Box, Button, HStack, Image, ScrollView, Text, VStack, View } from 'native-base';
+import { Button, HStack, ScrollView, Text, VStack, View } from 'native-base';
 import { colors } from '../utils/colors';
 import { Card, EmptyContent, Header, LoadingSkeleton } from '../components';
 import { ChevronBack, ILNotifEmpty, ILPlaceholder } from '../assets';
@@ -44,6 +44,8 @@ const Notifikasi = ({ navigation }) => {
       showError(response.data.message);
     }
   };
+
+  console.log('dataNotif', dataNotif);
 
   return (
     <SafeAreaView>
@@ -138,6 +140,7 @@ const Notifikasi = ({ navigation }) => {
                     <Card
                       uriImage={notif?.photo_profile ? { uri: notif?.photo_profile } : ILPlaceholder}
                       title={notif?.nama_pelamar}
+                      uriType="pekerja"
                       subTitle={notif?.detail_bidang}
                       detailContent={notif?.detail_notifikasi}
                       time={moment(notif.createdAt * 1000).format('DD MMMM YYYY, HH:mm')}
