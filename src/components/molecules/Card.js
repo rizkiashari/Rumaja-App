@@ -1,6 +1,6 @@
 import { Dimensions, StyleSheet, TouchableOpacity } from 'react-native';
 import React from 'react';
-import { Box, HStack, Image, Text, VStack, View } from 'native-base';
+import { Box, HStack, Image, Text, VStack } from 'native-base';
 import { colors } from '../../utils/colors';
 import { fonts } from '../../utils/fonts';
 import {
@@ -31,6 +31,7 @@ const Card = ({
   lokasi,
   icon,
   statusProgress,
+  uriType,
 }) => {
   const { width } = Dimensions.get('window');
 
@@ -211,9 +212,15 @@ const Card = ({
         <VStack space={4}>
           <HStack justifyContent="space-between">
             <HStack space={3} alignItems="center">
-              <Box w={12} h={12} rounded="full" alignItems="center" justifyContent="center" bgColor={colors.blue[30]}>
-                <Image alt="photo profile" source={uriImage} width="8" height="8" />
-              </Box>
+              {uriType === 'pekerja' ? (
+                <Box alignItems="center" justifyContent="center">
+                  <Image alt="photo profile" source={uriImage} w={12} h={12} rounded="full" />
+                </Box>
+              ) : (
+                <Box w={12} h={12} rounded="full" alignItems="center" justifyContent="center" bgColor={colors.blue[30]}>
+                  <Image alt="photo profile" source={uriImage} width="8" height="8" />
+                </Box>
+              )}
               <VStack space={0.5}>
                 <Text fontFamily={fonts.primary[600]} fontSize={width / 28} color="black" isTruncated numberOfLines={1}>
                   {title}
