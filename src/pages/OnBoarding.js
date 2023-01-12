@@ -2,7 +2,7 @@ import { Dimensions, Image, ScrollView, StyleSheet } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { colors } from '../utils/colors';
 import { fonts } from '../utils/fonts';
-import { ILOnBoarding1, ILOnBoarding2, ILOnBoarding3 } from '../assets';
+import { ILOnBoarding1, ILOnBoarding2 } from '../assets';
 import { Box, Button, View, Text } from 'native-base';
 import useUserStore from '../store/userStore';
 
@@ -10,6 +10,12 @@ const OnBoarding = ({ navigation }) => {
   const [urutan, setUrutan] = useState(1);
   const width = Dimensions.get('window').width;
   const heigth = Dimensions.get('window').height;
+
+  useEffect(() => {
+    if (isBoarding === false) {
+      navigation.replace('Login');
+    }
+  }, [isBoarding, navigation]);
 
   const dataOnBoarding = [
     {
@@ -27,12 +33,6 @@ const OnBoarding = ({ navigation }) => {
   ];
 
   const { isBoarding, setIsBoarding } = useUserStore();
-
-  useEffect(() => {
-    if (!isBoarding) {
-      navigation.replace('Login');
-    }
-  }, [isBoarding, navigation]);
 
   return (
     <ScrollView style={styles.container(width)} showsVerticalScrollIndicator={false}>

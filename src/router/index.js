@@ -442,9 +442,9 @@ const UnAuthenticated = () => {
       initialRouteName="OnBoarding"
     >
       <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
-      <Stack.Screen name="Register" component={Register} options={{ headerShown: false }} />
-      <Stack.Screen name="PilihPeran" component={PilihPeran} options={{ headerShown: false }} />
-      <Stack.Screen name="PilihBidangPekerjaan" component={PilihBidangPekerjaan} options={{ headerShown: false }} />
+      <Stack.Screen name="Register" component={Register} options={{ headerShown: false, animation: 'slide_from_right' }} />
+      <Stack.Screen name="PilihPeran" component={PilihPeran} options={{ headerShown: false, animation: 'slide_from_right' }} />
+      <Stack.Screen name="PilihBidangPekerjaan" component={PilihBidangPekerjaan} options={{ headerShown: false, animation: 'slide_from_right' }} />
       <Stack.Screen
         name="OnBoarding"
         component={OnBoarding}

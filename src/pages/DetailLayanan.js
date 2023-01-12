@@ -23,7 +23,7 @@ const DetailLayanan = ({ navigation, route }) => {
 
   const [search, setSearch] = useState('');
 
-  const { filterHome } = useFilterHome();
+  const { filterHome, setFilterHome } = useFilterHome();
 
   const [dataPekerja, setDataPekerja] = useState([]);
 
@@ -97,7 +97,12 @@ const DetailLayanan = ({ navigation, route }) => {
       <View bgColor={colors.text.black10} minH={height}>
         <Header>
           <HStack alignItems="center" space={2.5}>
-            <TouchableOpacity onPress={() => navigation.goBack()}>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.goBack();
+                setFilterHome(null);
+              }}
+            >
               <ChevronBack width={28} />
             </TouchableOpacity>
             {!isSearch && (
@@ -140,12 +145,13 @@ const DetailLayanan = ({ navigation, route }) => {
               </TouchableOpacity>
             )}
             <TouchableOpacity
-              onPress={() =>
+              onPress={() => {
                 navigation.navigate('FilterHome', {
                   bidang: bidang,
                   id: id,
-                })
-              }
+                });
+                setFilterHome(null);
+              }}
             >
               <FilterBlack width={28} />
             </TouchableOpacity>

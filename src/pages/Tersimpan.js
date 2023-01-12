@@ -30,7 +30,7 @@ const Tersimpan = ({ navigation }) => {
 
   const { userData } = useUserStore();
   const { setLoading, loading } = useLoading();
-  const { filterTersimpan } = useFilterTersimpan();
+  const { filterTersimpan, setFilterTersimpan } = useFilterTersimpan();
 
   useEffect(() => {
     const loadData = async () => {
@@ -180,7 +180,12 @@ const Tersimpan = ({ navigation }) => {
         <Text fontFamily={fonts.primary[600]} fontSize={width / 28} color="black">
           Tersimpan
         </Text>
-        <TouchableOpacity onPress={() => navigation.navigate('FilterTersimpan')}>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('FilterTersimpan');
+            setFilterTersimpan(null);
+          }}
+        >
           <FilterBlack width={28} />
         </TouchableOpacity>
       </Header>

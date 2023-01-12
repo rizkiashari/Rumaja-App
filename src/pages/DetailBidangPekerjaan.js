@@ -20,7 +20,7 @@ const DetailBidangPekerjaan = ({ navigation, route }) => {
   const { width, height } = Dimensions.get('window');
   const [invoke, setInvoke] = useState(false);
 
-  const { filterHome } = useFilterHome();
+  const { filterHome, setFilterHome } = useFilterHome();
 
   const { setLoading, loading } = useLoading();
 
@@ -82,7 +82,12 @@ const DetailBidangPekerjaan = ({ navigation, route }) => {
       <View backgroundColor={colors.text.black10} minH={height}>
         <Header>
           <HStack alignItems="center" space={2.5}>
-            <TouchableOpacity onPress={() => navigation.goBack()}>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.goBack();
+                setFilterHome(null);
+              }}
+            >
               <ChevronBack width={28} />
             </TouchableOpacity>
             <Text fontFamily={fonts.primary[600]} fontSize={width / 28} color="black">
@@ -90,12 +95,13 @@ const DetailBidangPekerjaan = ({ navigation, route }) => {
             </Text>
           </HStack>
           <TouchableOpacity
-            onPress={() =>
+            onPress={() => {
               navigation.navigate('FilterHome', {
                 bidang: bidang,
                 id: id,
-              })
-            }
+              });
+              setFilterHome(null);
+            }}
           >
             <FilterBlack width={28} />
           </TouchableOpacity>

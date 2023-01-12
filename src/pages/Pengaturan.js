@@ -35,7 +35,7 @@ const Pengaturan = ({ navigation }) => {
       setUserData(null);
       setFilterHome(null);
       setFilterTersimpan(null);
-      setIsBoarding(false);
+      // setIsBoarding(false);
       showSuccess('Berhasil Logout');
     } else {
       showError('Gagal Logout');
