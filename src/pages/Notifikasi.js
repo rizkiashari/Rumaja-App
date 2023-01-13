@@ -22,7 +22,6 @@ const Notifikasi = ({ navigation }) => {
     const loadData = async () => {
       setIsLoading(true);
       const { data } = await getData('/notifikasi');
-      console.log('Notif: ', data);
       setIsLoading(false);
       setDataNotif(data);
     };
@@ -37,7 +36,6 @@ const Notifikasi = ({ navigation }) => {
   const onReadNotif = async (id) => {
     try {
       const { data } = await API.patch(`/notifikasi/read/${id}`);
-      console.log('Read Notif: ', data);
       if (data.message === 'SUCCESS_READ_NOTIFIKASI') {
         setIsLoading(false);
         const { data } = await getData('/notifikasi');
