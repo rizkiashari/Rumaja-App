@@ -41,7 +41,7 @@ const Login = ({ navigation }) => {
     }),
     onSubmit: async (values) => {
       setIsLoading(true);
-      const res = await postWithJson('auth/login', values);
+      const res = await postWithJson('/auth/login', values);
       setIsLoading(false);
       switch (res.message) {
         case 'PASSWORD_NOT_MATCH':

@@ -9,6 +9,7 @@ import { Card, EmptyContent, Header, LoadingSkeleton } from '../components';
 import { ChevronBack, ILNotifEmpty, ILPlaceholder } from '../assets';
 import { fonts } from '../utils/fonts';
 import moment from 'moment';
+import { showError, showSuccess } from '../utils/showMessages';
 
 const Notifikasi = ({ navigation }) => {
   const { width, height } = Dimensions.get('window');
@@ -18,12 +19,13 @@ const Notifikasi = ({ navigation }) => {
   const { userData } = useUserStore();
 
   useEffect(() => {
-    setIsLoading(true);
     const loadData = async () => {
+      setIsLoading(true);
       const { data } = await getData('/notifikasi');
+      console.log('Notif: ', data);
+      setIsLoading(false);
       setDataNotif(data);
     };
-    setIsLoading(false);
 
     loadData();
 
@@ -35,12 +37,18 @@ const Notifikasi = ({ navigation }) => {
   const onReadNotif = async (id) => {
     try {
       const { data } = await API.patch(`/notifikasi/read/${id}`);
+      console.log('Read Notif: ', data);
       if (data.message === 'SUCCESS_READ_NOTIFIKASI') {
-        setIsLoading(true);
+        setIsLoading(false);
+        const { data } = await getData('/notifikasi');
+        setDataNotif(data);
+        showSuccess('Notifikasi berhasil dibaca');
       } else {
+        setIsLoading(false);
         showError('Gagal membaca notifikasi');
       }
     } catch ({ response }) {
+      setIsLoading(false);
       showError(response.data.message);
     }
   };

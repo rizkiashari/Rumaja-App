@@ -94,6 +94,7 @@ const EditLowongan = ({ navigation, route }) => {
           setIsLoading(false);
         }
       } catch ({ response }) {
+        setIsLoading(false);
         setLoading(false);
         switch (response.data.message) {
           case 'LOWONGAN_NOT_FOUND':

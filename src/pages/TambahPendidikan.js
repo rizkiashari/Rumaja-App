@@ -50,6 +50,7 @@ const TambahPendidikan = ({ navigation }) => {
         setLoading(true);
         onTambahPendidikan.resetForm();
       } else {
+        setLoading(false);
         showError('Gagal menambahkan pendidikan, coba lagi nanti');
       }
     },

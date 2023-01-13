@@ -92,6 +92,7 @@ const TambahPengalaman = ({ navigation }) => {
         setLoading(true);
         addPengalaman.resetForm();
       } else {
+        setLoading(false);
         showError('Pengalaman gagal ditambahkan');
       }
     },

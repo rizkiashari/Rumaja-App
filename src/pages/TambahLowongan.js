@@ -95,6 +95,8 @@ const TambahLowongan = ({ navigation }) => {
         onTambahLowongan.resetForm();
         navigation.navigate('MainApp');
       } else {
+        setIsLoading(false);
+        setLoading(false);
         showError(res.message);
       }
     },

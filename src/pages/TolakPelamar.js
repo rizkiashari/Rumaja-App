@@ -46,6 +46,7 @@ const TolakPelamar = ({ navigation, route }) => {
           showError('Gagal menolak pelamar');
         }
       } catch ({ response }) {
+        setLoading(false);
         showError(response.data.message);
       }
     },

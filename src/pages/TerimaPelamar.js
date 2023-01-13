@@ -69,6 +69,7 @@ const TerimaPelamar = ({ navigation, route }) => {
         }
         setLoading(false);
       } catch ({ response }) {
+        setLoading(false);
         showError(response.data.message);
       }
     },
