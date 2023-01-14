@@ -106,8 +106,10 @@ const DetailLowongan = ({ navigation, route }) => {
       setLoading(true);
       if (res.data.message === 'SUCCESS_UNPUBLISH_LOWONGAN') {
         showSuccess('Berhasil unpublish lowongan');
+        navigation.goBack();
       } else if (res.data.message === 'SUCCESS_PUBLISH_LOWONGAN') {
         showSuccess('Berhasil publish lowongan');
+        navigation.goBack();
       } else {
         showError('Gagal unpublish lowongan');
       }
@@ -199,7 +201,7 @@ const DetailLowongan = ({ navigation, route }) => {
           </Card>
           <Card type="detail" title="Lokasi Kerja">
             <Text fontSize={width / 32} fontFamily={fonts.primary[500]} color={colors.text.black50} maxW={width / 1.2} width="full">
-              {`${userData?.id_role === 3 ? detailLowongan?.alamat_lengkap : ''}, ${detailLowongan?.kota_lowongan}, ${
+              {`${userData?.id_role === 3 ? detailLowongan?.alamat_lengkap + ', ' : ''} ${detailLowongan?.kota_lowongan}, ${
                 detailLowongan?.provinsi_lowongan?.split(',')[1]
               }`}
             </Text>
@@ -272,17 +274,7 @@ const DetailLowongan = ({ navigation, route }) => {
               />
             </HStack>
           ) : (
-            <Button
-              type="primary"
-              onPress={() =>
-                navigation.navigate('EditLowongan', {
-                  uuid: detailLowongan?.uuid_lowongan,
-                })
-              }
-              text="Pulihkan"
-              width={width / 1.1}
-              fontSize={width}
-            />
+            <Button type="primary" onPress={() => unPublish(detailLowongan?.uuid_lowongan)} text="Pulihkan" width={width / 1.1} fontSize={width} />
           )}
         </Box>
       )}

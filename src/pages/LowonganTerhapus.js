@@ -92,7 +92,7 @@ const LowonganTerhapus = ({ navigation }) => {
                 uriImage={{ uri: item?.bidang_kerja?.photo }}
               >
                 <Badge title={`${convertRupiah(item?.gaji)}/${item?.skala_gaji}`} />
-                <Button type="primary" text="Publikasi" onPress={() => onPublish(item?.uuid_lowongan)} width={width / 3.6} fontSize={width} />
+                <Button type="primary" text="Pulihkan" onPress={() => onPublish(item?.uuid_lowongan)} width={width / 3.6} fontSize={width} />
               </Card>
             ))
           )}
