@@ -81,11 +81,6 @@ const OnBoarding = ({ navigation }) => {
               Selanjutnya
             </Text>
           </Button>
-          <Button py="3" my="3" rounded={8} background={colors.white} onPress={() => setUrutan(2)}>
-            <Text color="#1F1F1F" fontSize="14" fontFamily={fonts.primary[500]}>
-              Lewati
-            </Text>
-          </Button>
         </View>
       )}
     </ScrollView>

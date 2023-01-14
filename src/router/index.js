@@ -195,6 +195,7 @@ const Authenticated = () => {
         component={EditProfile}
         options={{
           headerShown: false,
+          animation: 'slide_from_right',
         }}
       />
       <Stack.Screen
@@ -202,6 +203,7 @@ const Authenticated = () => {
         component={TentangKami}
         options={{
           headerShown: false,
+          animation: 'slide_from_right',
         }}
       />
       <Stack.Screen
@@ -216,6 +218,7 @@ const Authenticated = () => {
         component={UbahKataSandi}
         options={{
           headerShown: false,
+          animation: 'slide_from_right',
         }}
       />
       <Stack.Screen
