@@ -202,7 +202,7 @@ const LupaKataSandi = ({ navigation }) => {
                     <HStack space={2} alignItems="center">
                       <InfoIcon />
                       <Text fontFamily={fonts.primary.normal} color={colors.text.black100} fontSize={width / 30} w="90%">
-                        Masukan alamat email yang kamu daftarkan untuk dikirim link ubah kata sandi.
+                        Masukan alamat email yang kamu daftarkan untuk mengubah kata sandi.
                       </Text>
                     </HStack>
                   </Box>
