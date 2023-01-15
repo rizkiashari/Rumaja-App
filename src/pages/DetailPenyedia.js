@@ -113,7 +113,7 @@ const DetailPenyedia = ({ navigation, route }) => {
                         uuid: item?.uuid_lowongan,
                       });
                     }}
-                    subTitle={`${item?.kota_item}, ${item?.provinsi_lowongan?.split(',')[1]}`}
+                    subTitle={`${item?.kota_lowongan}, ${item?.provinsi_lowongan?.split(',')[1]}`}
                   >
                     <Badge title={`${convertRupiah(item.gaji)}/${item.skala_gaji}`} />
                     <HStack space={0.5} alignItems="center">
