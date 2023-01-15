@@ -42,11 +42,14 @@ const DetailLamaran = ({ navigation, route }) => {
       if (res.data.message === 'SUCCESS_TERIMA_LAMARAN') {
         navigation.replace('SuksesBekerja', {
           uuid: res?.data?.data?.uuid_lowongan,
-          subTitle: 'Tawaran kerja yang anda dapat berhasil diterima. Menunggu penyedia kerja memulai pekerjaan.',
-          title: 'Tawaran berhasil diterima!',
+          subTitle:
+            dataDetail?.info_riwayat === 'applied'
+              ? 'Lamaran kerja yang anda dapat berhasil diterima. Menunggu penyedia kerja memulai pekerjaan.'
+              : 'Tawaran kerja yang anda dapat berhasil diterima. Menunggu penyedia kerja memulai pekerjaan.',
+          title: dataDetail?.info_riwayat === 'applied' ? 'Lamaran berhasil diterima!' : 'Tawaran berhasil diterima!',
         });
       } else {
-        showError('Gagal menerima lamaran');
+        showError(dataDetail?.info_riwayat === 'applied' ? 'Gagal menerima lamaran' : 'Gagal menerima tawaran');
       }
       setLoading(false);
     } catch ({ response }) {
