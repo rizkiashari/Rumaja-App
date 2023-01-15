@@ -167,7 +167,7 @@ const DetailTawaranPekerjaan = ({ navigation, route }) => {
                     {`${dataDetail?.lowongan?.kota_lowongan}, ${dataDetail?.lowongan?.provinsi_lowongan?.split(',')[1]}`}
                   </Text>
                 </Card>
-                <Card type="detail" title="Permintaan Waktu Mulai Bekerja">
+                <Card type="detail" title="Permintaan Waktu Interview">
                   <Text fontFamily={fonts.primary[400]} fontSize={width / 32} color={colors.text.black70} textTransform="capitalize">
                     {moment(dataDetail?.tanggal_mulai_kerja * 1000).format('dddd, DD MMMM YYYY')} - {dataDetail?.waktu_mulai_kerja.split(':')[0]}:
                     {dataDetail?.waktu_mulai_kerja.split(':')[1]}

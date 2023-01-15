@@ -252,7 +252,7 @@ const DetailLowongan = ({ navigation, route }) => {
           {type === 'tawaran' && (
             <>
               {detailLowongan?.riwayat?.tanggal_mulai_kerja && detailLowongan?.riwayat?.waktu_mulai_kerja && (
-                <Card type="detail" title="Permintaan Waktu Mulai Bekerja">
+                <Card type="detail" title="Permintaan Waktu Interview">
                   <Text fontSize={width / 32} fontFamily={fonts.primary[500]} color={colors.text.black50} maxW={width / 1.2} width="full">
                     {moment(detailLowongan?.riwayat?.tanggal_mulai_kerja * 1000).format('dddd, DD MMMM YYYY')} -{' '}
                     {detailLowongan?.riwayat?.waktu_mulai_kerja?.split(':')[0]}:{detailLowongan?.riwayat?.waktu_mulai_kerja?.split(':')[1]}

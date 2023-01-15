@@ -166,7 +166,7 @@ const DetailLamaran = ({ navigation, route }) => {
           ) : (
             <>
               {dataDetail?.tanggal_mulai_kerja && dataDetail?.catatan_riwayat_pencari === null && (
-                <Card type="detail" title="Permintaan Waktu Mulai Bekerja">
+                <Card type="detail" title="Permintaan Waktu Interview">
                   <Text fontFamily={fonts.primary[400]} fontSize={width / 32} color={colors.text.black70} textTransform="capitalize">
                     {moment(dataDetail?.tanggal_mulai_kerja * 1000).format('dddd, DD MMMM YYYY')} - {dataDetail?.waktu_mulai_kerja.split(':')[0]}:
                     {dataDetail?.waktu_mulai_kerja.split(':')[1]}

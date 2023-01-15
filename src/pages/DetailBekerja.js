@@ -136,7 +136,7 @@ const DetailBekerja = ({ navigation, route }) => {
               {`${detailBekerja?.lowongan?.kota_lowongan}, ${detailBekerja?.lowongan?.provinsi_lowongan?.split(',')[1]}`}
             </Text>
           </Card>
-          <Card type="detail" title="Waktu Mulai Bekerja">
+          <Card type="detail" title="Waktu Interview">
             <Text fontFamily={fonts.primary[400]} fontSize={width / 32} color={colors.text.black70} textTransform="capitalize">
               {moment(detailBekerja?.tanggal_mulai_kerja * 1000).format('dddd, DD MMMM YYYY - HH:mm')}
             </Text>
