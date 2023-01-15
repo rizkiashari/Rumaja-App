@@ -156,7 +156,18 @@ const DetailPelamar = ({ navigation, route }) => {
           width={width}
         >
           <HStack alignItems="center" justifyContent="space-between" space={2}>
-            <Button type="primary" fontSize={width} text="Profil Pekerja" onPress={() => {}} width={width / 1.1} />
+            <Button
+              type="primary"
+              fontSize={width}
+              text="Profil Pekerja"
+              onPress={() => {
+                navigation.navigate('DetailPencari', {
+                  uuid: detailPelamar?.pencari?.users?.uuid_user,
+                  type: 'detail-pelamar',
+                });
+              }}
+              width={width / 1.1}
+            />
           </HStack>
         </Box>
       ) : (
