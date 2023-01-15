@@ -7,8 +7,8 @@ import { postWithJson } from '../utils/postData';
 import { showError, showSuccess } from '../utils/showMessages';
 import { API } from '../config/api';
 import { Badge, Button, Card, Header, LoadingButton, TopProfile } from '../components';
-import { Box, HStack, ScrollView, Text, VStack, View } from 'native-base';
-import { ChevronBack, SaveHeaderActive, SaveHeaderInactive, Timer } from '../assets';
+import { Box, HStack, Image, ScrollView, Text, VStack, View } from 'native-base';
+import { ChevronBack, ILPlaceholder, SaveHeaderActive, SaveHeaderInactive, Timer } from '../assets';
 import { fonts } from '../utils/fonts';
 import { convertRupiah } from '../utils/convertRupiah';
 import moment from 'moment';
@@ -127,6 +127,8 @@ const DetailLowongan = ({ navigation, route }) => {
     }
   };
 
+  console.log('Detail Lowongan', detailLowongan);
+
   return (
     <SafeAreaView>
       <Header>
@@ -181,9 +183,52 @@ const DetailLowongan = ({ navigation, route }) => {
         bgColor={colors.text.black10}
         pt={2}
         height={height / 1.68}
-        _contentContainerStyle={{ paddingBottom: height / 10 }}
+        _contentContainerStyle={{ paddingBottom: height / 8 }}
       >
         <VStack space={4}>
+          {userData?.id_role === 2 && (
+            <Card type="detail" title="Penyedia Lowongan">
+              <HStack space={0.5} justifyContent="space-between" alignItems="center">
+                <HStack space={2} alignItems="center">
+                  <Box w={12} h={12} rounded="full">
+                    <Image
+                      alt="photo profile"
+                      source={
+                        detailLowongan?.penyedia?.users?.photo_profile
+                          ? {
+                              uri: detailLowongan?.penyedia?.users?.photo_profile,
+                            }
+                          : ILPlaceholder
+                      }
+                      width="full"
+                      height="full"
+                      rounded="full"
+                    />
+                  </Box>
+                  <VStack space={1}>
+                    <Text fontSize={width / 32} fontFamily={fonts.primary[500]} color="black">
+                      {detailLowongan?.penyedia?.users?.nama_user?.split(' ')[0]} {detailLowongan?.penyedia?.users?.nama_user?.split(' ')[1] || ''}
+                    </Text>
+                    <Text fontSize={width / 32} fontFamily={fonts.primary[500]} color={colors.text.black50}>
+                      {detailLowongan?.penyedia?.users?.nomor_wa}
+                    </Text>
+                  </VStack>
+                </HStack>
+                <TouchableOpacity
+                  onPress={() => {
+                    navigation.navigate('DetailPenyedia', {
+                      uuid: detailLowongan?.penyedia?.users?.uuid_user,
+                    });
+                  }}
+                  style={styles.btnKunjungi(width)}
+                >
+                  <Text fontSize={width / 32} fontFamily={fonts.primary[600]} color={colors.white} textAlign="center">
+                    Kunjungi
+                  </Text>
+                </TouchableOpacity>
+              </HStack>
+            </Card>
+          )}
           <Card type="detail" title="Kualifikasi">
             <Text fontSize={width / 32} fontFamily={fonts.primary[500]} color={colors.text.black50} maxW={width / 1.2} width="full">
               {detailLowongan?.kualifikasi}
@@ -284,4 +329,11 @@ const DetailLowongan = ({ navigation, route }) => {
 
 export default DetailLowongan;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  btnKunjungi: (width) => ({
+    backgroundColor: colors.blue[80],
+    width: width / 4,
+    paddingVertical: width / 44,
+    borderRadius: 8,
+  }),
+});

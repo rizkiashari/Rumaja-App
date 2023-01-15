@@ -159,8 +159,8 @@ const TambahLowongan = ({ navigation }) => {
                 <VStack width={width / 2.2}>
                   <Select
                     selectedValue={onTambahLowongan.values.skala_gaji}
-                    accessibilityLabel="Pilih hari"
-                    placeholder="Pilih hari"
+                    accessibilityLabel="Per hari"
+                    placeholder="Per hari"
                     rounded={8}
                     px={4}
                     fontFamily={fonts.primary[500]}

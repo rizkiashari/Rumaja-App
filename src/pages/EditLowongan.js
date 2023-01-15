@@ -197,8 +197,8 @@ const EditLowongan = ({ navigation, route }) => {
                   <VStack width={width / 2.2}>
                     <Select
                       selectedValue={onEditLowongan.values.skala_gaji}
-                      accessibilityLabel="Pilih hari"
-                      placeholder="Pilih hari"
+                      accessibilityLabel="Per hari"
+                      placeholder="Per hari"
                       rounded={8}
                       px={4}
                       py={2}
