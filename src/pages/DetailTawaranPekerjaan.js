@@ -43,7 +43,7 @@ const DetailTawaranPekerjaan = ({ navigation, route }) => {
       if (res.data.message === 'SUCCESS_TERIMA_TAWARAN') {
         navigation.replace('SuksesTerimaTawaran', {
           title: 'Tawaran berhasil diterima',
-          subTitle: 'Tawaran kerja yang anda dapat berhasil diterima. Menunggu konfirmasi dari penyedia kerja.',
+          subTitle: 'Tawaran kerja yang anda dapat berhasil diterima. Menunggu konfirmasi dari penyedia kerja menghubungi anda.',
         });
       } else {
         showError('Gagal menolak pelamar');
