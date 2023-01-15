@@ -127,8 +127,6 @@ const DetailLowongan = ({ navigation, route }) => {
     }
   };
 
-  console.log('Detail Lowongan', detailLowongan);
-
   return (
     <SafeAreaView>
       <Header>
