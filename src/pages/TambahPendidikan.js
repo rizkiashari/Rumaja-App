@@ -74,7 +74,7 @@ const TambahPendidikan = ({ navigation }) => {
             <VStack space={2}>
               <LabelInput text="Nama Sekolah" />
               <Input
-                placeholder="Masukkan nama sekolah"
+                placeholder="Masukkan nama sekolah (cth: SMK Negeri 1)"
                 value={onTambahPendidikan.values.nama}
                 onChangeText={onTambahPendidikan.handleChange('nama')}
               />
@@ -84,11 +84,11 @@ const TambahPendidikan = ({ navigation }) => {
               <VStack width={width / 2.2} space={2}>
                 <LabelInput text="Tahun Mulai" />
                 <Input
-                  placeholder="Ketik tahun"
+                  placeholder="Masukkan tahun"
                   type="number"
                   value={onTambahPendidikan.values.tahun_masuk}
                   onChangeText={onTambahPendidikan.handleChange('tahun_masuk')}
-                  icon={<Calender />}
+                  // icon={<Calender />}
                 />
                 {onTambahPendidikan.errors.tahun_masuk && onTambahPendidikan.touched.tahun_masuk && (
                   <ErrorInput error={onTambahPendidikan.errors.tahun_masuk} />
@@ -97,10 +97,10 @@ const TambahPendidikan = ({ navigation }) => {
               <VStack width={width / 2.2} space={2}>
                 <LabelInput text="Tahun Selesai" />
                 <Input
-                  placeholder="Ketik tahun"
+                  placeholder="Masukkan tahun"
                   value={onTambahPendidikan.values.tahun_akhir}
                   onChangeText={onTambahPendidikan.handleChange('tahun_akhir')}
-                  icon={<Calender />}
+                  // icon={<Calender />}
                   type="number"
                 />
                 {onTambahPendidikan.errors.tahun_akhir && onTambahPendidikan.touched.tahun_akhir && (

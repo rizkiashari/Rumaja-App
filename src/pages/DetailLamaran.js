@@ -79,7 +79,7 @@ const DetailLamaran = ({ navigation, route }) => {
         photoHeight="12"
         photoWidth="12"
         bubble={
-          <HStack alignItems="center" space={2} justifyContent="space-between">
+          <HStack mb={2} alignItems="center" space={2} justifyContent="space-between">
             <Badge title={`${convertRupiah(dataDetail?.lowongan?.gaji)}/${dataDetail?.lowongan?.skala_gaji}`} />
             <HStack space={0.5} alignItems="center">
               <Timer />

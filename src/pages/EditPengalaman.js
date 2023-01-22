@@ -10,7 +10,7 @@ import { showError, showSuccess } from '../utils/showMessages';
 import { CheckIcon, Checkbox, HStack, ScrollView, Select, Text, VStack, View } from 'native-base';
 import { colors } from '../utils/colors';
 import { Button, ErrorInput, Header, Input, LabelInput, LoadingButton, SelectItem } from '../components';
-import { ChevronBack } from '../assets';
+import { Calender, ChevronBack } from '../assets';
 import DatePicker from 'react-native-date-picker';
 import { fonts } from '../utils/fonts';
 
@@ -207,6 +207,7 @@ const EditPengalaman = ({ navigation, route }) => {
                   value={onEditPengalaman.values.tahun_mulai}
                   onChangeText={onEditPengalaman.handleChange('tahun_mulai')}
                   onPress={() => onPressModal('awal')}
+                  icon={<Calender />}
                 />
                 {onEditPengalaman.errors.tahun_mulai && onEditPengalaman.touched.tahun_mulai && (
                   <ErrorInput error={onEditPengalaman.errors.tahun_mulai} />
@@ -220,6 +221,7 @@ const EditPengalaman = ({ navigation, route }) => {
                   value={onEditPengalaman.values.tahun_akhir}
                   onChangeText={onEditPengalaman.handleChange('tahun_akhir')}
                   onPress={() => onPressModal('akhir')}
+                  icon={<Calender />}
                 />
                 {onEditPengalaman.errors.tahun_akhir && onEditPengalaman.touched.tahun_akhir && (
                   <ErrorInput error={onEditPengalaman.errors.tahun_akhir} />

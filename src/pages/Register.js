@@ -141,7 +141,7 @@ const Register = ({ navigation }) => {
             <LabelInput text="Alamat Email" />
             <Input
               type="email"
-              placeholder="Masukkan alamat email"
+              placeholder="Masukkan alamat email (cth: nama@gmail.com)"
               value={registerUser.values.email}
               onChangeText={registerUser.handleChange('email')}
             />
@@ -151,7 +151,7 @@ const Register = ({ navigation }) => {
             <LabelInput text="Nomor Telepon" />
             <Input
               type="number"
-              placeholder="Masukkan nomor telepon"
+              placeholder="Masukkan nomor telepon (cth: 08xxxxxxxxxx)"
               value={registerUser.values.nomor_wa}
               onChangeText={registerUser.handleChange('nomor_wa')}
             />
@@ -224,7 +224,7 @@ const Register = ({ navigation }) => {
             <LabelInput text="Kata Sandi" />
             <Input
               type="password"
-              placeholder="Masukkan kata sandi"
+              placeholder="Masukkan kata sandi (minimal 8 karakter)"
               value={registerUser.values.password}
               onChangeText={registerUser.handleChange('password')}
             />

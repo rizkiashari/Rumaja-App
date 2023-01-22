@@ -56,7 +56,7 @@ const DetailPekerjaan = ({ navigation, route }) => {
         photoHeight="10"
         photoWidth="10"
         bubble={
-          <HStack justifyContent="space-between" alignItems="center">
+          <HStack mb={2} space={2} justifyContent="space-between" alignItems="center">
             <Badge title={`${convertRupiah(detailLowongan?.gaji)}/${detailLowongan?.skala_gaji}`} />
             <HStack space={0.5} alignItems="center">
               <Timer />

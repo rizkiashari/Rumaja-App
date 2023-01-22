@@ -10,7 +10,7 @@ import { postWithJson } from '../utils/postData';
 import { showError, showSuccess } from '../utils/showMessages';
 import { colors } from '../utils/colors';
 import { Button, ErrorInput, Header, Input, LabelInput, LoadingButton, SelectItem } from '../components';
-import { ChevronBack } from '../assets';
+import { Calender, ChevronBack } from '../assets';
 import { fonts } from '../utils/fonts';
 import DatePicker from 'react-native-date-picker';
 
@@ -116,7 +116,11 @@ const TambahPengalaman = ({ navigation }) => {
           <VStack space={5}>
             <VStack space={2}>
               <LabelInput text="Bidang Pekerjaan" />
-              <Input placeholder="Masukkan bidang pekerjaan" onChangeText={addPengalaman.handleChange('nama')} value={addPengalaman.values.nama} />
+              <Input
+                placeholder="Masukkan bidang pekerjaan (cth: Pengasuh Bayi)"
+                onChangeText={addPengalaman.handleChange('nama')}
+                value={addPengalaman.values.nama}
+              />
               {addPengalaman.errors.nama && addPengalaman.touched.nama && <ErrorInput error={addPengalaman.errors.nama} />}
             </VStack>
             <VStack space={2}>
@@ -155,6 +159,7 @@ const TambahPengalaman = ({ navigation }) => {
                   value={addPengalaman.values.tahun_mulai}
                   onChangeText={addPengalaman.handleChange('tahun_mulai')}
                   onPress={() => onPressModal('awal')}
+                  icon={<Calender />}
                 />
                 {addPengalaman.errors.tahun_mulai && addPengalaman.touched.tahun_mulai && <ErrorInput error={addPengalaman.errors.tahun_mulai} />}
               </VStack>
@@ -166,6 +171,7 @@ const TambahPengalaman = ({ navigation }) => {
                   value={addPengalaman.values.tahun_akhir}
                   onChangeText={addPengalaman.handleChange('tahun_akhir')}
                   onPress={() => onPressModal('akhir')}
+                  icon={<Calender />}
                 />
                 {addPengalaman.errors.tahun_akhir && addPengalaman.touched.tahun_akhir && <ErrorInput error={addPengalaman.errors.tahun_akhir} />}
               </VStack>

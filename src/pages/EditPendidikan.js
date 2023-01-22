@@ -130,7 +130,7 @@ const EditPendidikan = ({ navigation, route }) => {
                 <LabelInput text="Tahun Mulai" />
                 <Input
                   placeholder="Ketik tahun"
-                  icon={<Calender />}
+                  // icon={<Calender />}
                   onChangeText={onEditPendidikan.handleChange('tahun_awal')}
                   value={onEditPendidikan.values.tahun_awal}
                 />
@@ -142,7 +142,7 @@ const EditPendidikan = ({ navigation, route }) => {
                 <LabelInput text="Tahun Selesai" />
                 <Input
                   placeholder="Ketik tahun"
-                  icon={<Calender />}
+                  // icon={<Calender />}
                   onChangeText={onEditPendidikan.handleChange('tahun_akhir')}
                   value={onEditPendidikan.values.tahun_akhir}
                 />

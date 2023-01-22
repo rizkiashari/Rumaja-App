@@ -143,8 +143,8 @@ const DetailPencari = ({ navigation, route }) => {
           showsVerticalScrollIndicator={false}
           bgColor={colors.text.black10}
           pt={2}
-          height={height}
-          _contentContainerStyle={{ paddingBottom: height / 2.5 }}
+          height={height / 1.8}
+          _contentContainerStyle={{ paddingBottom: height / 8 }}
         >
           <VStack space={4} mb={height / 3.5}>
             <VStack space={3}>
@@ -193,8 +193,8 @@ const DetailPencari = ({ navigation, route }) => {
           showsVerticalScrollIndicator={false}
           bgColor={colors.text.black10}
           pt={2}
-          height={height}
-          _contentContainerStyle={{ paddingBottom: height / 2.5 }}
+          height={height / 1.8}
+          _contentContainerStyle={{ paddingBottom: height / 8 }}
         >
           <VStack space={4} mb={height / 3.5}>
             <Card type="detail" title="Keahlian">
@@ -239,8 +239,8 @@ const DetailPencari = ({ navigation, route }) => {
           showsVerticalScrollIndicator={false}
           bgColor={colors.text.black10}
           pt={2}
-          height={height}
-          _contentContainerStyle={{ paddingBottom: height / 2.5 }}
+          height={height / 1.8}
+          _contentContainerStyle={{ paddingBottom: height / 8 }}
         >
           <VStack space={4} mb={height / 3.5}>
             {dataPencari?.pencari?.ulasan?.length === 0 ? (
@@ -273,7 +273,7 @@ const DetailPencari = ({ navigation, route }) => {
       )}
 
       {type === 'daftar-pelamar' ? (
-        <Box position="absolute" bottom={height / 2.25} width="full" px={width / 28} justifyContent="center" py={4} backgroundColor="white">
+        <Box position="absolute" safeAreaBottom bottom={0} width="full" px={width / 28} justifyContent="center" py={4} backgroundColor="white">
           <HStack space={2}>
             <Button
               type="progres"
@@ -303,7 +303,7 @@ const DetailPencari = ({ navigation, route }) => {
           </HStack>
         </Box>
       ) : type === 'detail-pelamar' ? null : type === 'daftar-pekerja' ? (
-        <Box position="absolute" bottom={height / 2.25} width="full" px={width / 28} justifyContent="center" py={4} backgroundColor="white">
+        <Box position="absolute" safeAreaBottom bottom={0} width="full" px={width / 28} justifyContent="center" py={4} backgroundColor="white">
           <HStack alignItems="center" justifyContent="center" space={2}>
             <Button
               type="primary"
@@ -321,7 +321,7 @@ const DetailPencari = ({ navigation, route }) => {
           </HStack>
         </Box>
       ) : type === 'daftar-selesai' ? (
-        <Box position="absolute" bottom={height / 2.25} width="full" px={width / 28} justifyContent="center" py={4} backgroundColor="white">
+        <Box position="absolute" safeAreaBottom bottom={0} width="full" px={width / 28} justifyContent="center" py={4} backgroundColor="white">
           <Button
             type="primary"
             fontSize={width}
@@ -335,7 +335,7 @@ const DetailPencari = ({ navigation, route }) => {
           />
         </Box>
       ) : (
-        <Box position="absolute" bottom={height / 2.25} width="full" px={width / 28} justifyContent="center" py={4} backgroundColor="white">
+        <Box position="absolute" safeAreaBottom bottom={0} width="full" px={width / 28} justifyContent="center" py={4} backgroundColor="white">
           <Button
             type="primary"
             text="Tawarkan Pekerjaan"

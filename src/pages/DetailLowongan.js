@@ -180,7 +180,7 @@ const DetailLowongan = ({ navigation, route }) => {
         showsVerticalScrollIndicator={false}
         bgColor={colors.text.black10}
         pt={2}
-        height={height / 1.68}
+        height={height / 1.65}
         _contentContainerStyle={{ paddingBottom: height / 8 }}
       >
         <VStack space={4}>
