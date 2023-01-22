@@ -100,7 +100,7 @@ const Profil = ({ navigation }) => {
   }, [isFocused, setLoading, userData?.id_role]);
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{ backgroundColor: colors.text.black10 }}>
       <Header>
         <Text fontFamily={fonts.primary[600]} fontSize={width / 28} color="black">
           Profil
@@ -297,10 +297,11 @@ const Profil = ({ navigation }) => {
               ulasan?.map((item, idx) => (
                 <Card
                   key={idx}
+                  uriType="pekerja"
                   type="ulasan"
                   title={item?.nama_penyedia}
                   subTitle={item?.catatan}
-                  uriImage={item?.lowongan?.bidang_kerja?.photo ? { uri: item?.lowongan?.bidang_kerja?.photo } : ILPlaceholder}
+                  uriImage={item?.photo_profile ? { uri: item?.photo_profile } : ILPlaceholder}
                 >
                   <HStack justifyContent="space-between" alignItems="center">
                     <Badge title={item?.rating} type="rating" icon={<StarActive />} />

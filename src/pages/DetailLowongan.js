@@ -162,7 +162,7 @@ const DetailLowongan = ({ navigation, route }) => {
         subtitle={`${detailLowongan?.kota_lowongan}, ${detailLowongan?.provinsi_lowongan?.split(',')[1]}`}
         type="pekerja"
         bubble={
-          <HStack mb={2} justifyContent="space-between">
+          <HStack mb={2} space={2} justifyContent="space-between">
             <Badge title={`${convertRupiah(detailLowongan?.gaji)}/${detailLowongan?.skala_gaji}`} />
             <HStack space={0.5} alignItems="center">
               <Timer />

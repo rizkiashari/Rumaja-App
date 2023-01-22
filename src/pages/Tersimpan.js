@@ -189,7 +189,15 @@ const Tersimpan = ({ navigation }) => {
           <FilterBlack width={28} />
         </TouchableOpacity>
       </Header>
-      <ScrollView px={width / 28} py={width / 28} showsVerticalScrollIndicator={false} _contentContainerStyle={{ paddingBottom: width / 28 }}>
+      <ScrollView
+        background={colors.text.black10}
+        px={width / 28}
+        py={width / 28}
+        showsVerticalScrollIndicator={false}
+        minHeight={height}
+        height="full"
+        _contentContainerStyle={{ paddingBottom: height / 5 }}
+      >
         {userData?.id_role === 2 && (
           <VStack mt={1} space={4} mb={height / 8}>
             {loading ? (

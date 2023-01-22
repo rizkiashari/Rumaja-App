@@ -79,7 +79,7 @@ const DetailLamaran = ({ navigation, route }) => {
         photoHeight="12"
         photoWidth="12"
         bubble={
-          <HStack alignItems="center" justifyContent="space-between">
+          <HStack alignItems="center" space={2} justifyContent="space-between">
             <Badge title={`${convertRupiah(dataDetail?.lowongan?.gaji)}/${dataDetail?.lowongan?.skala_gaji}`} />
             <HStack space={0.5} alignItems="center">
               <Timer />
@@ -100,7 +100,7 @@ const DetailLamaran = ({ navigation, route }) => {
         pt={4}
         contentContainerStyle={{ paddingBottom: height / 1.8 }}
       >
-        <VStack space={2}>
+        <VStack space={4}>
           <Card type="detail" title="Penyedia Lowongan">
             <HStack space={0.5} justifyContent="space-between" alignItems="center">
               <HStack space={2} alignItems="center">

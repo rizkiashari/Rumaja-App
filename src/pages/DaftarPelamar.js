@@ -52,7 +52,7 @@ const DaftarPelamar = ({ navigation, route }) => {
         height={height}
         _contentContainerStyle={{ paddingBottom: height / 2.5 }}
       >
-        <VStack mt={1} mb={height / 8} space={4}>
+        <VStack mt={2} mb={height / 8} space={4}>
           {isLoading ? (
             <LoadingSkeleton jumlah={4} />
           ) : dataPelamar?.length === 0 ? (

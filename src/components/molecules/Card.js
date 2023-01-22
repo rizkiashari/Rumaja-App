@@ -133,9 +133,15 @@ const Card = ({
     return (
       <VStack space={4} bgColor={colors.white} rounded={8} px={5} py={4}>
         <HStack space={3}>
-          <Box w={12} h={12} rounded="full" alignItems="center" justifyContent="center" bgColor={colors.blue[30]}>
-            <Image alt="photo profile" source={uriImage} width="10" height="10" rounded="full" />
-          </Box>
+          {uriType === 'pekerja' ? (
+            <Box alignItems="center" justifyContent="center">
+              <Image alt="photo profile" source={uriImage} w={12} h={12} rounded="full" />
+            </Box>
+          ) : (
+            <Box w={12} h={12} rounded="full" alignItems="center" justifyContent="center" bgColor={colors.blue[30]}>
+              <Image alt="photo profile" source={uriImage} width="8" height="8" />
+            </Box>
+          )}
           <VStack space={0.5}>
             <Text fontFamily={fonts.primary[600]} fontSize={width / 28} color="black">
               {title}
