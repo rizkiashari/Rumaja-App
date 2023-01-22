@@ -315,7 +315,7 @@ const EditProfile = ({ navigation }) => {
             <VStack space={2}>
               <LabelInput text="Nomor Telepon" />
               <Input
-                placeholder="Masukkan nomor telepon"
+                placeholder="Masukan nomor telepon (cth: 08xxxxxxxxxx)"
                 type="number"
                 value={updateProfil.values.nomor_wa}
                 onChangeText={updateProfil.handleChange('nomor_wa')}
@@ -325,7 +325,7 @@ const EditProfile = ({ navigation }) => {
             <VStack space={2}>
               <LabelInput text="Tempat Lahir" />
               <Input
-                placeholder="Masukkan tempat lahir"
+                placeholder="Masukan tempat lahir (cth: Jakarta)"
                 value={updateProfil.values.tempat_lahir}
                 onChangeText={updateProfil.handleChange('tempat_lahir')}
               />
@@ -345,7 +345,7 @@ const EditProfile = ({ navigation }) => {
               <VStack space={2}>
                 <LabelInput text="Keahlian" />
                 <TextArea
-                  placeholder="Ceritakan keahlian diri anda"
+                  placeholder="Ceritakan keahlian anda (cth: Pandai memasak)"
                   value={updateProfil.values.tentang}
                   onChangeText={updateProfil.handleChange('tentang')}
                 />
@@ -412,7 +412,7 @@ const EditProfile = ({ navigation }) => {
             <VStack space={2}>
               <LabelInput text="Alamat Rumah" />
               <TextArea
-                placeholder="Masukkan alamat rumah"
+                placeholder="Masukan alamat rumah (cth: Jl. Kalibata Raya No. 1)"
                 value={updateProfil.values.alamat_rumah}
                 onChangeText={updateProfil.handleChange('alamat_rumah')}
               />
@@ -454,7 +454,7 @@ const EditProfile = ({ navigation }) => {
               <VStack space={2}>
                 <LabelInput text="Tentang" />
                 <TextArea
-                  placeholder="Ceritakan tentang diri anda"
+                  placeholder="Ceritakan tentang diri anda (cth: Saya pegawai swasta yang sibuk bekerja)"
                   value={updateProfil.values.tentang}
                   onChangeText={updateProfil.handleChange('tentang')}
                 />

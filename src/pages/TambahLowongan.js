@@ -4,7 +4,7 @@ import { CheckIcon, HStack, ScrollView, Select, Text, View, VStack, Box } from '
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { colors } from '../utils/colors';
 import { Button, ErrorInput, Header, Input, LabelInput, LoadingButton, SelectItem, TextArea } from '../components';
-import { ChevronBack } from '../assets';
+import { ChevronBack, Info } from '../assets';
 import { fonts } from '../utils/fonts';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -150,7 +150,7 @@ const TambahLowongan = ({ navigation }) => {
                 <HStack space={2}>
                   <VStack width={width / 2.2}>
                     <Input
-                      placeholder="Masukkan gaji"
+                      placeholder="Masukan gaji"
                       value={onTambahLowongan.values.gaji}
                       onChangeText={onTambahLowongan.handleChange('gaji')}
                       type="number"
@@ -276,21 +276,27 @@ const TambahLowongan = ({ navigation }) => {
                     )}
                   </VStack>
                 </HStack>
-                <Box mt={2} mb={32}>
+                <Box mt={2}>
                   <TextArea
                     value={onTambahLowongan.values.alamat_lengkap}
                     onChangeText={onTambahLowongan.handleChange('alamat_lengkap')}
-                    placeholder="Masukan alamat lengkap (Jalan Kalibata Raya no.1)"
+                    placeholder="Masukan alamat lengkap (cth: Jalan Kalibata Raya no.1)"
                   />
                   {onTambahLowongan.errors.alamat_lengkap && onTambahLowongan.touched.alamat_lengkap && (
                     <ErrorInput error={onTambahLowongan.errors.alamat_lengkap} />
                   )}
                 </Box>
+                <HStack mt={2} mb={28} px={width / 28} bgColor={colors.gray20} rounded={8} py={width / 40} space={width / 40} alignItems="center">
+                  <Info />
+                  <Text color={colors.text.black100} fontFamily={fonts.primary[400]} fontSize={width / 32}>
+                    Alamat lengkap hanya dapat dilihat oleh pencari kerja yang telah diterima
+                  </Text>
+                </HStack>
               </VStack>
             </VStack>
           </ScrollView>
         </KeyboardAwareScrollView>
-        <Box backgroundColor={colors.white} px={width / 28} justifyContent="center" alignItems="center" width={width}>
+        <Box backgroundColor={colors.white} pt={4} px={width / 28} justifyContent="center" alignItems="center" width={width}>
           {!isLoading ? <Button onPress={onTambahLowongan.handleSubmit} text="Simpan" fontSize={width} width={width / 1.1} /> : <LoadingButton />}
         </Box>
       </View>

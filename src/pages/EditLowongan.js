@@ -8,7 +8,7 @@ import { API } from '../config/api';
 import { showError, showSuccess } from '../utils/showMessages';
 import { colors } from '../utils/colors';
 import { Button, ErrorInput, Header, Input, LabelInput, LoadingButton, SelectItem, TextArea } from '../components';
-import { ChevronBack } from '../assets';
+import { ChevronBack, Info } from '../assets';
 import { fonts } from '../utils/fonts';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import useLoading from '../store/loadingStore';
@@ -151,186 +151,189 @@ const EditLowongan = ({ navigation, route }) => {
           </Text>
         </HStack>
       </Header>
-      <KeyboardAwareScrollView extraHeight={250} enableAutomaticScroll={true} extraScrollHeight={250} showsVerticalScrollIndicator={false}>
-        <ScrollView showsVerticalScrollIndicator={false} _contentContainerStyle={{ paddingBottom: height / 4 }} px={width / 28}>
-          <VStack mt={5} justifyContent="space-between">
-            <VStack space={5}>
-              <VStack space={2}>
-                <LabelInput text="Bidang Pekerjaan" />
-                <Select
-                  selectedValue={onEditLowongan.values.bidang_kerja}
-                  accessibilityLabel="Pilih bidang pekerjaan"
-                  placeholder="Pilih bidang pekerjaan"
-                  rounded={8}
-                  px={4}
-                  py={2}
-                  fontFamily={fonts.primary[500]}
-                  borderColor={colors.text.black30}
-                  backgroundColor={colors.white}
-                  fontSize={width / 32}
-                  _selectedItem={{
-                    bg: colors.white,
-                    endIcon: <CheckIcon size={1} />,
-                  }}
-                  onValueChange={(itemValue) => onEditLowongan.setFieldValue('bidang_kerja', itemValue)}
-                >
-                  {bidangKerja.map((item, index) => (
-                    <SelectItem key={index} label={item.detail_bidang} value={item.id} />
-                  ))}
-                </Select>
-                {onEditLowongan.errors.bidang_kerja && onEditLowongan.touched.bidang_kerja && (
-                  <ErrorInput error={onEditLowongan.errors.bidang_kerja} />
-                )}
-              </VStack>
-              <VStack space={2}>
-                <LabelInput text="Gaji" />
-                <HStack space={2}>
-                  <VStack width={width / 2.2}>
-                    <Input
-                      placeholder="Masukkan gaji"
-                      type="number"
-                      value={onEditLowongan.values.gaji}
-                      onChangeText={onEditLowongan.handleChange('gaji')}
-                    />
-                    {onEditLowongan.errors.gaji && onEditLowongan.touched.gaji && <ErrorInput error={onEditLowongan.errors.gaji} />}
-                  </VStack>
-                  <VStack width={width / 2.2}>
-                    <Select
-                      selectedValue={onEditLowongan.values.skala_gaji}
-                      accessibilityLabel="Per hari"
-                      placeholder="Per hari"
-                      rounded={8}
-                      px={4}
-                      py={2}
-                      fontFamily={fonts.primary[500]}
-                      borderColor={colors.text.black30}
-                      backgroundColor={colors.white}
-                      fontSize={width / 32}
-                      _selectedItem={{
-                        bg: colors.white,
-                        endIcon: <CheckIcon size={1} />,
-                      }}
-                      onValueChange={(itemValue) => onEditLowongan.setFieldValue('skala_gaji', itemValue)}
-                    >
-                      <Select.Item label="Hari" value="hari" />
-                      <Select.Item label="Minggu" value="minggu" />
-                      <Select.Item label="Bulan" value="bulan" />
-                    </Select>
-                    {onEditLowongan.errors.skala_gaji && onEditLowongan.touched.skala_gaji && <ErrorInput error={onEditLowongan.errors.skala_gaji} />}
-                  </VStack>
-                </HStack>
-              </VStack>
-              <VStack space={2}>
-                <LabelInput text="Kualifikasi" />
-                <TextArea
-                  placeholder="Masukkan kualifikasi"
-                  value={onEditLowongan.values.kualifikasi}
-                  onChangeText={onEditLowongan.handleChange('kualifikasi')}
-                />
-                {onEditLowongan.errors.kualifikasi && onEditLowongan.touched.kualifikasi && <ErrorInput error={onEditLowongan.errors.kualifikasi} />}
-              </VStack>
-              <VStack space={2}>
-                <LabelInput text="Deskripsi Pekerjaan" />
-                <TextArea
-                  placeholder="Masukkan deskripsi pekerjaan"
-                  value={onEditLowongan.values.deskripsi_lowongan}
-                  onChangeText={onEditLowongan.handleChange('deskripsi_lowongan')}
-                />
-                {onEditLowongan.errors.deskripsi_lowongan && onEditLowongan.touched.deskripsi_lowongan && (
-                  <ErrorInput error={onEditLowongan.errors.deskripsi_lowongan} />
-                )}
-              </VStack>
-              <VStack space={2}>
-                <LabelInput text="Fasilitas" />
-                <TextArea
-                  placeholder="Masukkan fasilitas"
-                  value={onEditLowongan.values.fasilitas}
-                  onChangeText={onEditLowongan.handleChange('fasilitas')}
-                />
-              </VStack>
-              <VStack space={2}>
-                <LabelInput text="Lokasi" />
-                <HStack space={2}>
-                  <VStack width={width / 2.2}>
-                    <Select
-                      selectedValue={onEditLowongan.values.provinsi_lowongan}
-                      accessibilityLabel="Pilih provinsi"
-                      placeholder="Pilih provinsi"
-                      rounded={8}
-                      px={4}
-                      py={2}
-                      fontFamily={fonts.primary[500]}
-                      borderColor={colors.text.black30}
-                      backgroundColor={colors.white}
-                      fontSize={width / 32}
-                      _selectedItem={{
-                        bg: colors.white,
-                        endIcon: <CheckIcon size={1} />,
-                      }}
-                      onValueChange={(itemValue) => {
-                        setProvinsi(itemValue);
-                        onEditLowongan.setFieldValue('provinsi_lowongan', itemValue);
-                      }}
-                    >
-                      {dataProvinsi?.map((item, index) => (
-                        <SelectItem label={item.nama} value={`${item.id},${item.nama}`} key={index} />
-                      ))}
-                    </Select>
-                    {onEditLowongan.errors.provinsi_lowongan && onEditLowongan.touched.provinsi_lowongan && (
-                      <ErrorInput error={onEditLowongan.errors.provinsi_lowongan} />
-                    )}
-                  </VStack>
-                  <VStack width={width / 2.2}>
-                    <Select
-                      selectedValue={onEditLowongan.values.kota_lowongan}
-                      accessibilityLabel="Pilih kota"
-                      placeholder="Pilih kota"
-                      rounded={8}
-                      px={4}
-                      py={2}
-                      fontFamily={fonts.primary[500]}
-                      borderColor={colors.text.black30}
-                      backgroundColor={colors.white}
-                      fontSize={width / 32}
-                      _selectedItem={{
-                        bg: colors.white,
-                        endIcon: <CheckIcon size={1} />,
-                      }}
-                      onValueChange={(itemValue) => onEditLowongan.setFieldValue('kota_lowongan', itemValue)}
-                    >
-                      {dataKota?.map((item, idx) => (
-                        <SelectItem label={item.nama} value={item.nama} key={idx} />
-                      ))}
-                    </Select>
-                  </VStack>
-                </HStack>
-                <Box mt={2} mb={32}>
-                  <TextArea
-                    placeholder="Masukkan alamat lengkap"
-                    value={onEditLowongan.values.alamat_lengkap}
-                    onChangeText={onEditLowongan.handleChange('alamat_lengkap')}
-                  />
-                  {onEditLowongan.errors.alamat_lengkap && onEditLowongan.touched.alamat_lengkap && (
-                    <ErrorInput error={onEditLowongan.errors.alamat_lengkap} />
+      <View flex={1}>
+        <KeyboardAwareScrollView extraHeight={250} enableAutomaticScroll={true} extraScrollHeight={250} showsVerticalScrollIndicator={false}>
+          <ScrollView flex={0.9} showsVerticalScrollIndicator={false} _contentContainerStyle={{ paddingBottom: height / 4 }} px={width / 28}>
+            <VStack mt={5} justifyContent="space-between">
+              <VStack space={5}>
+                <VStack space={2}>
+                  <LabelInput text="Bidang Pekerjaan" />
+                  <Select
+                    selectedValue={onEditLowongan.values.bidang_kerja}
+                    accessibilityLabel="Pilih bidang pekerjaan"
+                    placeholder="Pilih bidang pekerjaan"
+                    rounded={8}
+                    px={4}
+                    py={2}
+                    fontFamily={fonts.primary[500]}
+                    borderColor={colors.text.black30}
+                    backgroundColor={colors.white}
+                    fontSize={width / 32}
+                    _selectedItem={{
+                      bg: colors.white,
+                      endIcon: <CheckIcon size={1} />,
+                    }}
+                    onValueChange={(itemValue) => onEditLowongan.setFieldValue('bidang_kerja', itemValue)}
+                  >
+                    {bidangKerja.map((item, index) => (
+                      <SelectItem key={index} label={item.detail_bidang} value={item.id} />
+                    ))}
+                  </Select>
+                  {onEditLowongan.errors.bidang_kerja && onEditLowongan.touched.bidang_kerja && (
+                    <ErrorInput error={onEditLowongan.errors.bidang_kerja} />
                   )}
-                </Box>
+                </VStack>
+                <VStack space={2}>
+                  <LabelInput text="Gaji" />
+                  <HStack space={2}>
+                    <VStack width={width / 2.2}>
+                      <Input
+                        placeholder="Masukan gaji"
+                        type="number"
+                        value={onEditLowongan.values.gaji}
+                        onChangeText={onEditLowongan.handleChange('gaji')}
+                      />
+                      {onEditLowongan.errors.gaji && onEditLowongan.touched.gaji && <ErrorInput error={onEditLowongan.errors.gaji} />}
+                    </VStack>
+                    <VStack width={width / 2.2}>
+                      <Select
+                        selectedValue={onEditLowongan.values.skala_gaji}
+                        accessibilityLabel="Per hari"
+                        placeholder="Per hari"
+                        rounded={8}
+                        px={4}
+                        py={2}
+                        fontFamily={fonts.primary[500]}
+                        borderColor={colors.text.black30}
+                        backgroundColor={colors.white}
+                        fontSize={width / 32}
+                        _selectedItem={{
+                          bg: colors.white,
+                          endIcon: <CheckIcon size={1} />,
+                        }}
+                        onValueChange={(itemValue) => onEditLowongan.setFieldValue('skala_gaji', itemValue)}
+                      >
+                        <Select.Item label="Hari" value="hari" />
+                        <Select.Item label="Minggu" value="minggu" />
+                        <Select.Item label="Bulan" value="bulan" />
+                      </Select>
+                      {onEditLowongan.errors.skala_gaji && onEditLowongan.touched.skala_gaji && (
+                        <ErrorInput error={onEditLowongan.errors.skala_gaji} />
+                      )}
+                    </VStack>
+                  </HStack>
+                </VStack>
+                <VStack space={2}>
+                  <LabelInput text="Kualifikasi" />
+                  <TextArea
+                    placeholder="Masukan kualifikasi (cth: Usia maksimal 35 tahun)"
+                    value={onEditLowongan.values.kualifikasi}
+                    onChangeText={onEditLowongan.handleChange('kualifikasi')}
+                  />
+                  {onEditLowongan.errors.kualifikasi && onEditLowongan.touched.kualifikasi && (
+                    <ErrorInput error={onEditLowongan.errors.kualifikasi} />
+                  )}
+                </VStack>
+                <VStack space={2}>
+                  <LabelInput text="Deskripsi Pekerjaan" />
+                  <TextArea
+                    placeholder="Masukan deskripsi pekerjaan (cth: tanggung jawab membersihkan rumah 2 lantai)"
+                    value={onEditLowongan.values.deskripsi_lowongan}
+                    onChangeText={onEditLowongan.handleChange('deskripsi_lowongan')}
+                  />
+                  {onEditLowongan.errors.deskripsi_lowongan && onEditLowongan.touched.deskripsi_lowongan && (
+                    <ErrorInput error={onEditLowongan.errors.deskripsi_lowongan} />
+                  )}
+                </VStack>
+                <VStack space={2}>
+                  <LabelInput text="Fasilitas" />
+                  <TextArea
+                    placeholder="MasukkMasukan fasilitas (cth: Kamar tidur dan kamar mandi pribadi)"
+                    value={onEditLowongan.values.fasilitas}
+                    onChangeText={onEditLowongan.handleChange('fasilitas')}
+                  />
+                </VStack>
+                <VStack space={2}>
+                  <LabelInput text="Lokasi" />
+                  <HStack space={2}>
+                    <VStack width={width / 2.2}>
+                      <Select
+                        selectedValue={onEditLowongan.values.provinsi_lowongan}
+                        accessibilityLabel="Pilih provinsi"
+                        placeholder="Pilih provinsi"
+                        rounded={8}
+                        px={4}
+                        py={2}
+                        fontFamily={fonts.primary[500]}
+                        borderColor={colors.text.black30}
+                        backgroundColor={colors.white}
+                        fontSize={width / 32}
+                        _selectedItem={{
+                          bg: colors.white,
+                          endIcon: <CheckIcon size={1} />,
+                        }}
+                        onValueChange={(itemValue) => {
+                          setProvinsi(itemValue);
+                          onEditLowongan.setFieldValue('provinsi_lowongan', itemValue);
+                        }}
+                      >
+                        {dataProvinsi?.map((item, index) => (
+                          <SelectItem label={item.nama} value={`${item.id},${item.nama}`} key={index} />
+                        ))}
+                      </Select>
+                      {onEditLowongan.errors.provinsi_lowongan && onEditLowongan.touched.provinsi_lowongan && (
+                        <ErrorInput error={onEditLowongan.errors.provinsi_lowongan} />
+                      )}
+                    </VStack>
+                    <VStack width={width / 2.2}>
+                      <Select
+                        selectedValue={onEditLowongan.values.kota_lowongan}
+                        accessibilityLabel="Pilih kota"
+                        placeholder="Pilih kota"
+                        rounded={8}
+                        px={4}
+                        py={2}
+                        fontFamily={fonts.primary[500]}
+                        borderColor={colors.text.black30}
+                        backgroundColor={colors.white}
+                        fontSize={width / 32}
+                        _selectedItem={{
+                          bg: colors.white,
+                          endIcon: <CheckIcon size={1} />,
+                        }}
+                        onValueChange={(itemValue) => onEditLowongan.setFieldValue('kota_lowongan', itemValue)}
+                      >
+                        {dataKota?.map((item, idx) => (
+                          <SelectItem label={item.nama} value={item.nama} key={idx} />
+                        ))}
+                      </Select>
+                    </VStack>
+                  </HStack>
+                  <Box mt={2}>
+                    <TextArea
+                      placeholder="Masukan alamat lengkap (cth: Jalan Kalibata Raya no.1)"
+                      value={onEditLowongan.values.alamat_lengkap}
+                      onChangeText={onEditLowongan.handleChange('alamat_lengkap')}
+                    />
+                    {onEditLowongan.errors.alamat_lengkap && onEditLowongan.touched.alamat_lengkap && (
+                      <ErrorInput error={onEditLowongan.errors.alamat_lengkap} />
+                    )}
+                  </Box>
+                  <HStack mt={2} mb={28} px={width / 28} bgColor={colors.gray20} rounded={8} py={width / 40} space={width / 40} alignItems="center">
+                    <Info />
+                    <Text color={colors.text.black100} fontFamily={fonts.primary[400]} fontSize={width / 32}>
+                      Alamat lengkap hanya dapat dilihat oleh pencari kerja yang telah diterima
+                    </Text>
+                  </HStack>
+                </VStack>
               </VStack>
             </VStack>
-          </VStack>
-        </ScrollView>
-      </KeyboardAwareScrollView>
-      <Box
-        position="absolute"
-        bottom={height / 9.2}
-        backgroundColor={colors.white}
-        px={width / 28}
-        py={4}
-        justifyContent="center"
-        alignItems="center"
-        width={width}
-      >
-        {!isLoading ? <Button onPress={onEditLowongan.handleSubmit} text="Simpan" fontSize={width} width={width / 1.1} /> : <LoadingButton />}
-      </Box>
+          </ScrollView>
+        </KeyboardAwareScrollView>
+        <Box backgroundColor={colors.white} pt={4} px={width / 28} justifyContent="center" alignItems="center" width={width}>
+          {!isLoading ? <Button onPress={onEditLowongan.handleSubmit} text="Simpan" fontSize={width} width={width / 1.1} /> : <LoadingButton />}
+        </Box>
+      </View>
     </View>
   );
 };
