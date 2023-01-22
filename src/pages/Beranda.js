@@ -1,4 +1,4 @@
-import { Dimensions, StyleSheet, SafeAreaView, TouchableOpacity } from 'react-native';
+import { Dimensions, StyleSheet, SafeAreaView, TouchableOpacity, RefreshControl } from 'react-native';
 import { Box, HStack, ScrollView, Text, VStack, View } from 'native-base';
 import React, { useEffect, useState } from 'react';
 import { colors } from '../utils/colors';
@@ -43,7 +43,6 @@ const Beranda = ({ navigation }) => {
   };
 
   useEffect(() => {
-    getAllBidang();
     const getAllData = async () => {
       if (userData?.id_role === 2) {
         const resp = await getData(`/lowongan/rekomendasi?bidang_kerja=${userData?.id_bidang_kerja}&page=${page}&limit=5`);
@@ -65,6 +64,7 @@ const Beranda = ({ navigation }) => {
         setDataPekerja(resp.data);
       }
     };
+    getAllBidang();
     setFilterHome(null);
     setFilterTersimpan(null);
 
@@ -156,7 +156,13 @@ const Beranda = ({ navigation }) => {
           <Text style={styles.textNotif}>{countNotif >= 9 ? '9+' : countNotif}</Text>
         </TouchableOpacity>
       </Header>
-      <ScrollView showsVerticalScrollIndicator={false} bgColor={colors.text.black10} minH={height}>
+
+      <ScrollView
+        refreshControl={<RefreshControl refreshing={loading} onRefresh={() => setInvoke(!invoke)} />}
+        showsVerticalScrollIndicator={false}
+        bgColor={colors.text.black10}
+        minH={height}
+      >
         {userData?.id_role === 2 && (
           <View bgColor={colors.text.black10} showsVerticalScrollIndicator={false} px={width / 28} pt={height / 40}>
             <Text fontFamily={fonts.primary[600]} color="black" fontSize={width / 28}>

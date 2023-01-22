@@ -1,4 +1,4 @@
-import { Dimensions, SafeAreaView, StyleSheet, TouchableOpacity } from 'react-native';
+import { Dimensions, RefreshControl, SafeAreaView, StyleSheet, TouchableOpacity } from 'react-native';
 import { HStack, ScrollView, Text, VStack, View } from 'native-base';
 import React, { useEffect, useState } from 'react';
 import useLoading from '../store/loadingStore';
@@ -33,59 +33,58 @@ const Profil = ({ navigation }) => {
 
   const [jenisTabs, setJenisTabs] = useState(userData?.id_role === 2 ? 'Pengalaman' : 'Lowongan');
 
-  useEffect(() => {
-    setLoading(true);
-
-    const getAllData = async () => {
-      if (userData?.id_role === 3) {
-        const resp = await getData('/lowongan/list-lowongan?publish=publish');
-        if (resp?.code === 403) {
-          setIsLogin(false);
-          showError('Sesi anda telah berakhir, silahkan login kembali');
-          return;
-        }
-        if (resp?.message === 'SUCCESS_GET_ALL_LOWONGAN') {
-          setLowongan(resp?.data?.lowongan);
-          setLoading(false);
-        }
-        const profileRes = await getData('/user/profile-penyedia');
-        if (profileRes?.message === 'SUCCESS_GET_PROFILE_PENYEDIA') {
-          setDetailProfile(profileRes?.data);
-          setLoading(false);
-        }
+  const getAllData = async () => {
+    if (userData?.id_role === 3) {
+      const resp = await getData('/lowongan/list-lowongan?publish=publish');
+      if (resp?.code === 403) {
+        setIsLogin(false);
+        showError('Sesi anda telah berakhir, silahkan login kembali');
+        return;
+      }
+      if (resp?.message === 'SUCCESS_GET_ALL_LOWONGAN') {
+        setLowongan(resp?.data?.lowongan);
         setLoading(false);
       }
-      if (userData?.id_role === 2) {
-        const profileRes = await getData('/user/profile-pencari');
-        if (profileRes?.code === 403) {
-          setIsLogin(false);
-          showError('Sesi anda telah berakhir, silahkan login kembali');
-          return;
-        }
-        if (profileRes?.message === 'SUCCESS_GET_PROFILE_PENCARI') {
-          setDetailProfile(profileRes?.data);
-          setLoading(false);
-        }
-
-        const respPengalaman = await getData('/pengalaman/list-all');
-        if (respPengalaman?.message === 'LIST_ALL_PENGALAMAN_SUCCESS') {
-          setPengalaman(respPengalaman?.data);
-          setLoading(false);
-        }
-
-        const respPendidikan = await getData('/pendidikan/list-all');
-        if (respPendidikan?.message === 'LIST_ALL_PENDIDIKAN_SUCCESS') {
-          setPendidikan(respPendidikan?.data);
-          setLoading(false);
-        }
-
-        const respUlasan = await getData('/ulasan/list-all');
-        if (respUlasan?.message === 'GET_ALL_ULASAN_PENCARI_SUCCESS') {
-          setUlasan(respUlasan?.data);
-          setLoading(false);
-        }
+      const profileRes = await getData('/user/profile-penyedia');
+      if (profileRes?.message === 'SUCCESS_GET_PROFILE_PENYEDIA') {
+        setDetailProfile(profileRes?.data);
+        setLoading(false);
       }
-    };
+      setLoading(false);
+    }
+    if (userData?.id_role === 2) {
+      const profileRes = await getData('/user/profile-pencari');
+      if (profileRes?.code === 403) {
+        setIsLogin(false);
+        showError('Sesi anda telah berakhir, silahkan login kembali');
+        return;
+      }
+      if (profileRes?.message === 'SUCCESS_GET_PROFILE_PENCARI') {
+        setDetailProfile(profileRes?.data);
+        setLoading(false);
+      }
+
+      const respPengalaman = await getData('/pengalaman/list-all');
+      if (respPengalaman?.message === 'LIST_ALL_PENGALAMAN_SUCCESS') {
+        setPengalaman(respPengalaman?.data);
+        setLoading(false);
+      }
+
+      const respPendidikan = await getData('/pendidikan/list-all');
+      if (respPendidikan?.message === 'LIST_ALL_PENDIDIKAN_SUCCESS') {
+        setPendidikan(respPendidikan?.data);
+        setLoading(false);
+      }
+
+      const respUlasan = await getData('/ulasan/list-all');
+      if (respUlasan?.message === 'GET_ALL_ULASAN_PENCARI_SUCCESS') {
+        setUlasan(respUlasan?.data);
+        setLoading(false);
+      }
+    }
+  };
+  useEffect(() => {
+    setLoading(true);
 
     getAllData();
     setLoading(false);
@@ -147,6 +146,7 @@ const Profil = ({ navigation }) => {
           bgColor={colors.text.black10}
           pt={2}
           height={height}
+          refreshControl={<RefreshControl refreshing={loading} onRefresh={getAllData} />}
           _contentContainerStyle={{ paddingBottom: height / 1.5 }}
         >
           <VStack space={4}>
@@ -193,6 +193,7 @@ const Profil = ({ navigation }) => {
           bgColor={colors.text.black10}
           pt={2}
           height={height}
+          refreshControl={<RefreshControl refreshing={loading} onRefresh={getAllData} />}
           _contentContainerStyle={{ paddingBottom: height / 2.5 }}
         >
           <VStack space={4}>
@@ -287,6 +288,7 @@ const Profil = ({ navigation }) => {
           showsVerticalScrollIndicator={false}
           bgColor={colors.text.black10}
           pt={2}
+          refreshControl={<RefreshControl refreshing={loading} onRefresh={getAllData} />}
           height={height}
           _contentContainerStyle={{ paddingBottom: height / 2.5 }}
         >
@@ -346,6 +348,7 @@ const Profil = ({ navigation }) => {
           bgColor={colors.text.black10}
           pt={2}
           height={height}
+          refreshControl={<RefreshControl refreshing={loading} onRefresh={getAllData} />}
           _contentContainerStyle={{ paddingBottom: height / 2.5 }}
         >
           <VStack space={4} mb={height / 3.5}>
@@ -408,6 +411,7 @@ const Profil = ({ navigation }) => {
           bgColor={colors.text.black10}
           pt={2}
           height={height}
+          refreshControl={<RefreshControl refreshing={loading} onRefresh={getAllData} />}
           _contentContainerStyle={{ paddingBottom: height / 2.5 }}
         >
           <VStack space={4} mb={height / 3.5}>

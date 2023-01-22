@@ -1,4 +1,4 @@
-import { Dimensions, StyleSheet, SafeAreaView, TouchableOpacity } from 'react-native';
+import { Dimensions, StyleSheet, SafeAreaView, TouchableOpacity, RefreshControl } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import useLoading from '../store/loadingStore';
 import useUserStore from '../store/userStore';
@@ -37,8 +37,8 @@ const Progres = ({ navigation }) => {
   const [dataTawaranTerkirim, setDataTawaranTerkirim] = useState(null);
 
   useEffect(() => {
-    setIsLoading(true);
     const loadData = async () => {
+      setIsLoading(true);
       if (jenisTabs === 'Diproses' && userData?.id_role === 2) {
         const resTawaran = await getData('/tawarkan/tawarkan-all');
         setTawaranPekerjaan(resTawaran.data);
@@ -82,8 +82,8 @@ const Progres = ({ navigation }) => {
         const resProgres = await getData('/lamaran/progres?status=selesai');
         setAllProgres(resProgres.data);
       }
+      setIsLoading(false);
     };
-    setIsLoading(false);
 
     loadData();
 
@@ -131,6 +131,7 @@ const Progres = ({ navigation }) => {
           bgColor={colors.text.black10}
           pt={2}
           height={height}
+          refreshControl={<RefreshControl refreshing={isLoading} onRefresh={() => setIsLoading(isLoading)} />}
           _contentContainerStyle={{ paddingBottom: height / 2.5 }}
         >
           <ScrollView minHeight={height}>
@@ -233,6 +234,7 @@ const Progres = ({ navigation }) => {
           bgColor={colors.text.black10}
           pt={2}
           height={height}
+          refreshControl={<RefreshControl refreshing={isLoading} onRefresh={() => setIsLoading(isLoading)} />}
           _contentContainerStyle={{ paddingBottom: height / 2.5 }}
         >
           <VStack space={3} mt={1.5}>
@@ -270,6 +272,7 @@ const Progres = ({ navigation }) => {
           bgColor={colors.text.black10}
           pt={2}
           height={height}
+          refreshControl={<RefreshControl refreshing={isLoading} onRefresh={() => setIsLoading(isLoading)} />}
           _contentContainerStyle={{ paddingBottom: height / 2.5 }}
         >
           <VStack space={3} mt={1.5}>
@@ -334,6 +337,7 @@ const Progres = ({ navigation }) => {
           bgColor={colors.text.black10}
           pt={2}
           height={height}
+          refreshControl={<RefreshControl refreshing={isLoading} onRefresh={() => setIsLoading(isLoading)} />}
           _contentContainerStyle={{ paddingBottom: height / 2.5 }}
         >
           <ScrollView minHeight={height}>
@@ -444,6 +448,7 @@ const Progres = ({ navigation }) => {
           bgColor={colors.text.black10}
           pt={2}
           height={height}
+          refreshControl={<RefreshControl refreshing={isLoading} onRefresh={() => setIsLoading(isLoading)} />}
           _contentContainerStyle={{ paddingBottom: height / 2.5 }}
         >
           <ScrollView minH={height}>
@@ -490,6 +495,7 @@ const Progres = ({ navigation }) => {
           bgColor={colors.text.black10}
           pt={2}
           height={height}
+          refreshControl={<RefreshControl refreshing={isLoading} onRefresh={() => setIsLoading(isLoading)} />}
           _contentContainerStyle={{ paddingBottom: height / 2.5 }}
         >
           <ScrollView minH={height}>

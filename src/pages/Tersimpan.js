@@ -1,4 +1,4 @@
-import { Dimensions, SafeAreaView, StyleSheet, TouchableOpacity } from 'react-native';
+import { Dimensions, RefreshControl, SafeAreaView, StyleSheet, TouchableOpacity } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { Badge, Card, EmptyContent, Header, LoadingSkeleton } from '../components';
 import { Box, HStack, ScrollView, Text, VStack } from 'native-base';
@@ -196,6 +196,7 @@ const Tersimpan = ({ navigation }) => {
         showsVerticalScrollIndicator={false}
         minHeight={height}
         height="full"
+        refreshControl={<RefreshControl refreshing={loading} onRefresh={() => setInvoke(!invoke)} />}
         _contentContainerStyle={{ paddingBottom: height / 5 }}
       >
         {userData?.id_role === 2 && (
