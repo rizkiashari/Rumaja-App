@@ -3,19 +3,29 @@ import React, { useEffect, useState } from 'react';
 import { colors } from '../utils/colors';
 import { fonts } from '../utils/fonts';
 import { ILOnBoarding1, ILOnBoarding2 } from '../assets';
-import { Box, Button, View, Text } from 'native-base';
+import { Box, Button, View, Text, VStack, Spinner } from 'native-base';
 import useUserStore from '../store/userStore';
+import { getDataLocal, storeData } from '../utils/localStorage';
 
 const OnBoarding = ({ navigation }) => {
   const [urutan, setUrutan] = useState(1);
   const width = Dimensions.get('window').width;
   const heigth = Dimensions.get('window').height;
 
+  const [launched, setLaunched] = useState(false);
+
   useEffect(() => {
-    if (isBoarding === false) {
-      navigation.replace('Login');
-    }
-  }, [isBoarding, navigation]);
+    const launchLogin = async () => {
+      const launcheds = await getDataLocal('launched');
+      if (launcheds === undefined) {
+        setLaunched(true);
+      } else {
+        setLaunched(launcheds);
+        navigation.replace('Login');
+      }
+    };
+    launchLogin();
+  }, [navigation]);
 
   const dataOnBoarding = [
     {
@@ -35,55 +45,64 @@ const OnBoarding = ({ navigation }) => {
   const { isBoarding, setIsBoarding } = useUserStore();
 
   return (
-    <ScrollView style={styles.container(width)} showsVerticalScrollIndicator={false}>
-      {dataOnBoarding.map((item) => {
-        if (item.id === urutan) {
-          return (
-            <View key={item.id} style={styles.content(width)}>
-              <Box alignItems="center" height={heigth / 1.65}>
-                <Image source={item.image} alt="OnBoarding" style={styles.image(width)} />
-              </Box>
-              <View>
-                <Text style={styles.title}>{item.title}</Text>
-                <Text style={styles.subTitle}>{item.subTitle}</Text>
-              </View>
+    <>
+      {launched ? (
+        <ScrollView style={styles.container(width)} showsVerticalScrollIndicator={false}>
+          {dataOnBoarding.map((item) => {
+            if (item.id === urutan) {
+              return (
+                <View key={item.id} style={styles.content(width)}>
+                  <Box alignItems="center" height={heigth / 1.65}>
+                    <Image source={item.image} alt="OnBoarding" style={styles.image(width)} />
+                  </Box>
+                  <View>
+                    <Text style={styles.title}>{item.title}</Text>
+                    <Text style={styles.subTitle}>{item.subTitle}</Text>
+                  </View>
+                </View>
+              );
+            }
+          })}
+          {urutan === 2 ? (
+            <View marginTop={10}>
+              <Button
+                py="3"
+                rounded={8}
+                background={colors.blue[80]}
+                onPress={() => {
+                  navigation.replace('Login');
+                  setIsBoarding(false);
+                  storeData('launched', true);
+                }}
+              >
+                <Text color={colors.white} fontSize="14" fontFamily={fonts.primary[500]}>
+                  Mulai Sekarang
+                </Text>
+              </Button>
             </View>
-          );
-        }
-      })}
-      {urutan === 2 ? (
-        <View marginTop={10}>
-          <Button
-            py="3"
-            rounded={8}
-            background={colors.blue[80]}
-            onPress={() => {
-              navigation.replace('Login');
-              setIsBoarding(false);
-            }}
-          >
-            <Text color={colors.white} fontSize="14" fontFamily={fonts.primary[500]}>
-              Mulai Sekarang
-            </Text>
-          </Button>
-        </View>
+          ) : (
+            <View marginTop={10}>
+              <Button
+                py="3"
+                rounded={8}
+                background={colors.blue[80]}
+                onPress={() => {
+                  setUrutan(urutan + 1);
+                }}
+              >
+                <Text color={colors.white} fontSize="14" fontFamily={fonts.primary[500]}>
+                  Selanjutnya
+                </Text>
+              </Button>
+            </View>
+          )}
+        </ScrollView>
       ) : (
-        <View marginTop={10}>
-          <Button
-            py="3"
-            rounded={8}
-            background={colors.blue[80]}
-            onPress={() => {
-              setUrutan(urutan + 1);
-            }}
-          >
-            <Text color={colors.white} fontSize="14" fontFamily={fonts.primary[500]}>
-              Selanjutnya
-            </Text>
-          </Button>
-        </View>
+        <VStack flex={1} justifyContent="center" alignItems="center">
+          <Spinner size="lg" color={colors.blue[80]} />
+        </VStack>
       )}
-    </ScrollView>
+    </>
   );
 };
 
