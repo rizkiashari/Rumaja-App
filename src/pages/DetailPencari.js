@@ -144,7 +144,7 @@ const DetailPencari = ({ navigation, route }) => {
           bgColor={colors.text.black10}
           pt={2}
           height={height / 1.8}
-          _contentContainerStyle={{ paddingBottom: height / 8 }}
+          _contentContainerStyle={{ paddingBottom: height / 10 }}
         >
           <VStack space={4} mb={height / 3.5}>
             <VStack space={3}>
@@ -194,7 +194,7 @@ const DetailPencari = ({ navigation, route }) => {
           bgColor={colors.text.black10}
           pt={2}
           height={height / 1.8}
-          _contentContainerStyle={{ paddingBottom: height / 8 }}
+          _contentContainerStyle={{ paddingBottom: height / 10 }}
         >
           <VStack space={4} mb={height / 3.5}>
             <Card type="detail" title="Keahlian">
@@ -240,7 +240,7 @@ const DetailPencari = ({ navigation, route }) => {
           bgColor={colors.text.black10}
           pt={2}
           height={height / 1.8}
-          _contentContainerStyle={{ paddingBottom: height / 8 }}
+          _contentContainerStyle={{ paddingBottom: height / 10 }}
         >
           <VStack space={4} mb={height / 3.5}>
             {dataPencari?.pencari?.ulasan?.length === 0 ? (

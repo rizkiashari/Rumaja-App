@@ -88,9 +88,10 @@ const DetailTawaranTerkirim = ({ navigation, route }) => {
         showsVerticalScrollIndicator={false}
         bgColor={colors.text.black10}
         pt={4}
-        contentContainerStyle={{ paddingBottom: height / 1.8 }}
+        height={height / 1.6}
+        contentContainerStyle={{ paddingBottom: height / 6 }}
       >
-        <VStack space={2}>
+        <VStack space={4}>
           <Card type="detail" title="Status">
             <Text fontFamily={fonts.primary[400]} fontSize={width / 32} color={colors.text.black70} textTransform="capitalize">
               {dataDetail?.riwayat?.status}
@@ -123,7 +124,7 @@ const DetailTawaranTerkirim = ({ navigation, route }) => {
       </ScrollView>
       <Box
         position="absolute"
-        bottom={height / 2.8}
+        bottom={0}
         backgroundColor={colors.white}
         px={width / 28}
         py={4}

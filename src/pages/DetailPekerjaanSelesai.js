@@ -99,9 +99,10 @@ const DetailPekerjaanSelesai = ({ navigation, route }) => {
         showsVerticalScrollIndicator={false}
         bgColor={colors.text.black10}
         pt={4}
-        contentContainerStyle={{ paddingBottom: height / 2.9 }}
+        height={height / 1.6}
+        contentContainerStyle={{ paddingBottom: height / 4.5 }}
       >
-        <VStack vertical={true} space={2}>
+        <VStack vertical={true} space={4}>
           <Card type="detail" title="Penyedia Lowongan">
             <HStack space={0.5} justifyContent="space-between" alignItems="center">
               <HStack space={2} alignItems="center">
@@ -172,7 +173,7 @@ const DetailPekerjaanSelesai = ({ navigation, route }) => {
       </ScrollView>
       <Box
         position="absolute"
-        bottom={height / 2.9}
+        bottom={0}
         backgroundColor={colors.white}
         px={width / 28}
         py={4}

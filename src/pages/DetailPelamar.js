@@ -91,8 +91,7 @@ const DetailPelamar = ({ navigation, route }) => {
         showsVerticalScrollIndicator={false}
         bgColor={colors.text.black10}
         pt={4}
-        height={height}
-        minHeight={height}
+        height={height / 1.6}
         _contentContainerStyle={{ paddingBottom: height / 1.5 }}
       >
         <VStack space={4} px={width / 28}>
@@ -147,7 +146,7 @@ const DetailPelamar = ({ navigation, route }) => {
       {type === 'daftar-tolak' ? (
         <Box
           position="absolute"
-          bottom={height / 2.6}
+          bottom={0}
           backgroundColor={colors.white}
           px={width / 28}
           py={4}
@@ -173,7 +172,7 @@ const DetailPelamar = ({ navigation, route }) => {
       ) : (
         <Box
           position="absolute"
-          bottom={height / 2.6}
+          bottom={0}
           backgroundColor={colors.white}
           px={width / 28}
           py={4}

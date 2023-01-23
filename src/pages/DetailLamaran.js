@@ -98,7 +98,8 @@ const DetailLamaran = ({ navigation, route }) => {
         showsVerticalScrollIndicator={false}
         bgColor={colors.text.black10}
         pt={4}
-        contentContainerStyle={{ paddingBottom: height / 1.8 }}
+        height={height / 1.62}
+        contentContainerStyle={{ paddingBottom: height / 5 }}
       >
         <VStack space={4}>
           <Card type="detail" title="Penyedia Lowongan">
@@ -190,7 +191,7 @@ const DetailLamaran = ({ navigation, route }) => {
       {dataDetail?.temp_status === 'menunggu-penyedia' ? (
         <Box
           position="absolute"
-          bottom={height / 2.9}
+          bottom={0}
           backgroundColor={colors.white}
           px={width / 28}
           py={4}
@@ -216,7 +217,7 @@ const DetailLamaran = ({ navigation, route }) => {
           {(dataDetail?.catatan_riwayat_penyedia === null || dataDetail?.tanggal_mulai_kerja === null) && type === 'diproses' && (
             <Box
               position="absolute"
-              bottom={height / 2.8}
+              bottom={0}
               backgroundColor={colors.white}
               px={width / 28}
               py={4}
@@ -242,7 +243,7 @@ const DetailLamaran = ({ navigation, route }) => {
           {(dataDetail?.catatan_riwayat_penyedia || dataDetail?.tanggal_mulai_kerja) && type === 'diproses' && (
             <Box
               position="absolute"
-              bottom={height / 2.9}
+              bottom={0}
               backgroundColor={colors.white}
               px={width / 28}
               py={4}

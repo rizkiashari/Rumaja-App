@@ -75,7 +75,7 @@ const DetailPekerjaan = ({ navigation, route }) => {
         showsVerticalScrollIndicator={false}
         bgColor={colors.text.black10}
         pt={2}
-        height={height}
+        height={height / 1.6}
         _contentContainerStyle={{ paddingBottom: height / 2.5 }}
       >
         <VStack space={4}>

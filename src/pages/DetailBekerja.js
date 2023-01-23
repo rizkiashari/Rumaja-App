@@ -69,9 +69,8 @@ const DetailBekerja = ({ navigation, route }) => {
         showsVerticalScrollIndicator={false}
         bgColor={colors.text.black10}
         pt={4}
-        height={height}
-        minHeight={height}
-        _contentContainerStyle={{ paddingBottom: height / 1.7 }}
+        height={height / 1.62}
+        _contentContainerStyle={{ paddingBottom: height / 5 }}
       >
         <VStack space={4} px={width / 28}>
           <Card type="detail" title="Penyedia Lowongan">
@@ -140,7 +139,7 @@ const DetailBekerja = ({ navigation, route }) => {
       </ScrollView>
       <Box
         position="absolute"
-        bottom={height / 2.6}
+        bottom={0}
         backgroundColor={colors.white}
         px={width / 28}
         py={4}
