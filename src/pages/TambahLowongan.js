@@ -89,11 +89,11 @@ const TambahLowongan = ({ navigation }) => {
 
       const res = await postWithJson('/lowongan/add', payload);
       setIsLoading(false);
-      setLoading(true);
       if (res.message === 'SUCCESS_ADD_LOWONGAN') {
         showSuccess('Berhasil menambahkan lowongan');
         onTambahLowongan.resetForm();
-        navigation.navigate('MainApp');
+        setLoading(true);
+        navigation.goBack();
       } else {
         setIsLoading(false);
         setLoading(false);

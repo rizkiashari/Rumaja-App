@@ -35,7 +35,7 @@ const Tawarkan = ({ id, title, kota, provinsi, children, photo }) => {
                 <Text fontFamily={fonts.primary[600]} fontSize={width / 28} color="black">
                   {title}
                 </Text>
-                <HStack space={1.5}>
+                <HStack space={1}>
                   <Text fontFamily={fonts.primary[400]} fontSize={width / 36} color={colors.text.black70}>
                     {kota}
                   </Text>
