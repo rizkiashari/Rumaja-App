@@ -10,12 +10,16 @@ import { postWithJson } from '../utils/postData';
 import { showSuccess, showError } from '../utils/showMessages';
 import { getDataLocal, removeLocalStorage } from '../utils/localStorage';
 import { Button, Divider, ErrorInput, Input, LabelInput, LoadingButton, SelectItem } from '../components';
+import { Calender } from '../assets';
+import DatePicker from 'react-native-date-picker';
+import moment from 'moment';
 
 const Register = ({ navigation }) => {
   const { width } = Dimensions.get('window');
 
   const [role, setRole] = useState('');
   const [idBidang, setIdBidang] = useState('');
+  const [open, setOpen] = useState(false);
 
   const getRole = async () => {
     getDataLocal('peran').then((res) => {
@@ -31,6 +35,7 @@ const Register = ({ navigation }) => {
 
   const [isLoading, setIsLoading] = useState(false);
 
+  const [tglLahir, setTglLahir] = useState('');
   const [dataProvinsi, setDataProvinsi] = useState([]);
   const [dataKota, setDataKota] = useState([]);
   const [currentProvinsi, setCurrentProvinsi] = useState('');
@@ -64,6 +69,8 @@ const Register = ({ navigation }) => {
       domisili_provinsi: '',
       password: '',
       konfirmasi_password: '',
+      jenis_kelamin: '',
+      tanggal_lahir: '',
     },
     validateOnChange: true,
     validationSchema: Yup.object({
@@ -82,6 +89,8 @@ const Register = ({ navigation }) => {
         is: (val) => (val && val.length > 0 ? true : false),
         then: Yup.string().oneOf([Yup.ref('password')], 'Maaf password tidak sama'),
       }),
+      jenis_kelamin: Yup.string().required('Jenis kelamin harus diisi'),
+      tanggal_lahir: Yup.string().required('Tanggal lahir harus diisi'),
     }),
     onSubmit: async (values) => {
       setIsLoading(true);
@@ -95,6 +104,8 @@ const Register = ({ navigation }) => {
         nomor_wa: values.nomor_wa,
         domisili_provinsi: values.domisili_provinsi,
         domisili_kota: values.domisili_kota,
+        gender: values.jenis_kelamin,
+        tanggal_lahir: values.tanggal_lahir,
       };
 
       const resp = await postWithJson('/auth/register', payload);
@@ -156,6 +167,47 @@ const Register = ({ navigation }) => {
               onChangeText={registerUser.handleChange('nomor_wa')}
             />
             {registerUser.touched.nomor_wa && registerUser.errors.nomor_wa ? <ErrorInput error={registerUser.errors.nomor_wa} /> : null}
+          </VStack>
+          <VStack space={2}>
+            <LabelInput text="Jenis Kelamin" />
+            <Select
+              selectedValue={registerUser.values.jenis_kelamin}
+              accessibilityLabel="Pilih jenis kelamin"
+              placeholder="Pilih jenis kelamin"
+              rounded={8}
+              px={4}
+              py={2}
+              fontFamily={fonts.primary[400]}
+              fontSize={width / 32}
+              backgroundColor={colors.white}
+              borderColor={colors.text.black30}
+              borderWidth={1}
+              _selectedItem={{
+                bg: colors.white,
+                endIcon: <CheckIcon size={1} />,
+              }}
+              onValueChange={(itemValue) => registerUser.setFieldValue('jenis_kelamin', itemValue)}
+            >
+              <Select.Item label="Pria" value="pria" />
+              <Select.Item label="Wanita" value="wanita" />
+            </Select>
+            {registerUser.touched.jenis_kelamin && registerUser.errors.jenis_kelamin ? (
+              <ErrorInput error={registerUser.errors.jenis_kelamin} />
+            ) : null}
+          </VStack>
+          <VStack space={2}>
+            <LabelInput text="Tanggal Lahir" />
+            <Input
+              placeholder="20/12/1990"
+              value={tglLahir}
+              onChangeText={registerUser.handleChange('tanggal_lahir')}
+              icon={<Calender />}
+              type="waktu"
+              onPress={() => setOpen(true)}
+            />
+            {registerUser.touched.tanggal_lahir && registerUser.errors.tanggal_lahir ? (
+              <ErrorInput error={registerUser.errors.tanggal_lahir} />
+            ) : null}
           </VStack>
           <VStack space={2}>
             <LabelInput text="Domisili" />
@@ -259,6 +311,26 @@ const Register = ({ navigation }) => {
           </VStack>
         </VStack>
       </Box>
+
+      <DatePicker
+        modal
+        date={new Date()}
+        open={open}
+        onConfirm={(val) => {
+          setOpen(false);
+          registerUser.setFieldValue('tanggal_lahir', val);
+          const tgl = moment(val).format('DD/MM/YYYY');
+          setTglLahir(tgl);
+        }}
+        onDateChange={(val) => {
+          setOpen(false);
+          updateProfil.setFieldValue('tanggal_lahir', val);
+          const tgl = moment(val).format('DD/MM/YYYY');
+          setTglLahir(tgl);
+        }}
+        mode="date"
+        onCancel={() => setOpen(false)}
+      />
     </ScrollView>
   );
 };
