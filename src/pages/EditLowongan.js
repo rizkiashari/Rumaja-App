@@ -122,6 +122,7 @@ const EditLowongan = ({ navigation, route }) => {
           onEditLowongan.setFieldValue('deskripsi_lowongan', data?.deskripsi_lowongan);
           onEditLowongan.setFieldValue('kota_lowongan', data?.kota_lowongan);
           onEditLowongan.setFieldValue('provinsi_lowongan', data?.provinsi_lowongan);
+          setProvinsi(data?.provinsi_lowongan);
           onEditLowongan.setFieldValue('alamat_lengkap', data?.alamat_lengkap);
         } else {
           showError('Gagal mengambil data lowongan');

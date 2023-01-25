@@ -176,6 +176,7 @@ const EditProfile = ({ navigation }) => {
         updateProfil.setFieldValue('tempat_lahir', data?.penyedia?.tempat_lahir);
         updateProfil.setFieldValue('domisili_kota', data?.domisili_kota);
         updateProfil.setFieldValue('domisili_provinsi', data?.domisili_provinsi);
+        setProvinsi(data?.domisili_provinsi);
         updateProfil.setFieldValue(
           'tanggal_lahir',
           data?.penyedia?.tanggal_lahir !== null ? moment(data?.penyedia?.tanggal_lahir).format('DD/MM/YYYY') : ''
@@ -192,6 +193,7 @@ const EditProfile = ({ navigation }) => {
         updateProfil.setFieldValue('bidang_pekerjaan', data?.pencari?.bidang_kerja?.id);
         updateProfil.setFieldValue('nomor_wa', data?.nomor_wa);
         updateProfil.setFieldValue('tempat_lahir', data?.pencari?.tempat_lahir);
+        setProvinsi(data?.domisili_provinsi);
         updateProfil.setFieldValue(
           'tanggal_lahir',
           data?.pencari?.tanggal_lahir !== null ? moment(data?.pencari?.tanggal_lahir).format('DD/MM/YYYY') : ''
