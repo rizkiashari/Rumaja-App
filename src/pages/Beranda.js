@@ -180,7 +180,7 @@ const Beranda = ({ navigation }) => {
                           bidang: item.detail_bidang,
                         })
                       }
-                      style={styles.cardBidang(width)}
+                      style={styles.cardBidang}
                     >
                       <Card id={item.id} title={item.nama_bidang} subTitle={item.detail_bidang} type="bidang" />
                     </TouchableOpacity>
@@ -256,7 +256,7 @@ const Beranda = ({ navigation }) => {
                           bidang: item.detail_bidang,
                         })
                       }
-                      style={styles.cardBidang(width)}
+                      style={styles.cardBidang}
                     >
                       <Card id={item.id} title={item.nama_bidang} subTitle={item.detail_bidang} type="bidang" />
                     </TouchableOpacity>
@@ -337,8 +337,9 @@ const styles = StyleSheet.create({
     fontFamily: fonts.primary[400],
     fontSize: 12,
   },
-  cardBidang: (width) => ({
-    width: width / 4.7,
+  cardBidang: {
+    width: 88,
     maxWidth: '100%',
-  }),
+    height: 120,
+  },
 });
