@@ -49,7 +49,7 @@ const TawarkanPekerjaan = ({ navigation }) => {
           </Text>
         </HStack>
         <TouchableOpacity onPress={() => navigation.navigate('TambahLowongan')}>
-          <Text fontSize={20} fontFamily={fonts.primary[500]}>
+          <Text fontSize={28} fontFamily={fonts.primary[500]}>
             +
           </Text>
         </TouchableOpacity>

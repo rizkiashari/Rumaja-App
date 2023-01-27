@@ -9,7 +9,7 @@ const BoxAddPekerjaan = ({ onPress }) => {
   const { width, height } = Dimensions.get('window');
 
   return (
-    <Box width="full" px={width / 24} py={4} rounded={10} mb={6} bgColor={colors.blue[90]} position="relative" height={height / 5.3}>
+    <Box width="full" p={4} rounded={10} mb={6} bgColor={colors.blue[90]} position="relative" height={height / 5.3}>
       <VStack w="1/2" maxW="full" space={3} justifyContent="space-between" height="full">
         <Text color="white" fontFamily={fonts.primary[500]}>
           Publikasikan lowongan pekerjaan Anda!
