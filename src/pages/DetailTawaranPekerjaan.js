@@ -100,7 +100,9 @@ const DetailTawaranPekerjaan = ({ navigation, route }) => {
           showsVerticalScrollIndicator={false}
           bgColor={colors.text.black10}
           pt={4}
-          contentContainerStyle={{ paddingBottom: height / 4.5 }}
+          height={height / 1.7}
+          maxHeight={height / 1.7}
+          contentContainerStyle={{ paddingBottom: height / 6 }}
         >
           <VStack space={4}>
             <Card type="detail" title="Penyedia Lowongan">
