@@ -330,7 +330,15 @@ const Profil = ({ navigation }) => {
           subtitle={`${detailProfile?.domisili_kota}, ${detailProfile?.domisili_provinsi?.split(',')[1]}`}
           photo={detailProfile?.photo_profile}
           photoHeight="full"
+          type="pekerja"
           photoWidth="full"
+          bubble={
+            <Badge
+              title={`${detailProfile?.penyedia?.gender ?? '-'}, ${
+                detailProfile?.penyedia?.tanggal_lahir ? calculateAge(detailProfile?.penyedia?.tanggal_lahir) : '-'
+              }`}
+            />
+          }
         />
       )}
 

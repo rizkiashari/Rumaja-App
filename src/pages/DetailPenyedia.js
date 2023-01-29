@@ -11,6 +11,7 @@ import { colors } from '../utils/colors';
 import { convertRupiah } from '../utils/convertRupiah';
 import moment from 'moment';
 import { fonts } from '../utils/fonts';
+import { calculateAge } from '../utils/calculateAge';
 
 const DetailPenyedia = ({ navigation, route }) => {
   const { width, height } = Dimensions.get('window');
@@ -76,6 +77,14 @@ const DetailPenyedia = ({ navigation, route }) => {
         photo={detailProfil?.penyedia?.photo_profile}
         photoHeight="full"
         photoWidth="full"
+        type="pekerja"
+        bubble={
+          <Badge
+            title={`${detailProfil?.penyedia?.gender ?? '-'}, ${
+              detailProfil?.penyedia?.tanggal_lahir ? calculateAge(detailProfil?.penyedia?.tanggal_lahir) : '-'
+            }`}
+          />
+        }
       />
 
       <HStack w="full" px={5} py={3} justifyContent="space-between" bgColor={colors.text.black10}>
