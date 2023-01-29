@@ -35,7 +35,6 @@ const DetailLayanan = ({ navigation, route }) => {
       if (filterHome === null) {
         const resp = await getData(`/user/pencari/${idPekerjaan}`);
         setDataPekerja(resp?.data?.pekerja);
-        console.log('1');
       } else {
         if (filterHome.urutan === '' || filterHome.gender === '' || filterHome.min_rentang === '' || filterHome.max_rentang === '') {
           const resp = await getData(
@@ -44,14 +43,12 @@ const DetailLayanan = ({ navigation, route }) => {
             }&min_usia=${+filterHome.min_rentang}&max_usia=${+filterHome.max_rentang}`
           );
           setDataPekerja(resp?.data?.pekerja);
-          console.log('2');
         } else {
           const resp = await getData(
             `/user/pencari/${idPekerjaan}?urutan=${filterHome.urutan}&jenis_kelamin=${
               filterHome.gender
             }&min_usia=${+filterHome.min_rentang}&max_usia=${+filterHome.max_rentang}`
           );
-          console.log('3');
           setDataPekerja(resp?.data?.pekerja);
         }
       }
@@ -93,8 +90,6 @@ const DetailLayanan = ({ navigation, route }) => {
       }
     }
   };
-
-  console.log(filterHome);
 
   const onSearchPekerja = async (val, idPekerjaan) => {
     const resp = await getData(`/user/pencari/${idPekerjaan}?search=${val}`);
