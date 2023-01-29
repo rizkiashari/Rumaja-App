@@ -166,15 +166,8 @@ const DetailLayanan = ({ navigation, route }) => {
             </TouchableOpacity>
           </HStack>
         </Header>
-        <ScrollView
-          pt={height / 28}
-          showsVerticalScrollIndicator={false}
-          px={width / 28}
-          _contentContainerStyle={{ paddingBottom: height / 3 }}
-          height={height}
-          minHeight={height}
-        >
-          <VStack space={4}>
+        <ScrollView pt={height / 28} showsVerticalScrollIndicator={false} px={width / 28}>
+          <VStack space={4} mb={height / 3.7}>
             {loading ? (
               <LoadingSkeleton jumlah={4} />
             ) : dataPekerja?.length === 0 ? (
