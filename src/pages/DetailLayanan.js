@@ -35,16 +35,23 @@ const DetailLayanan = ({ navigation, route }) => {
       if (filterHome === null) {
         const resp = await getData(`/user/pencari/${idPekerjaan}`);
         setDataPekerja(resp?.data?.pekerja);
+        console.log('1');
       } else {
-        if (filterHome.urutan === '' && filterHome.gender === '' && filterHome.min_rentang === '' && filterHome.max_rentang === '') {
-          const resp = await getData(`/user/pencari/${idPekerjaan}`);
+        if (filterHome.urutan === '' || filterHome.gender === '' || filterHome.min_rentang === '' || filterHome.max_rentang === '') {
+          const resp = await getData(
+            `/user/pencari/${idPekerjaan}?urutan=${filterHome.urutan}&jenis_kelamin=${
+              filterHome.gender
+            }&min_usia=${+filterHome.min_rentang}&max_usia=${+filterHome.max_rentang}`
+          );
           setDataPekerja(resp?.data?.pekerja);
+          console.log('2');
         } else {
           const resp = await getData(
             `/user/pencari/${idPekerjaan}?urutan=${filterHome.urutan}&jenis_kelamin=${
               filterHome.gender
             }&min_usia=${+filterHome.min_rentang}&max_usia=${+filterHome.max_rentang}`
           );
+          console.log('3');
           setDataPekerja(resp?.data?.pekerja);
         }
       }
@@ -55,7 +62,7 @@ const DetailLayanan = ({ navigation, route }) => {
     return () => {
       setDataPekerja([]);
     };
-  }, [isFocused, id, filterHome, invoke, setLoading]);
+  }, [isFocused, id, invoke, filterHome, setLoading]);
 
   const savePekerja = async (id_pencari, simpan_pencari) => {
     setInvoke(!invoke);
@@ -86,6 +93,8 @@ const DetailLayanan = ({ navigation, route }) => {
       }
     }
   };
+
+  console.log(filterHome);
 
   const onSearchPekerja = async (val, idPekerjaan) => {
     const resp = await getData(`/user/pencari/${idPekerjaan}?search=${val}`);
@@ -157,7 +166,14 @@ const DetailLayanan = ({ navigation, route }) => {
             </TouchableOpacity>
           </HStack>
         </Header>
-        <ScrollView pt={height / 28} showsVerticalScrollIndicator={false} px={width / 28} _contentContainerStyle={{ paddingBottom: height / 14 }}>
+        <ScrollView
+          pt={height / 28}
+          showsVerticalScrollIndicator={false}
+          px={width / 28}
+          _contentContainerStyle={{ paddingBottom: height / 3 }}
+          height={height}
+          minHeight={height}
+        >
           <VStack space={4}>
             {loading ? (
               <LoadingSkeleton jumlah={4} />
