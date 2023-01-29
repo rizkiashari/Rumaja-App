@@ -65,8 +65,6 @@ const Beranda = ({ navigation }) => {
       }
     };
     getAllBidang();
-    setFilterHome(null);
-    setFilterTersimpan(null);
 
     getAllData();
 
@@ -74,8 +72,6 @@ const Beranda = ({ navigation }) => {
       setDataBidang([]);
       setDataLowongan([]);
       setDataPekerja([]);
-      setFilterHome(null);
-      setFilterTersimpan(null);
     };
   }, [isFocused, page, userData?.id_role, invoke, setInvoke, navigation, loading]);
 
