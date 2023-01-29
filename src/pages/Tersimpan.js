@@ -43,7 +43,7 @@ const Tersimpan = ({ navigation }) => {
             showError('Sesi anda telah berakhir, silahkan login kembali');
             return;
           }
-          setDataSimpanPekerja(resp.data.pekerja);
+          setDataSimpanPekerja(resp?.data?.pekerja);
         }
         if (userData?.id_role === 2) {
           const resp = await getData('/lowongan/list-save');
@@ -92,17 +92,23 @@ const Tersimpan = ({ navigation }) => {
               showError('Sesi anda telah berakhir, silahkan login kembali');
               return;
             }
-            setDataSimpanPekerja(resp.data.pekerja);
+            setDataSimpanPekerja(resp?.data?.pekerja);
           } else {
             const resp = await getData(
-              `/user/pencari/all-save?bidang_kerja=${filterTersimpan.bidang_kerja}&provinsi=${filterTersimpan.provinsi}&gender=${filterTersimpan.jenis_kelamin}&max_usia=${filterTersimpan.max_usia}&min_usia=${filterTersimpan.min_usia}&urutan=${filterTersimpan.urutan}`
+              `/user/pencari/all-save?bidang_kerja=${filterTersimpan.bidang_kerja}&gender=${filterTersimpan.jenis_kelamin}&max_usia=${filterTersimpan.max_usia}&min_usia=${filterTersimpan.min_usia}&urutan=${filterTersimpan.urutan}`
             );
             if (resp?.code === 403) {
               setIsLogin(false);
               showError('Sesi anda telah berakhir, silahkan login kembali');
               return;
             }
-            setDataSimpanPekerja(resp.data.pekerja);
+
+            if (resp?.data?.pekerja[0] === null) {
+              setDataSimpanPekerja([]);
+            } else {
+              const filterDuplicate = resp?.data?.pekerja.filter((v, i, a) => a.findIndex((t) => t.users.id === v.users.id) === i);
+              setDataSimpanPekerja(filterDuplicate);
+            }
           }
         }
       }
@@ -266,7 +272,7 @@ const Tersimpan = ({ navigation }) => {
             ) : (
               dataSimpanPekerja?.map((pekerja, index) => (
                 <Card
-                  title={`${pekerja.users.nama_user?.split(' ')[0]} ${pekerja.users.nama_user?.split(' ')[1] || ''}`}
+                  title={`${pekerja?.users?.nama_user?.split(' ')[0]} ${pekerja?.users?.nama_user?.split(' ')[1] || ''}`}
                   subTitle={`${pekerja?.users?.domisili_kota}, ${pekerja?.users?.domisili_provinsi?.split(',')[1]}`}
                   key={index}
                   uriType="pekerja"

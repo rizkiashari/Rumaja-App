@@ -13,11 +13,8 @@ import useUserStore from '../store/userStore';
 import { showError } from '../utils/showMessages';
 
 const FilterHome = ({ navigation, route }) => {
-  // Belum difix bugnya
   const { bidang, id } = route.params;
   const { width, height } = Dimensions.get('window');
-
-  const isFocused = navigation.isFocused();
 
   const [dataProvinsi, setDataProvinsi] = useState([]);
   const [dataKota, setDataKota] = useState([]);
@@ -240,7 +237,7 @@ const FilterHome = ({ navigation, route }) => {
                       backgroundColor={colors.white}
                       py="2"
                       fontSize={width / 30}
-                      w="30%"
+                      w="32%"
                       keyboardType="numeric"
                       onChangeText={(text) => {
                         setMinRentang(text);
@@ -259,14 +256,14 @@ const FilterHome = ({ navigation, route }) => {
                       backgroundColor={colors.white}
                       py="2"
                       fontSize={width / 30}
-                      w="30%"
+                      w="32%"
                       keyboardType="numeric"
                       onChangeText={(text) => {
                         setMaxRentang(text);
                       }}
                       value={maxRentang}
                     />
-                    <Text fontFamily={fonts.primary[400]} fontSize={width / 30} color="grey">
+                    <Text fontFamily={fonts.primary[400]} fontSize={width / 32} color="grey">
                       Tahun
                     </Text>
                   </HStack>
@@ -328,7 +325,7 @@ const FilterHome = ({ navigation, route }) => {
             <Button
               type="primary"
               onPress={() => {
-                if (minRentang > maxRentang) {
+                if (+minRentang > +maxRentang) {
                   return showError('Usia maksimal tidak boleh kurang dari usia minimal');
                 } else {
                   navigation.navigate('DetailLayanan', {

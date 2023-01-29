@@ -53,7 +53,7 @@ const Beranda = ({ navigation }) => {
           return;
         }
 
-        setDataLowongan(resp.data.lowongan);
+        setDataLowongan(resp?.data?.lowongan);
       } else {
         const resp = await getData('/user/rekomendasi-pencari');
         if (resp?.code === 403) {
@@ -65,6 +65,7 @@ const Beranda = ({ navigation }) => {
       }
     };
     getAllBidang();
+    setFilterTersimpan(null);
 
     getAllData();
 

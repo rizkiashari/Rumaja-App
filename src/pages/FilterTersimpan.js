@@ -1,8 +1,8 @@
 import { Dimensions, StyleSheet, TouchableOpacity } from 'react-native';
-import { View, Text, HStack, VStack, Select, CheckIcon, Box } from 'native-base';
+import { View, Text, HStack, VStack, Input, Select, CheckIcon, Box } from 'native-base';
 import React from 'react';
 import { colors } from '../utils/colors';
-import { Button, Header, Input, LabelInput } from '../components';
+import { Button, Header, LabelInput } from '../components';
 import { ChevronBack } from '../assets';
 import { fonts } from '../utils/fonts';
 import { useState } from 'react';
@@ -185,6 +185,16 @@ const FilterTersimpan = ({ navigation }) => {
                   <HStack space={1} alignItems="center">
                     <Input
                       placeholder="Min"
+                      rounded={8}
+                      px="3"
+                      fontFamily={fonts.primary[500]}
+                      type="text"
+                      borderColor={colors.text.black30}
+                      backgroundColor={colors.white}
+                      py="2"
+                      fontSize={width / 30}
+                      w="32%"
+                      keyboardType="numeric"
                       onChangeText={(text) => {
                         setMinUsia(text);
                       }}
@@ -194,13 +204,23 @@ const FilterTersimpan = ({ navigation }) => {
                       -
                     </Text>
                     <Input
-                      placeholder="Max"
+                      rounded={8}
+                      px="3"
+                      fontFamily={fonts.primary[500]}
+                      type="text"
+                      borderColor={colors.text.black30}
+                      backgroundColor={colors.white}
+                      py="2"
+                      fontSize={width / 30}
+                      w="32%"
+                      placeholder="Maks"
+                      keyboardType="numeric"
                       onChangeText={(text) => {
                         setMaxUsia(text);
                       }}
                       value={maxUsia}
                     />
-                    <Text fontFamily={fonts.primary[400]} fontSize={width / 30} color="grey">
+                    <Text fontFamily={fonts.primary[400]} fontSize={width / 32} color="grey">
                       Tahun
                     </Text>
                   </HStack>
@@ -397,7 +417,7 @@ const FilterTersimpan = ({ navigation }) => {
             <Button
               type="primary"
               onPress={() => {
-                if (maxUsia < minUsia) {
+                if (+maxUsia < +minUsia) {
                   return showError('Usia maksimal tidak boleh kurang dari usia minimal');
                 } else {
                   navigation.goBack();
