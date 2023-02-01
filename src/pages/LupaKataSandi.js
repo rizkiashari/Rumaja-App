@@ -89,7 +89,7 @@ const LupaKataSandi = ({ navigation }) => {
                     </Text>
                     <Box position="relative">
                       <Input
-                        placeholder="Masukkan kata sandi baru"
+                        placeholder="Masukkan kata sandi baru (minimal 8 karakter)"
                         rounded={8}
                         px="3"
                         fontFamily={fonts.primary[400]}
@@ -215,7 +215,7 @@ const LupaKataSandi = ({ navigation }) => {
                       onBlur={() => {
                         setBorder(colors.text.black30);
                       }}
-                      placeholder="Masukkan alamat email"
+                      placeholder="Masukkan alamat email (cth: nama@gmail.com)"
                       rounded={8}
                       px="3"
                       fontFamily={fonts.primary[500]}

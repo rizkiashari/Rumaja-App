@@ -91,7 +91,7 @@ const TerimaPelamar = ({ navigation, route }) => {
         <VStack mt={5} height={height / 1.2} justifyContent="space-between" px={width / 28} background={colors.white}>
           <VStack space={5}>
             <VStack space={2}>
-              <LabelInput text="Waktu Interview" />
+              <LabelInput text="Waktu Wawancara" />
               <HStack space={2}>
                 <VStack width={width / 3.2} space={2}>
                   <Input

@@ -18,7 +18,7 @@ const SuksesTerimaPelamar = ({ navigation }) => {
             w={width / 1.6}
             h={width / 1.6}
             title="Pelamar berhasil diterima!"
-            subTitle="Menunggu konfirmasi pelamar. Waktu interview dan catatan yang anda minta telah dikirim ke pelamar."
+            subTitle="Menunggu konfirmasi pelamar. Waktu Wawancara dan catatan yang anda minta telah dikirim ke pelamar."
             uriImage={ILTerimaDiproses}
           />
         </Box>

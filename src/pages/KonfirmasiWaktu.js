@@ -91,7 +91,7 @@ const KonfirmasiWaktu = ({ navigation }) => {
         <VStack mt={5} height={height / 1.2} justifyContent="space-between" px={width / 28}>
           <VStack space={5}>
             <VStack space={2}>
-              <LabelInput text="Waktu Interview" />
+              <LabelInput text="Waktu Wawancara" />
               <HStack space={2}>
                 <VStack space={2} w={width / 3.2}>
                   <Input

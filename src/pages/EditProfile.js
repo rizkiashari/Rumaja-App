@@ -90,11 +90,9 @@ const EditProfile = ({ navigation }) => {
       tanggal_lahir: '',
       domisili_kota: '',
       domisili_provinsi: '',
-      tempat_lahir: '',
       tinggi_badan: '',
       berat_badan: '',
       tentang: '',
-      alamat_rumah: '',
     },
     validateOnChange: true,
     validationSchema: Yup.object({
@@ -105,11 +103,9 @@ const EditProfile = ({ navigation }) => {
       tanggal_lahir: Yup.string().required('Tanggal lahir harus diisi'),
       domisili_kota: Yup.string().required('Kota harus diisi'),
       domisili_provinsi: Yup.string().required('Provinsi harus diisi'),
-      tempat_lahir: Yup.string().required('Tempat lahir harus diisi'),
       tinggi_badan: Yup.number().optional(),
       berat_badan: Yup.number().optional(),
       tentang: Yup.string().required('Tentang harus diisi'),
-      alamat_rumah: Yup.string().required('Alamat rumah harus diisi'),
     }),
     onSubmit: async (values) => {
       setLoading(true);
@@ -119,11 +115,9 @@ const EditProfile = ({ navigation }) => {
           gender: values.jenis_kelamin,
           nama_user: values.nama_lengkap,
           nomor_wa: values.nomor_wa,
-          alamat_rumah: values.alamat_rumah,
           domisili_kota: values.domisili_kota,
           domisili_provinsi: values.domisili_provinsi,
           tentang: values.tentang,
-          tempat_lahir: values.tempat_lahir,
           tanggal_lahir: moment(values.tanggal_lahir, 'DD/MM/YYYY').format('YYYY-MM-DD'),
         };
 
@@ -139,7 +133,6 @@ const EditProfile = ({ navigation }) => {
         const payload = {
           gender: values.jenis_kelamin,
           bidang_kerja: Number(values.bidang_pekerjaan),
-          tempat_lahir: values.tempat_lahir,
           berat_badan: Number(values.berat_badan),
           tinggi_badan: Number(values.tinggi_badan),
           tanggal_lahir: moment(values.tanggal_lahir, 'DD/MM/YYYY').format('YYYY-MM-DD'),
@@ -147,7 +140,6 @@ const EditProfile = ({ navigation }) => {
           domisili_provinsi: values.domisili_provinsi,
           nama_user: values.nama_lengkap,
           nomor_wa: values.nomor_wa,
-          alamat_rumah: values.alamat_rumah,
           tentang: values.tentang,
         };
 
@@ -173,7 +165,6 @@ const EditProfile = ({ navigation }) => {
         updateProfil.setFieldValue('nama_lengkap', data?.nama_user);
         updateProfil.setFieldValue('jenis_kelamin', data?.penyedia?.gender);
         updateProfil.setFieldValue('nomor_wa', data?.nomor_wa);
-        updateProfil.setFieldValue('tempat_lahir', data?.penyedia?.tempat_lahir);
         updateProfil.setFieldValue('domisili_kota', data?.domisili_kota);
         updateProfil.setFieldValue('domisili_provinsi', data?.domisili_provinsi);
         setProvinsi(data?.domisili_provinsi);
@@ -181,7 +172,6 @@ const EditProfile = ({ navigation }) => {
           'tanggal_lahir',
           data?.penyedia?.tanggal_lahir !== null ? moment(data?.penyedia?.tanggal_lahir).format('DD/MM/YYYY') : ''
         );
-        updateProfil.setFieldValue('alamat_rumah', data?.penyedia?.alamat_rumah);
         updateProfil.setFieldValue('tentang', data?.penyedia?.tentang);
         setPhoto(data?.photo_profile);
         setTglLahir(data?.penyedia?.tanggal_lahir ? moment(data?.penyedia?.tanggal_lahir).format('DD/MM/YYYY') : '');
@@ -194,7 +184,6 @@ const EditProfile = ({ navigation }) => {
         updateProfil.setFieldValue('jenis_kelamin', data?.pencari?.gender);
         updateProfil.setFieldValue('bidang_pekerjaan', data?.pencari?.bidang_kerja?.id);
         updateProfil.setFieldValue('nomor_wa', data?.nomor_wa);
-        updateProfil.setFieldValue('tempat_lahir', data?.pencari?.tempat_lahir);
         setProvinsi(data?.domisili_provinsi);
         updateProfil.setFieldValue(
           'tanggal_lahir',
@@ -202,7 +191,6 @@ const EditProfile = ({ navigation }) => {
         );
         updateProfil.setFieldValue('tinggi_badan', data?.pencari?.tinggi_badan?.toString());
         updateProfil.setFieldValue('berat_badan', data?.pencari?.berat_badan?.toString());
-        updateProfil.setFieldValue('alamat_rumah', data?.pencari?.alamat_rumah);
         updateProfil.setFieldValue('domisili_kota', data?.domisili_kota);
         updateProfil.setFieldValue('domisili_provinsi', data?.domisili_provinsi);
         updateProfil.setFieldValue('tentang', data?.pencari?.tentang);
@@ -342,14 +330,6 @@ const EditProfile = ({ navigation }) => {
                 {updateProfil.errors.nomor_wa && updateProfil.touched.nomor_wa ? <ErrorInput error={updateProfil.errors.nomor_wa} /> : null}
               </VStack>
               <VStack space={2}>
-                <LabelInput text="Tempat Lahir" />
-                <Input
-                  placeholder="Masukan tempat lahir (cth: Jakarta)"
-                  value={updateProfil.values.tempat_lahir}
-                  onChangeText={updateProfil.handleChange('tempat_lahir')}
-                />
-              </VStack>
-              <VStack space={2}>
                 <LabelInput text="Tanggal Lahir" />
                 <Input
                   placeholder="20/12/1990"
@@ -428,23 +408,6 @@ const EditProfile = ({ navigation }) => {
                   </VStack>
                 </HStack>
               </VStack>
-              <VStack space={2}>
-                <LabelInput text="Alamat Rumah" />
-                <TextArea
-                  placeholder="Masukan alamat rumah (cth: Jl. Kalibata Raya No. 1)"
-                  value={updateProfil.values.alamat_rumah}
-                  onChangeText={updateProfil.handleChange('alamat_rumah')}
-                />
-                {updateProfil.errors.alamat_rumah && updateProfil.touched.alamat_rumah ? (
-                  <ErrorInput error={updateProfil.errors.alamat_rumah} />
-                ) : null}
-              </VStack>
-              <HStack px={width / 28} bgColor={colors.gray20} rounded={8} py={width / 40} space={width / 40} alignItems="center">
-                <Info />
-                <Text color={colors.text.black100} fontFamily={fonts.primary[400]} fontSize={width / 32}>
-                  Alamat anda tidak akan ditampilkan
-                </Text>
-              </HStack>
               {userData?.id_role === 2 && (
                 <VStack space={2}>
                   <LabelInput text="Tinggi Badan" />

@@ -121,7 +121,7 @@ const DetailPelamar = ({ navigation, route }) => {
           </Card>
           {detailPelamar?.status !== 'ditolak' && (
             <>
-              <Card type="detail" title="Permintaan Waktu Interview">
+              <Card type="detail" title="Permintaan Waktu Wawancara">
                 <Text fontFamily={fonts.primary[400]} fontSize={width / 32} color={colors.text.black70} textTransform="capitalize">
                   {moment(detailPelamar?.tanggal_mulai_kerja * 1000).format('dddd, DD MMMM YYYY')} - {detailPelamar?.waktu_mulai_kerja?.split(':')[0]}
                   :{detailPelamar?.waktu_mulai_kerja?.split(':')[1]}

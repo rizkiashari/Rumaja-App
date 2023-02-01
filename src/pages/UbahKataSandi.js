@@ -89,7 +89,7 @@ const UbahKataSandi = ({ navigation }) => {
                   type="password"
                   value={onSubmitKataSandi.values.newPassword}
                   onChangeText={onSubmitKataSandi.handleChange('newPassword')}
-                  placeholder="Masukkan Kata Sandi Baru"
+                  placeholder="Masukkan Kata Sandi Baru (Minimal 8 Karakter)"
                 />
                 {onSubmitKataSandi.errors.newPassword && onSubmitKataSandi.touched.newPassword && (
                   <ErrorInput error={onSubmitKataSandi.errors.newPassword} />

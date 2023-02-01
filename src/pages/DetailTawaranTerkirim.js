@@ -109,7 +109,7 @@ const DetailTawaranTerkirim = ({ navigation, route }) => {
               </Box>
             ))}
           </Card>
-          <Card type="detail" title="Permintaan Waktu Interview">
+          <Card type="detail" title="Permintaan Waktu Wawancara">
             <Text fontFamily={fonts.primary[400]} fontSize={width / 32} color={colors.text.black70} textTransform="capitalize">
               {moment(dataDetail?.riwayat?.tanggal_mulai_kerja * 1000).format('dddd, DD MMMM YYYY')} -{' '}
               {dataDetail?.riwayat?.waktu_mulai_kerja?.split(':')[0]}:{dataDetail?.riwayat?.waktu_mulai_kerja?.split(':')[1]}
