@@ -132,7 +132,9 @@ const DetailBekerja = ({ navigation, route }) => {
           </Card>
           <Card type="detail" title="Lokasi Kerja">
             <Text fontSize={width / 32} fontFamily={fonts.primary[500]} color={colors.text.black50} maxW={width / 1.2} width="full">
-              {`${detailBekerja?.lowongan?.kota_lowongan}, ${detailBekerja?.lowongan?.provinsi_lowongan?.split(',')[1]}`}
+              {`${detailBekerja?.lowongan?.alamat_lengkap}, ${detailBekerja?.lowongan?.kota_lowongan}, ${
+                detailBekerja?.lowongan?.provinsi_lowongan?.split(',')[1]
+              }`}
             </Text>
           </Card>
         </VStack>
