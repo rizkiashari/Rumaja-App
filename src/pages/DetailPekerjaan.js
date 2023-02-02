@@ -1,6 +1,6 @@
 import { Dimensions, SafeAreaView, TouchableOpacity } from 'react-native';
 import React, { useEffect, useState } from 'react';
-import { HStack, ScrollView, Text, VStack, View } from 'native-base';
+import { HStack, ScrollView, Text, VStack } from 'native-base';
 import { getData } from '../utils/getData';
 import { Badge, Card, Header, TopProfile } from '../components';
 import { ChevronBack, Timer } from '../assets';
@@ -8,15 +8,12 @@ import { fonts } from '../utils/fonts';
 import { convertRupiah } from '../utils/convertRupiah';
 import moment from 'moment';
 import { colors } from '../utils/colors';
-import useUserStore from '../store/userStore';
 
 const DetailPekerjaan = ({ navigation, route }) => {
   const { width, height } = Dimensions.get('window');
 
   const { uuid } = route.params;
   const isFocused = navigation.isFocused();
-
-  const { userData } = useUserStore();
 
   const [detailLowongan, setDetailLowongan] = useState();
 
