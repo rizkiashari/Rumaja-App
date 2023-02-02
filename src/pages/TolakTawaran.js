@@ -20,17 +20,17 @@ const TolakTawaran = ({ navigation, route }) => {
 
   const onTolakTawaran = useFormik({
     initialValues: {
-      catatan_riwayat_pencari: '',
+      catatan_tolak_pencari: '',
     },
     validateOnChange: true,
     validationSchema: Yup.object({
-      catatan_riwayat_pencari: Yup.string().required('Catatan riwayat harus diisi'),
+      catatan_tolak_pencari: Yup.string().required('Catatan riwayat harus diisi'),
     }),
     onSubmit: async (values) => {
       setLoading(true);
 
       const payload = {
-        catatan_riwayat_pencari: values.catatan_riwayat_pencari,
+        catatan_tolak_pencari: values.catatan_tolak_pencari,
       };
 
       try {
@@ -67,11 +67,11 @@ const TolakTawaran = ({ navigation, route }) => {
             <LabelInput text="Alasan menolak tawaran" />
             <TextArea
               placeholder="Masukkan alasan"
-              onChangeText={onTolakTawaran.handleChange('catatan_riwayat_pencari')}
-              value={onTolakTawaran.values.catatan_riwayat_pencari}
+              onChangeText={onTolakTawaran.handleChange('catatan_tolak_pencari')}
+              value={onTolakTawaran.values.catatan_tolak_pencari}
             />
-            {onTolakTawaran.errors.catatan_riwayat_pencari && onTolakTawaran.touched.catatan_riwayat_pencari && (
-              <ErrorInput error={onTolakTawaran.errors.catatan_riwayat_pencari} />
+            {onTolakTawaran.errors.catatan_tolak_pencari && onTolakTawaran.touched.catatan_tolak_pencari && (
+              <ErrorInput error={onTolakTawaran.errors.catatan_tolak_pencari} />
             )}
           </VStack>
           {loading ? <LoadingButton /> : <Button type="primary" fontSize={width} text="Konfirmasi" onPress={onTolakTawaran.handleSubmit} />}
