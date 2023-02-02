@@ -21,7 +21,7 @@ const DetailPekerjaanSelesai = ({ navigation, route }) => {
   const [invoke, setInvoke] = useState(false);
 
   const [dataDetail, setDataDetail] = useState();
-  const [isCheck, setIsCheck] = useState(false);
+  const [isCheck, _] = useState(false);
 
   useEffect(() => {
     const loadDetail = async () => {

@@ -66,7 +66,7 @@ const DetailPelamar = ({ navigation, route }) => {
             <ChevronBack width={30} />
           </TouchableOpacity>
           <Text fontFamily={fonts.primary[600]} fontSize={width / 24} color="black">
-            Detail Pelamar
+            {detailPelamar?.info_riwayat === 'hired' ? 'Detail Tawaran' : ' Detail Pelamar'}
           </Text>
         </HStack>
       </Header>
@@ -137,7 +137,7 @@ const DetailPelamar = ({ navigation, route }) => {
           {detailPelamar?.status === 'ditolak' && (
             <Card type="detail" title="Alasan ditolak">
               <Text fontFamily={fonts.primary[400]} fontSize={width / 32} color={colors.text.black70} textTransform="capitalize">
-                {detailPelamar?.catatan_riwayat_pencari}
+                {detailPelamar?.catatan_tolak_pencari}
               </Text>
             </Card>
           )}

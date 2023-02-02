@@ -10,6 +10,7 @@ import { API } from '../config/api';
 import { colors } from '../utils/colors';
 import { Button, ErrorInput, Header, LabelInput, LoadingButton, TextArea } from '../components';
 import { ChevronBack } from '../assets';
+import useUserStore from '../store/userStore';
 
 const TolakPelamar = ({ navigation, route }) => {
   const { width, height } = Dimensions.get('window');
@@ -20,18 +21,18 @@ const TolakPelamar = ({ navigation, route }) => {
 
   const onTolakPelamar = useFormik({
     initialValues: {
-      catatan_riwayat_penyedia: '',
+      catatan_tolak_penyedia: '',
     },
     validateOnChange: true,
     validationSchema: Yup.object({
-      catatan_riwayat_penyedia: Yup.string().required('Catatan riwayat harus diisi'),
+      catatan_tolak_penyedia: Yup.string().required('Catatan riwayat harus diisi'),
     }),
     onSubmit: async (values) => {
       setLoading(true);
 
       const payload = {
         status_riwayat: 'ditolak',
-        catatan_riwayat_penyedia: values.catatan_riwayat_penyedia,
+        catatan_tolak_penyedia: values.catatan_tolak_penyedia,
       };
 
       try {
@@ -71,11 +72,11 @@ const TolakPelamar = ({ navigation, route }) => {
             <LabelInput text="Alasan menolak lamaran" />
             <TextArea
               placeholder="Masukan alasan"
-              onChangeText={onTolakPelamar.handleChange('catatan_riwayat_penyedia')}
-              value={onTolakPelamar.values.catatan_riwayat_penyedia}
+              onChangeText={onTolakPelamar.handleChange('catatan_tolak_penyedia')}
+              value={onTolakPelamar.values.catatan_tolak_penyedia}
             />
-            {onTolakPelamar.errors.catatan_riwayat_penyedia && onTolakPelamar.touched.catatan_riwayat_penyedia && (
-              <ErrorInput error={onTolakPelamar.errors.catatan_riwayat_penyedia} />
+            {onTolakPelamar.errors.catatan_tolak_penyedia && onTolakPelamar.touched.catatan_tolak_penyedia && (
+              <ErrorInput error={onTolakPelamar.errors.catatan_tolak_penyedia} />
             )}
           </VStack>
           {loading ? (

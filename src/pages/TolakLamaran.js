@@ -10,6 +10,7 @@ import { colors } from '../utils/colors';
 import { Button, ErrorInput, Header, LabelInput, LoadingButton, TextArea } from '../components';
 import { ChevronBack } from '../assets';
 import { fonts } from '../utils/fonts';
+import useUserStore from '../store/userStore';
 
 const TolakLamaran = ({ navigation, route }) => {
   const { width, height } = Dimensions.get('window');
@@ -20,18 +21,18 @@ const TolakLamaran = ({ navigation, route }) => {
 
   const onTolakLamaran = useFormik({
     initialValues: {
-      catatan_riwayat_pencari: '',
+      catatan_tolak_pencari: '',
     },
     validateOnChange: true,
     validationSchema: Yup.object({
-      catatan_riwayat_pencari: Yup.string().required('Catatan riwayat harus diisi'),
+      catatan_tolak_pencari: Yup.string().required('Catatan riwayat harus diisi'),
     }),
     onSubmit: async (values) => {
       setLoading(true);
 
       const payload = {
         status_riwayat: 'ditolak',
-        catatan_riwayat_pencari: values.catatan_riwayat_pencari,
+        catatan_tolak_pencari: values.catatan_tolak_pencari,
       };
 
       try {
@@ -71,12 +72,12 @@ const TolakLamaran = ({ navigation, route }) => {
           <VStack space={2}>
             <LabelInput text="Alasan menolak tawaran" />
             <TextArea
-              onChangeText={onTolakLamaran.handleChange('catatan_riwayat_pencari')}
-              value={onTolakLamaran.values.catatan_riwayat_pencari}
+              onChangeText={onTolakLamaran.handleChange('catatan_tolak_pencari')}
+              value={onTolakLamaran.values.catatan_tolak_pencari}
               placeholder="Masukkan alasan"
             />
-            {onTolakLamaran.errors.catatan_riwayat_pencari && onTolakLamaran.touched.catatan_riwayat_pencari && (
-              <ErrorInput error={onTolakLamaran.errors.catatan_riwayat_pencari} />
+            {onTolakLamaran.errors.catatan_tolak_pencari && onTolakLamaran.touched.catatan_tolak_pencari && (
+              <ErrorInput error={onTolakLamaran.errors.catatan_tolak_pencari} />
             )}
           </VStack>
           {loading ? <LoadingButton /> : <Button type="primary" fontSize={width} text="Konfirmasi" onPress={onTolakLamaran.handleSubmit} />}

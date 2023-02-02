@@ -2,12 +2,10 @@ import { Dimensions, StyleSheet, TouchableOpacity } from 'react-native';
 import { View, Text, HStack, VStack, Select, CheckIcon, Box, Input, ScrollView } from 'native-base';
 import React from 'react';
 import { colors } from '../utils/colors';
-import { Button, Header, LabelInput, SelectItem } from '../components';
+import { Button, Header, LabelInput } from '../components';
 import { ChevronBack } from '../assets';
 import { fonts } from '../utils/fonts';
 import { useState } from 'react';
-import { getData } from '../utils/getData';
-import { useEffect } from 'react';
 import { useFilterHome } from '../store/filterHome';
 import useUserStore from '../store/userStore';
 import { showError } from '../utils/showMessages';
@@ -16,11 +14,6 @@ const FilterHome = ({ navigation, route }) => {
   const { bidang, id } = route.params;
   const { width, height } = Dimensions.get('window');
 
-  const [dataProvinsi, setDataProvinsi] = useState([]);
-  const [dataKota, setDataKota] = useState([]);
-
-  const [currentKota, setCurrentKota] = useState('');
-  const [provinsi, setProvinsi] = useState('');
   const [jenisGaji, setJenisGaji] = useState('');
   const [urutan, setUrutan] = useState('');
   const [gender, setGender] = useState('');
@@ -29,18 +22,6 @@ const FilterHome = ({ navigation, route }) => {
 
   const { setFilterHome, filterHome } = useFilterHome();
   const { userData } = useUserStore();
-
-  const getDataProvinsi = async () => {
-    const resp = await getData('/wilayah-indo/provinsi');
-    setDataProvinsi(resp.data);
-  };
-
-  const getDataKota = async (idProvinsi) => {
-    if (idProvinsi === '') return;
-
-    const resp = await getData(`/wilayah-indo/kota?id_provinsi=${idProvinsi?.split(',')[0]}`);
-    setDataKota(resp.data);
-  };
 
   const dataFilterLowongan = {
     jenis_gaji: jenisGaji,
@@ -52,6 +33,26 @@ const FilterHome = ({ navigation, route }) => {
     gender: gender !== 0 ? gender : '',
     min_rentang: minRentang !== 0 ? minRentang : '',
     max_rentang: maxRentang !== 0 ? maxRentang : '',
+  };
+
+  const simpanFilter = () => {
+    if (userData?.id_role === 2) {
+      navigation.navigate('DetailBidangPekerjaan', {
+        id: id,
+        bidang: bidang,
+      });
+      setFilterHome(dataFilterLowongan);
+    } else {
+      if (+minRentang > +maxRentang) {
+        return showError('Usia maksimal tidak boleh kurang dari usia minimal');
+      } else {
+        navigation.navigate('DetailLayanan', {
+          id: id,
+          bidang: bidang,
+        });
+        setFilterHome(dataFilterPekerja);
+      }
+    }
   };
 
   return (
@@ -167,7 +168,6 @@ const FilterHome = ({ navigation, route }) => {
             <Button
               fontSize={width}
               onPress={() => {
-                setCurrentKota('');
                 setProvinsi('');
                 setJenisGaji('');
                 setUrutan('');
@@ -176,19 +176,7 @@ const FilterHome = ({ navigation, route }) => {
               type="red-border"
               width={width / 3.5}
             />
-            <Button
-              type="primary"
-              onPress={() => {
-                navigation.navigate('DetailBidangPekerjaan', {
-                  id: id,
-                  bidang: bidang,
-                });
-                setFilterHome(dataFilterLowongan);
-              }}
-              text="Simpan"
-              width={width / 1.6}
-              fontSize={width}
-            />
+            <Button type="primary" onPress={simpanFilter} text="Simpan" width={width / 1.6} fontSize={width} />
           </HStack>
         </VStack>
       )}
@@ -312,7 +300,6 @@ const FilterHome = ({ navigation, route }) => {
             <Button
               fontSize={width}
               onPress={() => {
-                setCurrentKota('');
                 setGender('');
                 setMaxRentang(0);
                 setMinRentang(0);
@@ -322,23 +309,7 @@ const FilterHome = ({ navigation, route }) => {
               type="red-border"
               width={width / 3.5}
             />
-            <Button
-              type="primary"
-              onPress={() => {
-                if (+minRentang > +maxRentang) {
-                  return showError('Usia maksimal tidak boleh kurang dari usia minimal');
-                } else {
-                  navigation.navigate('DetailLayanan', {
-                    id: id,
-                    bidang: bidang,
-                  });
-                  setFilterHome(dataFilterPekerja);
-                }
-              }}
-              text="Simpan"
-              width={width / 1.6}
-              fontSize={width}
-            />
+            <Button type="primary" onPress={simpanFilter} text="Simpan" width={width / 1.6} fontSize={width} />
           </HStack>
         </VStack>
       )}

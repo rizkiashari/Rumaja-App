@@ -11,6 +11,7 @@ import { showError } from '../utils/showMessages';
 import { convertRupiah } from '../utils/convertRupiah';
 import moment from 'moment';
 import { colors } from '../utils/colors';
+import useUserStore from '../store/userStore';
 
 const DetailLamaran = ({ navigation, route }) => {
   const { width, height } = Dimensions.get('window');
@@ -21,6 +22,8 @@ const DetailLamaran = ({ navigation, route }) => {
   const [dataDetail, setDataDetail] = useState();
 
   const { setLoading } = useLoading();
+
+  const { userData } = useUserStore();
 
   useEffect(() => {
     const loadDetail = async () => {
@@ -162,11 +165,23 @@ const DetailLamaran = ({ navigation, route }) => {
             ))}
           </Card>
           {type === 'ditolak' ? (
-            <Card type="detail" title="Alasan Ditolak">
-              <Text fontFamily={fonts.primary[400]} fontSize={width / 32} color={colors.text.black70} textTransform="capitalize">
-                {dataDetail?.catatan_riwayat_pencari}
-              </Text>
-            </Card>
+            <>
+              {userData?.id_role === 3 && dataDetail?.catatan_tolak_pencari && (
+                <Card type="detail" title="Alasan Ditolak">
+                  <Text fontFamily={fonts.primary[400]} fontSize={width / 32} color={colors.text.black70} textTransform="capitalize">
+                    {dataDetail?.catatan_tolak_pencari}
+                  </Text>
+                </Card>
+              )}
+
+              {userData?.id_role === 2 && dataDetail?.catatan_tolak_penyedia && (
+                <Card type="detail" title="Alasan Ditolak">
+                  <Text fontFamily={fonts.primary[400]} fontSize={width / 32} color={colors.text.black70} textTransform="capitalize">
+                    {dataDetail?.catatan_tolak_penyedia}
+                  </Text>
+                </Card>
+              )}
+            </>
           ) : (
             <>
               {dataDetail?.tanggal_mulai_kerja && dataDetail?.catatan_riwayat_pencari === null && (

@@ -50,7 +50,7 @@ const LihatProgres = ({ navigation, route }) => {
         pt={4}
         contentContainerStyle={{ paddingBottom: height / 2.5 }}
       >
-        <VStack vertical={true} space={2}>
+        <VStack vertical={true} space={4}>
           <Card type="detail" title="Status">
             <Text fontFamily={fonts.primary[400]} fontSize={width / 32} color={colors.text.black70} textTransform="capitalize">
               {dataDetail?.riwayat?.status === 'selesai' ? 'Berakhir' : dataDetail?.riwayat?.status}
