@@ -10,7 +10,7 @@ import { calculateAge } from '../utils/calculateAge';
 import { colors } from '../utils/colors';
 import { fonts } from '../utils/fonts';
 import moment from 'moment';
-import { API } from '../config/api';
+import { API, configJSON } from '../config/api';
 import { showError, showSuccess } from '../utils/showMessages';
 import { calculateRating } from '../utils/calculateRating';
 
@@ -75,11 +75,29 @@ const DetailPencari = ({ navigation, route }) => {
   };
 
   const onAkhirPekerjaan = async () => {
-    navigation.replace('Nilai', {
-      id_lowongan: res?.data?.data?.id_lowongan,
-      id_pencari: res?.data?.data?.id_pencari,
-      uuid_riwayat: uuid_riwayat,
-    });
+    try {
+      const res = await API.patch(
+        `/lamaran/akhiri-pekerjaan/${uuid_riwayat}`,
+        {
+          ulasan: 'Pekerjaan telah selesai',
+        },
+        configJSON
+      );
+      setLoading(false);
+      if (res.data.message === 'SUCCESS_AKHIRI_PEKERJAAN') {
+        setLoading(true);
+        navigation.navigate('Nilai', {
+          id_lowongan: res?.data?.data?.id_lowongan,
+          id_pencari: res?.data?.data?.id_pencari,
+          uuid_riwayat: uuid_riwayat,
+        });
+      } else {
+        showError('Gagal mengakhiri pekerjaan');
+      }
+    } catch ({ response }) {
+      setLoading(false);
+      showError(response.data.message);
+    }
   };
 
   return (
