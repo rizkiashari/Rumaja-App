@@ -12,6 +12,7 @@ import { Button, ErrorInput, Header, LabelInput, LoadingButton, TextArea } from 
 import { ChevronBack } from '../assets';
 import { fonts } from '../utils/fonts';
 import { AirbnbRating } from 'react-native-ratings';
+import { API } from '../config/api';
 
 const Nilai = ({ navigation, route }) => {
   const { width, height } = Dimensions.get('window');
@@ -22,7 +23,7 @@ const Nilai = ({ navigation, route }) => {
 
   const { setLoading } = useLoading();
 
-  const { id_lowongan, id_pencari } = route.params;
+  const { id_lowongan, id_pencari, uuid_riwayat } = route.params;
 
   const ulasanPencari = useFormik({
     initialValues: {
@@ -35,22 +36,37 @@ const Nilai = ({ navigation, route }) => {
       catatan: Yup.string().required('Catatan harus diisi'),
     }),
     onSubmit: async (values) => {
-      setLoading(true);
-      setIsLoading(true);
-      const payload = {
-        id_lowongan: id_lowongan,
-        id_pencari: id_pencari,
-        rating: values.rating,
-        catatan: values.catatan,
-      };
+      try {
+        setLoading(true);
+        setIsLoading(true);
+        const payload = {
+          id_lowongan: id_lowongan,
+          id_pencari: id_pencari,
+          rating: values.rating,
+          catatan: values.catatan,
+        };
 
-      const res = await postWithJson('/ulasan/add', payload);
-      setLoading(false);
-      if (res.message === 'ADD_ULASAN_SUCCESS') {
-        navigation.replace('SuksesMengakhiriPekerjaan');
+        const res = await API.patch(`/lamaran/akhiri-pekerjaan/${uuid_riwayat}`);
+
+        if (res.data.message === 'SUCCESS_AKHIRI_PEKERJAAN') {
+          setLoading(true);
+
+          const addUlasan = await postWithJson('/ulasan/add', payload);
+          setLoading(false);
+          if (addUlasan.message === 'ADD_ULASAN_SUCCESS') {
+            navigation.replace('SuksesMengakhiriPekerjaan');
+            setIsLoading(false);
+          } else {
+            setIsLoading(false);
+            showError('Gagal mengirim ulasan');
+          }
+        } else {
+          setIsLoading(false);
+          showError('Gagal mengakhiri pekerjaan');
+        }
+      } catch (error) {
         setIsLoading(false);
-      } else {
-        setIsLoading(false);
+        setLoading(false);
         showError('Gagal mengakhiri pekerjaan');
       }
     },

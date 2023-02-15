@@ -6,7 +6,7 @@ import * as Yup from 'yup';
 import { showError, showSuccess } from '../utils/showMessages';
 import { HStack, ScrollView, Text, VStack, View } from 'native-base';
 import { Button, ErrorInput, Header, Input, LabelInput, LoadingButton } from '../components';
-import { Calender, ChevronBack } from '../assets';
+import { ChevronBack } from '../assets';
 import { fonts } from '../utils/fonts';
 import { colors } from '../utils/colors';
 import { postWithJson } from '../utils/postData';

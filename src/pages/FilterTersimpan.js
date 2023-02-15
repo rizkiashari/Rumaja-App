@@ -5,45 +5,24 @@ import { colors } from '../utils/colors';
 import { Button, Header, LabelInput } from '../components';
 import { ChevronBack } from '../assets';
 import { fonts } from '../utils/fonts';
-import { useState } from 'react';
-import { getData } from '../utils/getData';
-import { useEffect } from 'react';
+import { useState } from 'react'
 import useUserStore from '../store/userStore';
 import { useFilterTersimpan } from '../store/filterHome';
 import { showError } from '../utils/showMessages';
 
 const FilterTersimpan = ({ navigation }) => {
-  // Belum default value
-
   const width = Dimensions.get('window').width;
   const height = Dimensions.get('window').height;
 
   const { userData } = useUserStore();
   const { setFilterTersimpan } = useFilterTersimpan();
 
-  const [dataProvinsi, setDataProvinsi] = useState([]);
-  const [dataKota, setDataKota] = useState([]);
-
-  const [currentProvinsi, setCurrentProvinsi] = useState('');
-  const [currentKota, setCurrentKota] = useState('');
   const [jenisGaji, setJenisGaji] = useState('');
   const [pekerjaan, setPekerjaan] = useState('');
   const [urutan, setUrutan] = useState('');
   const [gender, setGender] = useState('');
   const [minUsia, setMinUsia] = useState(0);
   const [maxUsia, setMaxUsia] = useState(0);
-
-  const getDataProvinsi = async () => {
-    const resp = await getData('/wilayah-indo/provinsi');
-    setDataProvinsi(resp.data);
-  };
-
-  const getDataKota = async (id) => {
-    if (id === '') return;
-
-    const resp = await getData(`/wilayah-indo/kota?id_provinsi=${id?.split(',')[0]}`);
-    setDataKota(resp.data);
-  };
 
   const dataFilterLowongan = {
     bidang_kerja: pekerjaan !== 0 ? pekerjaan : '',
@@ -375,8 +354,6 @@ const FilterTersimpan = ({ navigation }) => {
               fontSize={width}
               onPress={() => {
                 setPekerjaan('');
-                setCurrentProvinsi('');
-                setCurrentKota('');
                 setJenisGaji('');
                 setUrutan('');
               }}
@@ -402,8 +379,6 @@ const FilterTersimpan = ({ navigation }) => {
             <Button
               fontSize={width}
               onPress={() => {
-                setCurrentKota('');
-                setCurrentProvinsi('');
                 setGender('');
                 setUrutan('');
                 setMaxUsia('');

@@ -75,24 +75,11 @@ const DetailPencari = ({ navigation, route }) => {
   };
 
   const onAkhirPekerjaan = async () => {
-    setLoading(true);
-
-    try {
-      const res = await API.patch(`/lamaran/akhiri-pekerjaan/${uuid_riwayat}`);
-      setLoading(false);
-      if (res.data.message === 'SUCCESS_AKHIRI_PEKERJAAN') {
-        setLoading(true);
-        navigation.replace('Nilai', {
-          id_lowongan: res?.data?.data?.id_lowongan,
-          id_pencari: res?.data?.data?.id_pencari,
-        });
-      } else {
-        showError('Gagal mengakhiri pekerjaan');
-      }
-    } catch ({ response }) {
-      setLoading(false);
-      showError(response.data.message);
-    }
+    navigation.replace('Nilai', {
+      id_lowongan: res?.data?.data?.id_lowongan,
+      id_pencari: res?.data?.data?.id_pencari,
+      uuid_riwayat: uuid_riwayat,
+    });
   };
 
   return (

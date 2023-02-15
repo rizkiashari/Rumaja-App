@@ -9,7 +9,7 @@ import { Badge, BoxAddPekerjaan, Card, Header, LoadingSkeleton } from '../compon
 import { ILPlaceholder, Notification, StarActive, Timer } from '../assets';
 import useLoading from '../store/loadingStore';
 import useUserStore from '../store/userStore';
-import { useFilterHome, useFilterTersimpan } from '../store/filterHome';
+import { useFilterTersimpan } from '../store/filterHome';
 import { convertRupiah } from '../utils/convertRupiah';
 import moment from 'moment';
 import { showError, showSuccess } from '../utils/showMessages';
@@ -28,7 +28,6 @@ const Beranda = ({ navigation }) => {
   const [countNotif, setCountNotif] = useState(0);
   const { setIsLogin } = useAuthStore();
 
-  const { setFilterHome } = useFilterHome();
   const { setFilterTersimpan } = useFilterTersimpan();
 
   const { userData } = useUserStore();
