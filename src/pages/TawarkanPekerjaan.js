@@ -56,17 +56,17 @@ const TawarkanPekerjaan = ({ navigation }) => {
       </Header>
 
       <ScrollView
-        minHeight={height / 1.5}
+        height={height / 1.2}
         px={width / 28}
         pt={height / 40}
         showsVerticalScrollIndicator={false}
         refreshControl={<RefreshControl refreshing={isLoading} onRefresh={loadData} />}
-        _contentContainerStyle={{ paddingBottom: height / 9 }}
+        _contentContainerStyle={{ paddingBottom: height / 14 }}
       >
         {isLoading ? (
           <LoadingSkeleton jumlah={5} />
         ) : (
-          <VStack mt={1} mb={height / 8} space={4}>
+          <VStack mt={1} space={4} mb={height / 3.5}>
             <Text fontFamily={fonts.primary[600]} fontSize={width / 28} color="black">
               Pilih Lowongan Pekerjaan
             </Text>
