@@ -1,5 +1,5 @@
 import { Dimensions, RefreshControl, SafeAreaView, StyleSheet, TouchableOpacity } from 'react-native';
-import { HStack, ScrollView, Text, VStack, View } from 'native-base';
+import { HStack, ScrollView, Text, VStack } from 'native-base';
 import React, { useEffect, useState } from 'react';
 import useLoading from '../store/loadingStore';
 import { getData } from '../utils/getData';
@@ -83,6 +83,7 @@ const Profil = ({ navigation }) => {
       }
     }
   };
+
   useEffect(() => {
     setLoading(true);
 
