@@ -469,6 +469,7 @@ const EditProfile = ({ navigation }) => {
           const tgl = moment(val).format('DD/MM/YYYY');
           setTglLahir(tgl);
         }}
+        title="Pilih tanggal lahir"
         onDateChange={(val) => {
           setOpen(false);
           setDate(val);

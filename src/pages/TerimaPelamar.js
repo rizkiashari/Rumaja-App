@@ -144,6 +144,7 @@ const TerimaPelamar = ({ navigation, route }) => {
         mode={mode ? 'time' : 'date'}
         onCancel={() => setOpen(false)}
         minimumDate={new Date(1970, 1, 1)}
+        title="Pilih Tanggal"
       />
     </View>
   );

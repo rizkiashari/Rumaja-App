@@ -330,6 +330,7 @@ const Register = ({ navigation }) => {
         }}
         mode="date"
         onCancel={() => setOpen(false)}
+        title="Pilih tanggal lahir"
       />
     </ScrollView>
   );

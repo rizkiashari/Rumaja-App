@@ -259,6 +259,7 @@ const EditPengalaman = ({ navigation, route }) => {
         open={open}
         onConfirm={handleConfirm}
         mode="date"
+        title="Pilih Tanggal"
         onCancel={() => setOpen(false)}
         minimumDate={new Date(1970, 1, 1)}
       />

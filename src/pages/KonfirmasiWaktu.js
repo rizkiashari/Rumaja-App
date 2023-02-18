@@ -139,6 +139,7 @@ const KonfirmasiWaktu = ({ navigation }) => {
         androidVariant="iosClone"
         date={new Date()}
         open={open}
+        title="Pilih tanggal"
         onConfirm={handleConfirm}
         mode={mode ? 'time' : 'date'}
         onCancel={() => setOpen(false)}
