@@ -42,11 +42,6 @@ const Progres = ({ navigation }) => {
       if (jenisTabs === 'Diproses' && userData?.id_role === 2) {
         const resTawaran = await getData('/tawarkan/tawarkan-all');
         setTawaranPekerjaan(resTawaran.data);
-        if (resTawaran?.code === 403) {
-          setIsLogin(false);
-          showError('Sesi anda telah berakhir, silahkan login kembali');
-          return;
-        }
         const resLamaran = await getData('/lamaran/applied-all');
         setLamaranTerkirim(resLamaran.data);
       }
@@ -64,11 +59,6 @@ const Progres = ({ navigation }) => {
       if (jenisTabs === 'Diproses' && userData?.id_role === 3) {
         const resPelamar = await getData('/lamaran/pelamar');
         setDataPelamar(resPelamar.data);
-        if (resPelamar?.code === 403) {
-          setIsLogin(false);
-          showError('Sesi anda telah berakhir, silahkan login kembali');
-          return;
-        }
         const resTawaranTerkirim = await getData('/tawarkan/tawaran-terkirim');
         setDataTawaranTerkirim(resTawaranTerkirim.data);
       }

@@ -36,11 +36,6 @@ const Profil = ({ navigation }) => {
   const getAllData = async () => {
     if (userData?.id_role === 3) {
       const resp = await getData('/lowongan/list-lowongan?publish=publish');
-      if (resp?.code === 403) {
-        setIsLogin(false);
-        showError('Sesi anda telah berakhir, silahkan login kembali');
-        return;
-      }
       if (resp?.message === 'SUCCESS_GET_ALL_LOWONGAN') {
         setLowongan(resp?.data?.lowongan);
         setLoading(false);
@@ -54,11 +49,6 @@ const Profil = ({ navigation }) => {
     }
     if (userData?.id_role === 2) {
       const profileRes = await getData('/user/profile-pencari');
-      if (profileRes?.code === 403) {
-        setIsLogin(false);
-        showError('Sesi anda telah berakhir, silahkan login kembali');
-        return;
-      }
       if (profileRes?.message === 'SUCCESS_GET_PROFILE_PENCARI') {
         setDetailProfile(profileRes?.data);
         setLoading(false);

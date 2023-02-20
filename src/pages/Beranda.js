@@ -46,20 +46,9 @@ const Beranda = ({ navigation }) => {
       if (userData?.id_role === 2) {
         const resp = await getData(`/lowongan/rekomendasi?bidang_kerja=${userData?.id_bidang_kerja}&page=${page}&limit=5`);
 
-        if (resp?.code === 403) {
-          setIsLogin(false);
-          showError('Sesi anda telah berakhir, silahkan login kembali');
-          return;
-        }
-
         setDataLowongan(resp?.data?.lowongan);
       } else {
         const resp = await getData('/user/rekomendasi-pencari');
-        if (resp?.code === 403) {
-          setIsLogin(false);
-          showError('Sesi anda telah berakhir, silahkan login kembali');
-          return;
-        }
         setDataPekerja(resp.data);
       }
     };
